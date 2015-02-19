@@ -1,30 +1,31 @@
 define( [
+    'Config',
     'Backbone', 'jQuery', 'VerticalSlideShow', 'Splash', 'GalleryView',
     'MenuItemView', 'ContactView',
     'SlickNav'
 ], function (
-    Backbone, jQuery, VerticalSlideShow, Splash, GalleryView,
+    Config, Backbone, jQuery, VerticalSlideShow, Splash, GalleryView,
     MenuItemView, ContactView
 ){
     'use strict';
 
     setLanguage();
 
-    var collectionDir = '/_/collection/';
-    var showing = null;
     var splash = new Splash({ el: '#home' });
-    var galleryView = {};
     var contactView = new ContactView();
+    var galleryView = {};
+
+    var showing = null;
 
     var promiseToCreateRouter = new Promise( function (resolve, reject) {
-        jQuery.get(collectionDir)
+        jQuery.get(Config.collectionDir)
         .fail( function () {
             reject();
         })
         .done( function (responseText) {
             var links = responseText.match(/a href="([^"]+)\.json"/);
             for (var i=1; i<links.length; i++){
-                var url = collectionDir + links[i] + '.json';
+                var url = Config.collectionDir + links[i] + '.json';
                 galleryView[ links[i] ] = new GalleryView({
                     url: url,
                     id: links[i]
@@ -86,16 +87,16 @@ define( [
 
     function setLanguage (lang) {
         lang = lang || navigator.language.match('^(..)')[1];
-        var langSupported = ['en', 'hu'];
-        if (! _.contains(langSupported, lang)){
-            lang = langSupported[0];
+        if (!Config.langSupported[lang]){
+            lang = Config.defaultLang;
         }
+
         var styles = [];
-        for (var i=0; i<langSupported.length; i++){
-            if (langSupported[i] != lang){
-                styles.push( "[lang='"+langSupported[i]+"']" );
+        Object.keys(Config.langSupported).forEach( function (i,j){
+            if (i != lang){
+                styles.push( "[lang='"+i+"']" );
             }
-        }
+        });
         jQuery('#set-languages').remove();
         var html = "<style id='set-languages'>" +
             styles.join(",") +
@@ -107,7 +108,7 @@ define( [
 
         jQuery('.change-language').on('click', function (e) {
             var lang = 'en';
-            if (this.dataset.setlang && _.contains(langSupported, this.dataset.setlang)){
+            if (this.dataset.setlang && Config.langSupported[ this.dataset.setlang ]){
                 lang = this.dataset.setlang;
             }
             console.info('lang to ', lang )
