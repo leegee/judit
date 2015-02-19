@@ -8,29 +8,46 @@ body {
 
 .slicknav_menu {
     z-index: 255;
+    display: none;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 .slicknav_menu li {
     text-align: center;
     line-height: 30pt;
-}
-.slicknav_menu a[role="menuitem"] {
     font-size: 16pt;
 }
-
+/*.slicknav_menu a[role="menuitem"] {
+    font-size: 16pt;
+}
+*/
 #menu {
     /*z-index: 100;*/
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    display: block;
+    display: inline;
+    padding: 0;
     margin: 0;
-    margin-bottom: 1em;
     background: black;
+    text-transform: capitalize;
 }
+
+#menu ul {
+    display: inline;
+}
+
 #menu li {
-    display: inline-block;
+    display: inline;
     list-style-type: none;
+    padding: 0; margin: 0;
+    top: 0;
+    float: left;
+    position: relative;
 }
 #menu a {
     display: inline-block;
@@ -41,20 +58,11 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-#menu li:hover a {
+#menu li a:hover {
     background: white;
     text-decoration: none;
     transition: background-color 0.5s ease, color 0.5s ease;
     color: black;
-}
-
-.slicknav_menu {
-    display: none;
-    margin: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
 }
 
 @media screen and (max-width: 40em) {

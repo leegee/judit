@@ -1,7 +1,7 @@
 define( [
-    'Backbone', 'Underscore', 'Collection', 'DressView', 'Template'
+    'Backbone', 'Underscore', 'Collection', 'DressView'
 ], function (
-    Backbone, _, Collection, DressView, Template
+    Backbone, _, Collection, DressView
 ){
     'use strict';
 
@@ -14,7 +14,7 @@ define( [
             // this.listenTo(this.model, "change", this.render);
             this.id = options.id;
             this.collection = new Collection({ url: options.url });
-            this.template = Template.template({ el: '#gallery-template' });
+            this.template = _.template( jQuery('#gallery-template').text() );
         },
 
         render: function (dressIdToShow) {

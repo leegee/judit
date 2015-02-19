@@ -2,13 +2,18 @@
 <head>
     <title>Judit Alpha</title>
 
+    <meta charset="UTF-8">
+
     <link rel="stylesheet" type="text/css" href="/bower_components/reset-css/reset.css">
     <link rel="stylesheet" type="text/css" href="/bower_components/slicknav/slicknav.css">
     <link rel="stylesheet" type="text/css" href="/_/css/main.css">
     <script src="/bower_components/requirejs/require.js" data-main="/_/js/main.js"></script>
 
     <script type='html/template' id='gallery-template'>
-        <h1>Gallery <%= name %></h1>
+        <h1>
+        <span lang='en'>Gallery</span>
+        <span lang='hu'>Galéria</span>
+         <%= name %></h1>
     </script>
 
     <script type='html/template' id='dress-template'>
@@ -42,7 +47,7 @@
     </script>
 
     <script type='html/template' id='menu-gallery-item-template'>
-        <a class="scroll" href="#/gallery/<%= id %>"><%= id %></a>
+        <a href="#/gallery/<%= id %>"><%= id %></a>
     </script>
 
 </head>
@@ -50,8 +55,22 @@
 
     <header>
         <ul id="menu">
-            <li><a class="scroll" href="#/home">Home</a></li>
-            <li id='menu-contact'><a class="scroll" href="#/contact">Contact</a></li>
+            <li><a href="#/home">
+                <span lang='en'>Home</span>
+                <span lang='hu'>Főoldal</span>
+            </a></li>
+            <li id='menu-contact'><a href="#/contact">
+                <span lang='en'>Contact</span>
+                <span lang='hu'>Kapcsolat</span>
+            </a></li>
+            <li id='language'>
+                <span lang='en'>Language</span>
+                <span lang='hu'>Nyelv</span>
+                <ul>
+                    <li class='change-language' data-setlang='en' id='language-english'><a>English</a></li>
+                    <li class='change-language' data-setlang='hu' id='language-magyar'><a>Magyar</a></li>
+                </ul>
+            </li>
         </ul>
     </header>
 

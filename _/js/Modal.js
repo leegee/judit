@@ -6,11 +6,11 @@ define( [
     'use strict';
 
     var Modal = function (options) {
-        this.template   = _.template( options.template );
-        this.$el        = options.$el;
-        this.$close     = null;
-        this.bodyCss    = {};
-        this.open       = false;
+        this.templateCompiled = options.templateCompiled;
+        this.$el              = options.$el;
+        this.$close           = null;
+        this.bodyCss          = {};
+        this.open             = false;
     };
 
     Modal.prototype.show = function (options) {
@@ -27,7 +27,7 @@ define( [
         jQuery(document.body).css('overflow', 'hidden');
 
         this.$el.html(
-            this.template( options.model )
+            this.templateCompiled( options.model )
         );
         this.$el.show();
 

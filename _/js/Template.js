@@ -17,10 +17,11 @@ define( [
 
     Template.template = function (options) {
         var text = '';
+        var id = options.el + '-' + Template.lang;
+        console.info("Template ", id );
         if (options.el){
-            text = jQuery( options.el ).text()
+            text = jQuery( id ).text()
         }
-        console.info("Template ", options.el + '-' + Template.lang );
         return _.template(text);
     }
 

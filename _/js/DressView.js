@@ -6,7 +6,7 @@ define( [
     'use strict';
 
     var MODAL = new Modal({
-        template: jQuery('#modal-dress-template').text(),
+        templateCompiled: _.template( jQuery('#modal-dress-template').text()),
         $el: jQuery('#modal-dress')
     });
 
