@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Judit Alpha</title>
+
+    <link rel="stylesheet" type="text/css" href="/bower_components/reset-css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/bower_components/slicknav/slicknav.css">
+    <link rel="stylesheet" type="text/css" href="/_/css/main.css">
+    <script src="/bower_components/requirejs/require.js" data-main="/_/js/main.js"></script>
+
+    <script type='html/template' id='gallery-template'>
+        <h1>Gallery <%= name %></h1>
+    </script>
+
+    <script type='html/template' id='dress-template'>
+        <h1 class='name'>Name <%= name %></h1>
+        <h2 class='tagline'>Tag <%= tagline %></h2>
+        <h3 class='standfirst'>Tag <%= standfirst %></h3>
+        <img class='thumb' src='<%= thumb %>'>
+        <p class='blurb'><%= blurb %></p>
+    </script>
+
+    <script type='html/template' id='modal-dress-template'>
+        <article id='modal-dress-content'>
+            <!-- div id='modal-close'>X</div -->
+            <div class='left'>
+                <div id='zoomable-container'>
+                    <img id='zoomable' src='<%= zoomable %>'>
+                </div>
+            </div>
+            <div class='right'>
+                <div id='dress-info'>
+                    <h1 class='name'>Name <%= name %></h1>
+                    <h2 class='tagline'>Tag <%= tagline %></h2>
+                    <h3 class='standfirst'>Tag <%= standfirst %></h3>
+                    <div class='blurb'><%= blurb %></div>
+                </div>
+                <div id='zoom-container'>
+                    <img id='zoomed'>
+                </div>
+            </div>
+        </article>
+    </script>
+
+    <script type='html/template' id='menu-gallery-item-template'>
+        <a class="scroll" href="#/gallery/<%= id %>"><%= id %></a>
+    </script>
+
+</head>
+<body>
+
+    <header>
+        <ul id="menu">
+            <li><a class="scroll" href="#/home">Home</a></li>
+            <li id='menu-contact'><a class="scroll" href="#/contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <section id='home' style="display:none">
+        <picture>
+            <source media="(min-width: 64em)" srcset="bower_components/js-vertical-slideshow/eg/img/1.png">
+            <source media="(min-width: 37.5em)" srcset="bower_components/js-vertical-slideshow/eg/img/1.png">
+            <source srcset="bower_components/js-vertical-slideshow/eg/img/1.png">
+            <img src='bower_components/js-vertical-slideshow/eg/img/1.png'>
+        </picture>
+
+        <picture>
+          <img src='bower_components/js-vertical-slideshow/eg/img/2.png'>
+        </picture>
+
+        <picture>
+            <img src='bower_components/js-vertical-slideshow/eg/img/3.png'>
+        </picture>
+
+        <picture>
+            <img src='bower_components/js-vertical-slideshow/eg/img/4.png'>
+        </picture>
+
+        <picture>
+            <img src='bower_components/js-vertical-slideshow/eg/img/5.png'>
+        </picture>
+    </section>
+
+    <section id="contact" style='display:none'>
+        <h1>Contact</h1>
+    </section>
+
+    <aside id="modal-dress" class="modal" tabindex="-1">
+    </aside>
+
+</body>
+</html>

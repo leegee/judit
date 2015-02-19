@@ -1,0 +1,26 @@
+[
+    {
+        "id": "SKU1",
+        "name": "Dress 1",
+        "size": 1,
+        "tagline": "Pwetty",
+        "standfirst": "A pretty dress.",
+        "blurb": "Some more detailed text about a dress.",
+        "thumb":    "/_/img/hanging-out2.thumb.jpg",
+        "zoomable": "/_/img/hanging-out2.zoomable.jpg",
+        "zoomed":   "/_/img/hanging-out2.jpg"
+    },
+
+    {
+        "id": "SKU2",
+        "name": "Dress 2",
+        "size": 2,
+        "tagline": "2 Pwetty",
+        "standfirst": "2 A pretty dress.",
+        "blurb": "2 Some more detailed text about a dress.",
+        "thumb":    "/_/img/hanging-out2.thumb.jpg",
+        "zoomable": "/_/img/hanging-out2.zoomable.jpg",
+        "zoomed":   "/_/img/hanging-out2.jpg"
+    }
+
+]
