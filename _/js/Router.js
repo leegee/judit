@@ -111,7 +111,6 @@ define( [
             if (this.dataset.setlang && Config.langSupported[ this.dataset.setlang ]){
                 lang = this.dataset.setlang;
             }
-            console.info('lang to ', lang )
             setLanguage( lang );
         });
     }
