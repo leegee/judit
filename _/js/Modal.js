@@ -25,6 +25,9 @@ define( [
 
         this.bodyCss.overflow = jQuery(document.body).css('overflow');
         jQuery(document.body).css('overflow', 'hidden');
+        jQuery(document).on('touchmove.modal', function (e) {
+            e.preventDefault();
+        });
 
         this.$el.html(
             this.templateCompiled( options.model )
@@ -40,7 +43,6 @@ define( [
             e = e || window.event;
             if (e.keyCode == 27) {
                 self.close();
-                jQuery(document).off('keyup.modal');
             }
         });
     };
@@ -51,6 +53,8 @@ define( [
             self.open = false;
             self.$el.empty();
             jQuery(document.body).css('overflow', self.bodyCss.overflow);
+            jQuery(document).off('touchmove.modal');
+            jQuery(document).off('keyup.modal');
             Backbone.history.navigate(self.closeUrl);
         });
     };

@@ -1,3 +1,4 @@
+ <!DOCTYPE html>
 <html>
 <head>
     <title>Judit Alpha</title>
@@ -11,22 +12,29 @@
 
     <script type='html/template' id='gallery-template'>
         <h1>
-        <span lang='en'>Gallery</span>
-        <span lang='hu'>Galéria</span>
-         <%= name %></h1>
+            <span lang='en'>Gallery</span>
+            <span lang='hu'>Galéria</span>
+        </h1>
     </script>
 
     <script type='html/template' id='dress-template'>
-        <h1 class='name'>Name <%= name %></h1>
-        <h2 class='tagline'>Tag <%= tagline %></h2>
-        <h3 class='standfirst'>Tag <%= standfirst %></h3>
-        <img class='thumb' src='<%= thumb %>'>
-        <p class='blurb'><%= blurb %></p>
+        <div lang='en'>
+            <h1 class='name'>Name <%= en_name %></h1>
+            <img class='thumb' src='<%= thumb %>'>
+            <h2 class='tagline'>Tag <%= en_tagline %></h2>
+            <h3 class='standfirst'>Tag <%= en_standfirst %></h3>
+        </div>
+        <div lang='hu'>
+            <h1 class='name'>Name <%= hu_name %></h1>
+            <img class='thumb' src='<%= thumb %>'>
+            <h2 class='tagline'>Tag <%= hu_tagline %></h2>
+            <h3 class='standfirst'>Tag <%= hu_standfirst %></h3>
+        </div>
     </script>
 
     <script type='html/template' id='modal-dress-template'>
         <article id='modal-dress-content'>
-            <!-- div id='modal-close'>X</div -->
+            <div id='modal-close'>X</div>
             <div class='left'>
                 <div id='zoomable-container'>
                     <img id='zoomable' src='<%= zoomable %>'>
@@ -34,10 +42,18 @@
             </div>
             <div class='right'>
                 <div id='dress-info'>
-                    <h1 class='name'>Name <%= name %></h1>
-                    <h2 class='tagline'>Tag <%= tagline %></h2>
-                    <h3 class='standfirst'>Tag <%= standfirst %></h3>
-                    <div class='blurb'><%= blurb %></div>
+                    <div lang='en'>
+                        <h1 class='name'>Name <%= en_name %></h1>
+                        <h2 class='tagline'>Tag <%= en_tagline %></h2>
+                        <h3 class='standfirst'>Tag <%= en_standfirst %></h3>
+                        <div class='blurb'><%= en_blurb %></div>
+                    </div>
+                    <div lang='hu'>
+                        <h1 class='name'>Name <%= hu_name %></h1>
+                        <h2 class='tagline'>Tag <%= hu_tagline %></h2>
+                        <h3 class='standfirst'>Tag <%= hu_standfirst %></h3>
+                        <div class='blurb'><%= hu_blurb %></div>
+                    </div>
                 </div>
                 <div id='zoom-container'>
                     <img id='zoomed'>
@@ -52,9 +68,8 @@
 
 </head>
 <body>
-
-    <header>
-        <ul id="menu">
+    <header style='display:none'>
+        <nav id="menu">
             <li><a href="#/home">
                 <span lang='en'>Home</span>
                 <span lang='hu'>Főoldal</span>
@@ -71,7 +86,7 @@
                     <li class='change-language' data-setlang='hu' id='language-magyar'><a>Magyar</a></li>
                 </ul>
             </li>
-        </ul>
+        </nav>
     </header>
 
     <section id='home' style="display:none">
@@ -100,11 +115,32 @@
     </section>
 
     <section id="contact" style='display:none'>
-        <h1>Contact</h1>
+        <h1>
+            <span lang='en'>Contact</span>
+            <span lang='hu'>Kapcsolat</span>
+        </h1>
     </section>
+
+    <footer style='display:none'>
+        <p>
+            Impressum, etc.
+        </p>
+        <p>
+            Link to Facebook, etc.
+        </p>
+        <p>
+            Reiterate contact info.
+        </p>
+    </footer>
 
     <aside id="modal-dress" class="modal" tabindex="-1">
     </aside>
 
+    <div id='loading'>
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+    </div>
 </body>
 </html>

@@ -11,7 +11,7 @@ define( [
     });
 
     var DressView =  Backbone.View.extend({
-        className: 'dress',
+        className: 'dress grow',
         galleryId: null,
         events: {
             click: "showModal",
@@ -84,8 +84,10 @@ define( [
 
         zoom: function (e) {
             // Position within the source image:
-            var x  = e.pageX - this.zoomable.offset.left,
-                y  = e.pageY - this.zoomable.offset.top;
+            // adding/removing a bit because of the *em offset caused
+            // by the 'close' button :(
+            var x  = e.pageX - this.zoomable.offset.left + 10,
+                y  = e.pageY - this.zoomable.offset.top - 10;
             // As a percentage:
             x = x / this.zoomable.pcWidth;
             y = y / this.zoomable.pcHeight;
@@ -93,8 +95,8 @@ define( [
             x = x * this.zoomed.pcWidth;
             y = y * this.zoomed.pcHeight;
             this.zoomed.$el.css({
-                left: x * -1, // (x - this.zoomed.$el.width()  / 4) * -1,
-                top:  y * -1 // (y - this.zoomed.$el.height() / 8) * -1,
+                left: x * -1,
+                top:  y * -1
             })
         }
     });

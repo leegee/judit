@@ -10,19 +10,21 @@ define( [
         el: "#home",
 
         initialize: function (options) {
+            this.el = options.el;
+
             this.verticalSlideShow = new VerticalSlideShow({
-                container: '#home',
-                selector: 'picture'
+                // container: this.el,
+                selector: 'footer, picture'
             });
         },
 
         render: function () {
             if (jQuery.contains(document, this.$el[0])) {
                 this.$el.show();
-                this.verticalSlideShow.start();
             } else {
                 this.$el.insertAfter('header');
             }
+            this.verticalSlideShow.start();
         },
 
         remove: function () {

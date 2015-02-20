@@ -11,6 +11,10 @@ define( [
 
     setLanguage();
 
+    jQuery('#loading').hide();
+    jQuery('header').show();
+    jQuery('footer').show();
+
     var splash = new Splash({ el: '#home' });
     var contactView = new ContactView();
     var galleryView = {};
@@ -34,7 +38,9 @@ define( [
             }
 
             jQuery('#menu').slicknav({
-                prependTo: 'body'
+                prependTo: 'body',
+                label: '<span lang="en">MENU</span><span lang="hu">MENÜ</span>',
+                closeOnClick: true
                 // parentTag: 'ul'
             });
 

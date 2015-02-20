@@ -11,7 +11,6 @@ define( [
         className: "gallery",
 
         initialize: function (options) {
-            // this.listenTo(this.model, "change", this.render);
             this.id = options.id;
             this.collection = new Collection({ url: options.url });
             this.template = _.template( jQuery('#gallery-template').text() );
@@ -20,6 +19,7 @@ define( [
         render: function (dressIdToShow) {
             var self = this;
             this.$el.empty();
+
             this.$el.html(
                 this.template(
                     //this.model.toJSON()
