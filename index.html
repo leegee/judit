@@ -10,6 +10,18 @@
     <link rel="stylesheet" type="text/css" href="/_/css/main.css">
     <script src="/bower_components/requirejs/require.js" data-main="/_/js/main.js"></script>
 
+    <script type='html/template' id='loader-template'>
+        <div id='loader'>
+            <div class="spinner">
+              <div class="dot1"></div>
+              <div class="dot2"></div>
+            </div>
+            <div id='loader-status-outside'>
+                <div id='loader-status-inside'></div>
+            </div>
+        </div>
+    </script>
+
     <script type='html/template' id='gallery-template'>
         <h1>
             <span lang='en'>Gallery</span>
@@ -21,7 +33,7 @@
     <script type='html/template' id='dress-template'>
         <div lang='en'>
             <h1 class='name'>Name <%= en_name %></h1>
-            <img class='thumb' src='<%= thumb %>'>
+            <img class='thumb' id='<% thumbId %>' src='<%= thumb %>'>
             <% if (typeof(en_tagline) !== "undefined") { %>
                 <h2 class='tagline'>Tag <%= en_tagline %></h2>
             <% } %>
@@ -31,7 +43,7 @@
         </div>
         <div lang='hu'>
             <h1 class='name'>Name <%= hu_name %></h1>
-            <img class='thumb' src='<%= thumb %>'>
+            <img class='thumb' id='<% thumbId %>' src='<%= thumb %>'>
             <% if (typeof(hu_tagline) !== "undefined") { %>
                 <h2 class='tagline'>Tag <%= hu_tagline %></h2>
             <% } %>
@@ -149,12 +161,5 @@
 
     <aside id="modal-dress" class="modal" tabindex="-1">
     </aside>
-
-    <div id='loading'>
-        <div class="spinner">
-          <div class="dot1"></div>
-          <div class="dot2"></div>
-        </div>
-    </div>
 </body>
 </html>

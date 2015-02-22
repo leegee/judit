@@ -1,9 +1,9 @@
 define( [
     'jQuery', 'Backbone', 'Underscore', 'Collection', 'DressView',
-    "FluidMasonry"
+    'Loader', "FluidMasonry"
 ], function (
     jQuery, Backbone, _, Collection, DressView,
-    FluidMasonry
+    Loader, FluidMasonry
 ){
     'use strict';
 
@@ -24,11 +24,15 @@ define( [
 
             this.$el.html(
                 this.template(
-                    //this.model.toJSON()
+                    this.model? this.model.toJSON() : null
                 )
             );
 
-            this.$dressContainer = jQuery('<div id="#dresses"></div>');
+            if (! jQuery.contains(document, self.$el[0])) {
+                self.$el.insertAfter('header');
+            }
+
+            this.$dressContainer = jQuery('#dresses');
 
             this.collection.fetch({
                 reset: true,
@@ -36,27 +40,42 @@ define( [
                     console.error('Error loading or parsing collection ', self.collection.id, collection, response);
                 },
                 success: function (collection, response, options) {
+                    var promiseToLoadAllImages = [];
+                    var loader = new Loader({ total: self.collection.length });
+                    loader.show();
                     self.collection.each( function (dress) {
-                        var dressView = new DressView({
-                            model: dress,
-                            galleryId: self.id
-                        });
-                        self.$dressContainer.append( dressView.el );
-                        if (dressIdToShow == dress.id){
-                            dressView.showModal();
+                        promiseToLoadAllImages.push( new Promise ( function (resolve, reject) {
+                            if (dressIdToShow == dress.id){
+                                dressView.showModal();
+                            }
+                            var dressView = new DressView({
+                                model: dress,
+                                galleryId: self.id,
+                                thumbLoaded: function (){
+                                    self.$dressContainer.append( dressView.el );
+                                    loader.increment();
+                                    resolve();
+                                }
+                            });
+                        }));
+                    });
+
+                    Promise.all( promiseToLoadAllImages )
+                    .then(
+                        function () {
+                            self.$el.append( self.$dressContainer );
+                            new FluidMasonry( self.$dressContainer.get(0), {
+                                minColumnWidth: '200px',
+                                itemSelector: '.dress'
+                            });
+                            self.$el.show();
+                            loader.hide();
+                        },
+                        function (reason) {
+                            alert("There was a problem loading the dresses");
+                            console.error(reason);
                         }
-                    });
-                    if (! jQuery.contains(document, self.$el[0])) {
-                        self.$el.insertAfter('header');
-                    }
-                    self.$el.append( self.$dressContainer );
-
-                    new FluidMasonry( self.$dressContainer.get(0), {
-                        minColumnWidth: '200px',
-                        itemSelector: '.dress'
-                    });
-
-                    self.$el.show();
+                    );
                 }
             });
         }
