@@ -15,20 +15,29 @@
             <span lang='en'>Gallery</span>
             <span lang='hu'>Galéria</span>
         </h1>
+        <div id='dresses'></div>
     </script>
 
     <script type='html/template' id='dress-template'>
         <div lang='en'>
             <h1 class='name'>Name <%= en_name %></h1>
             <img class='thumb' src='<%= thumb %>'>
-            <h2 class='tagline'>Tag <%= en_tagline %></h2>
-            <h3 class='standfirst'>Tag <%= en_standfirst %></h3>
+            <% if (typeof(en_tagline) !== "undefined") { %>
+                <h2 class='tagline'>Tag <%= en_tagline %></h2>
+            <% } %>
+            <% if (typeof(en_standfirst) !== "undefined") { %>
+                <h3 class='standfirst'>Tag <%= en_standfirst %></h3>
+            <% } %>
         </div>
         <div lang='hu'>
             <h1 class='name'>Name <%= hu_name %></h1>
             <img class='thumb' src='<%= thumb %>'>
-            <h2 class='tagline'>Tag <%= hu_tagline %></h2>
-            <h3 class='standfirst'>Tag <%= hu_standfirst %></h3>
+            <% if (typeof(hu_tagline) !== "undefined") { %>
+                <h2 class='tagline'>Tag <%= hu_tagline %></h2>
+            <% } %>
+            <% if (typeof(hu_standfirst) !== "undefined") { %>
+                <h3 class='standfirst'>Tag <%= hu_standfirst %></h3>
+            <% } %>
         </div>
     </script>
 
@@ -79,11 +88,11 @@
                 <span lang='hu'>Kapcsolat</span>
             </a></li>
             <li id='language'>
-                <span lang='en'>Language</span>
-                <span lang='hu'>Nyelv</span>
+                </span><span lang='en'>Language</span>
+                </span><span lang='hu'>Nyelv</span>
                 <ul>
-                    <li class='change-language' data-setlang='en' id='language-english'><a>English</a></li>
-                    <li class='change-language' data-setlang='hu' id='language-magyar'><a>Magyar</a></li>
+                    <li class='change-language' data-setlang='en' id='language-english'><a><span class='flag flag-en'></span>English</a></li>
+                    <li class='change-language' data-setlang='hu' id='language-magyar'><a><span class='flag flag-hu'></span>Magyar</a></li>
                 </ul>
             </li>
         </nav>
@@ -122,12 +131,17 @@
     </section>
 
     <footer style='display:none'>
+        <h2>Impressum</h2>
         <p>
             Impressum, etc.
         </p>
+
+        <h2>Link</h2>
         <p>
             Link to Facebook, etc.
         </p>
+
+        <h2>Contact</h2>
         <p>
             Reiterate contact info.
         </p>

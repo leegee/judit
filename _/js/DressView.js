@@ -51,7 +51,6 @@ define( [
 
             this.zoomed = { $el : jQuery('#zoomed') };
             this.zoomed.$el.attr('src', this.model.get('zoomed') );
-
             jQuery.when(
                 this.zoomable.$el.load(),
                 this.zoomed.$el.load(),

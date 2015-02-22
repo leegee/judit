@@ -6,7 +6,16 @@ requirejs.config({
         PictureFill: '../../bower_components/picturefill/dist/picturefill.min',
         SlickNav: '../../bower_components/slicknav/jquery.slicknav.min',
         VerticalSlideShow: "../../bower_components/js-vertical-slideshow/js/VerticalSlideShow",
-        jQuery: "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min"
+        jQuery: "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min",
+        Masonry: "../../bower_components/fluid-masonry/fluid-masonry",
+        FluidMasonry: "../../bower_components/jquery-masonry/masonry",
+        outlayer: '../../bower_components/outlayer/',
+        'get-size': '../../bower_components/get-size/',
+        eventie: '../../bower_components/eventie/',
+        'doc-ready': '../../bower_components/doc-ready/',
+        'eventEmitter': '../../bower_components/eventEmitter/',
+        'matches-selector': '../../bower_components/matches-selector/',
+        'get-style-property': '../../bower_components/get-style-property/'
     },
     map: {
         '*': {

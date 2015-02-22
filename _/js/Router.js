@@ -92,7 +92,10 @@ define( [
     };
 
     function setLanguage (lang) {
-        lang = lang || navigator.language.match('^(..)')[1];
+        var qs = document.location.search.match(/^\?(..)/);
+        if (qs != null && qs.length > 0) qs = qs[1];
+        lang = lang || qs || navigator.language.match('^(..)')[1];
+
         if (!Config.langSupported[lang]){
             lang = Config.defaultLang;
         }

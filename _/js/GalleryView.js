@@ -1,7 +1,9 @@
 define( [
-    'Backbone', 'Underscore', 'Collection', 'DressView'
+    'jQuery', 'Backbone', 'Underscore', 'Collection', 'DressView',
+    "FluidMasonry"
 ], function (
-    Backbone, _, Collection, DressView
+    jQuery, Backbone, _, Collection, DressView,
+    FluidMasonry
 ){
     'use strict';
 
@@ -26,6 +28,8 @@ define( [
                 )
             );
 
+            this.$dressContainer = jQuery('<div id="#dresses"></div>');
+
             this.collection.fetch({
                 reset: true,
                 error: function (collection, response, options) {
@@ -37,7 +41,7 @@ define( [
                             model: dress,
                             galleryId: self.id
                         });
-                        self.$el.append( dressView.el );
+                        self.$dressContainer.append( dressView.el );
                         if (dressIdToShow == dress.id){
                             dressView.showModal();
                         }
@@ -45,6 +49,13 @@ define( [
                     if (! jQuery.contains(document, self.$el[0])) {
                         self.$el.insertAfter('header');
                     }
+                    self.$el.append( self.$dressContainer );
+
+                    new FluidMasonry( self.$dressContainer.get(0), {
+                        minColumnWidth: '200px',
+                        itemSelector: '.dress'
+                    });
+
                     self.$el.show();
                 }
             });

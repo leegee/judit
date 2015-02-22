@@ -1,6 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Great+Vibes&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700&subset=latin,latin-ext);
+
+body {
+    font-family: 'Great Vibes', cursive;
+}
+footer,
+.standfirst,
+.tagline,
+.blurb {
+    font-family: 'Oswald', sans-serif;
+}
 
 * {
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 .slicknav_menu {
@@ -17,6 +29,7 @@
     line-height: 30pt;
     font-size: 16pt;
 }
+
 /*.slicknav_menu a[role="menuitem"] {
     font-size: 16pt;
 }
@@ -65,6 +78,23 @@
     color: black;
 }
 
+#menu li#language {
+    float: right;
+}
+
+.flag {
+    display: inline-block;
+    width: 16px;
+    height: 11px;
+    background:url(flags.png) no-repeat;
+    margin-right: 1em;
+}
+
+.flag.flag-de {background-position: -16px 0}
+.flag.flag-en {background-position: 0 -11px}
+.flag.flag-hu {background-position: -16px -11px}
+
+
 @media screen and (max-width: 40em) {
     #menu {
         display: none;
@@ -83,6 +113,9 @@ section {
     position: relative;
     top: 3em; /** Under fixed menu **/
     margin-bottom: 2em;
+    -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
+    box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
 }
 
 #home {
@@ -95,39 +128,61 @@ section {
     text-align: center;
 }
 
-.gallery {
-    background-color: silver;
+.gallery, .dresses {
+    background-color: brown;
+    color: white;
+    text-align: center;
+
 }
 
 section h1 {
     font-size: 32pt;
     margin-bottom: 8pt;
+    text-shadow: 2pt 0pt #333;
+    font-weight: bold;
+}
+
+#contact h1 {
+    font-size: 48pt;
+    margin-bottom: 8pt;
+    text-shadow: 2pt 0pt #333;
+    font-weight: bold;
+    color: white;
 }
 
 .gallery .dress {
     z-index: 255;
-    background: white;
+    background: #ddd;
+    color: #333;
     display: inline-block;
     vertical-align: top;
     padding: 1em;
-    margin: 0.25em;
+    margin: 0.5em;
     width: 200px;
-    height: 300px;
     overflow: hidden;
     cursor: pointer;
     text-align: center;
     border: 1px solid gray;
+    -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.5);
+    box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.5);
 }
 
 .gallery .dress:hover {
-    background: gray;
-    color: white;
+    background: white;
+    color: black;
     border: 1px solid white;
-    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, -webkit-box-shadow 0.5s ease, -moz-box-shadow 0.5s ease, box-shadow 0.5s ease;
+    -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.5);
+    box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.8);
 }
 
 .gallery .dress h1 {
     font-size: 18pt;
+    font-weight: normal;
+    text-shadow: none;
+    margin-bottom: 0;
 }
 .gallery .dress h2 {
     font-size: 14pt;
@@ -235,7 +290,10 @@ section h1 {
 }
 
 footer {
+    font-weight: 300;
+    opacity: 0.8;
     background-color: purple;
+    color: white;
     margin-top: 3em;
     padding: 3em;
     min-width: 100%;
@@ -246,6 +304,13 @@ footer {
     -webkit-column-gap: 1em;
     column-count: 3;
     column-gap: 1em;
+}
+
+footer h1, footer h2, footer h3, footer h4 {
+    font-weight: 900;
+    text-shadow: 2pt 0pt #333;
+    margin-bottom: 0.5em;
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 60em) {
@@ -270,7 +335,7 @@ footer {
 }
 
 /* Thanks http://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ */
-.grow { transition: all .2s ease-in-out; }
+.grow { transition: all 0.2s ease-in-out; }
 .grow:hover { transform: scale(1.2); }
 
 #loading {

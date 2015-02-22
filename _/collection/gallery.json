@@ -13,7 +13,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/hanging-out2.jpg_200.png",
         "zoomable": "/_/img/hanging-out2.jpg_400.png",
-        "zoomed":   "/_/img/hanging-out2.jpg"
+        "zoomed":   "/_/img/hanging-out2.jpg_4000.png"
     },
 
     {
@@ -30,7 +30,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/hide-and-see.jpg_200.png",
         "zoomable": "/_/img/hide-and-see.jpg_400.png",
-        "zoomed":   "/_/img/hide-and-see.jpg"
+        "zoomed":   "/_/img/hide-and-see.jpg_4000.png"
     },
 
     {
@@ -45,9 +45,9 @@
         "hu_standfirst": "A pretty ruha.",
         "en_blurb": "Some more detailed text about a dress.",
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
-        "thumb":    "/_/img/illy-and-lee-walk.jpg",
-        "zoomable": "/_/img/illy-and-lee-walk.jpg_200.png",
-        "zoomed":   "/_/img/illy-and-lee-walk.jpg_400.png"
+        "thumb": "/_/img/illy-and-lee-walk.jpg_200.png",
+        "zoomable":   "/_/img/illy-and-lee-walk.jpg_400.png",
+        "zoomed":    "/_/img/illy-and-lee-walk.jpg_4000.png"
     },
 
     {
@@ -64,7 +64,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/illy-on-bed.jpg_200.png",
         "zoomable": "/_/img/illy-on-bed.jpg_400.png",
-        "zoomed":   "/_/img/illy-on-bed.png"
+        "zoomed":   "/_/img/illy-on-bed.png_4000.png"
     },
 
     {
@@ -81,7 +81,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/into_the_light.jpg_200.png",
         "zoomable": "/_/img/into_the_light.jpg_400.png",
-        "zoomed":   "/_/img/into_the_light.jpg"
+        "zoomed":   "/_/img/into_the_light.jpg_4000.png"
     },
 
     {
@@ -98,7 +98,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/me-myself-and-I.jpg_200.png",
         "zoomable": "/_/img/me-myself-and-I.jpg_400.png",
-        "zoomed":   "/_/img/me-myself-and-I.jpg"
+        "zoomed":   "/_/img/me-myself-and-I.jpg_4000.png"
     },
 
     {
@@ -115,7 +115,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/no-title-yet.jpg_200.png",
         "zoomable": "/_/img/no-title-yet.jpg_400.png",
-        "zoomed":   "/_/img/no-title-yet.jpg"
+        "zoomed":   "/_/img/no-title-yet.jpg_4000.png"
     },
 
     {
@@ -132,7 +132,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/once_upon_a_time_i_could_lose_myself.png_200.png",
         "zoomable": "/_/img/once_upon_a_time_i_could_lose_myself.png_400.png",
-        "zoomed":   "/_/img/once_upon_a_time_i_could_lose_myself.png_200.png"
+        "zoomed":   "/_/img/once_upon_a_time_i_could_lose_myself.png_4000.png"
     },
 
     {
@@ -149,7 +149,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/pearls-back.jpg_200.png",
         "zoomable": "/_/img/pearls-back.jpg_400.png",
-        "zoomed":   "/_/img/pearls-back.jpg"
+        "zoomed":   "/_/img/pearls-back.jpg_4000.png"
     },
 
     {
@@ -166,7 +166,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/perched.jpg_200.png",
         "zoomable": "/_/img/perched.jpg_400.png",
-        "zoomed":   "/_/img/perched.jpg"
+        "zoomed":   "/_/img/perched.jpg_4000.png"
     },
 
     {
@@ -183,7 +183,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/shed-your-wing.jpg_200.png",
         "zoomable": "/_/img/shed-your-wing.jpg_400.png",
-        "zoomed":   "/_/img/shed-your-wing.jpg"
+        "zoomed":   "/_/img/shed-your-wing.jpg_4000.png"
     },
 
     {
@@ -200,7 +200,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/you-know-my-name.jpg_200.png",
         "zoomable": "/_/img/you-know-my-name.jpg_400.png",
-        "zoomed":   "/_/img/you-know-my-name.jpg"
+        "zoomed":   "/_/img/you-know-my-name.jpg_4000.png"
     },
 
     {
@@ -217,7 +217,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/sleeping-illy-butterfly.jpg_200.png",
         "zoomable": "/_/img/sleeping-illy-butterfly.jpg_400.png",
-        "zoomed":   "/_/img/sleeping-illy-butterfly.jpg"
+        "zoomed":   "/_/img/sleeping-illy-butterfly.jpg_4000.png"
     },
 
     {
@@ -234,7 +234,7 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/spring-is-here.jpg_200.png",
         "zoomable": "/_/img/spring-is-here.jpg_400.png",
-        "zoomed":   "/_/img/spring-is-here.jpg"
+        "zoomed":   "/_/img/spring-is-here.jpg_4000.png"
     },
 
     {
@@ -251,6 +251,6 @@
         "hu_blurb": "Some more detailed MAGYAR text about a dress.",
         "thumb":    "/_/img/the-circus-act.jpg_200.png",
         "zoomable": "/_/img/the-circus-act.jpg_400.png",
-        "zoomed":   "/_/img/the-circus-act.jpg"
+        "zoomed":   "/_/img/the-circus-act.jpg_4000.png"
     }
 ]
