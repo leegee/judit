@@ -4,9 +4,11 @@ define( ['jQuery','Underscore'], function (jQuery, _) {
         if (! Rendered){
             this.template = _.template( jQuery('#loader-template').text() );
             this.$el = jQuery(this.template());
+            this.$el.hide();
             jQuery(document.body).append( this.$el );
         }
         else {
+            this.$el.hide();
             this.$el = jQuery('#loader');
         }
         this.$status = jQuery('#loader-status-inside');

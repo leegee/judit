@@ -11,6 +11,7 @@ define( [
     return Backbone.View.extend({
         tagName: "section",
         className: "gallery",
+        loaded: false,
 
         initialize: function (options) {
             this.id = options.id;
@@ -42,7 +43,9 @@ define( [
                 success: function (collection, response, options) {
                     var promiseToLoadAllImages = [];
                     var loader = new Loader({ total: self.collection.length });
-                    loader.show();
+                    if (! self.loaded) {
+                        loader.show();
+                    }
                     self.collection.each( function (dress) {
                         promiseToLoadAllImages.push( new Promise ( function (resolve, reject) {
                             if (dressIdToShow == dress.id){
@@ -70,6 +73,7 @@ define( [
                             });
                             self.$el.show();
                             loader.hide();
+                            self.loaded = true;
                         },
                         function (reason) {
                             alert("There was a problem loading the dresses");
