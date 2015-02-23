@@ -1,10 +1,10 @@
 define( [
     'Config',
-    'Backbone', 'jQuery', 'VerticalSlideShow', 'Splash', 'GalleryView',
+    'Backbone', 'jQuery', 'Splash', 'GalleryView',
     'MenuItemView', 'ContactView',
     'SlickNav'
 ], function (
-    Config, Backbone, jQuery, VerticalSlideShow, Splash, GalleryView,
+    Config, Backbone, jQuery, Splash, GalleryView,
     MenuItemView, ContactView
 ){
     'use strict';
@@ -41,7 +41,6 @@ define( [
                 prependTo: 'body',
                 label: '<span lang="en">MENU</span><span lang="hu">MENÜ</span>',
                 closeOnClick: true
-                // parentTag: 'ul'
             });
 
             resolve( createRouter() );

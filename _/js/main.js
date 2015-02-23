@@ -47,8 +47,6 @@ requirejs([
     'use strict';
 
     jQuery(document).ready( function () {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-
         promiseToCreateRouter.then(
             function (Router) {
                 new Router();

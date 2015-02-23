@@ -123,7 +123,7 @@ section {
 }
 
 #home {
-    background-color: maroon;
+    background-color: #200;
 }
 
 #home picture {
@@ -224,8 +224,8 @@ section h1 {
 }
 
 #modal-dress-content {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     margin: auto;
     background: white;
     color: black;
@@ -353,6 +353,7 @@ footer h1, footer h2, footer h3, footer h4 {
     min-height: 100%;
     overflow: hidden;
     background-color: black;
+    opacity: 0.5;
 }
 #loader-status-outside {
     border: 2px solid gold;

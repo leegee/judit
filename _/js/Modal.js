@@ -23,8 +23,17 @@ define( [
         Backbone.history.navigate(options.showUrl);
         this.closeUrl = options.closeUrl;
 
-        this.bodyCss.overflow = jQuery(document.body).css('overflow');
-        jQuery(document.body).css('overflow', 'hidden');
+        self.$body = jQuery(document.body);
+        this.bodyCssDefault  = {
+            overflow:   self.$body.css('overflow'),
+            height:     self.$body.css('height'),
+            width:      self.$body.css('width')
+        };
+        self.$body.css({
+            overflow: 'hidden',
+            height: window.innerHeight,
+            width: window.innerWidth
+        });
         jQuery(document).on('touchmove.modal', function (e) {
             e.preventDefault();
         });
@@ -34,7 +43,7 @@ define( [
         );
         this.$el.show();
 
-        this.$close = jQuery('#modal-close')
+        this.$close = jQuery('#modal-close');
         this.$close.on('click', function () {
             self.close();
         });
@@ -52,7 +61,11 @@ define( [
         this.$el.hide('slow', function () {
             self.open = false;
             self.$el.empty();
-            jQuery(document.body).css('overflow', self.bodyCss.overflow);
+            self.$body.css({
+                overflow:   self.bodyCssDefault.overflow,
+                width:      self.bodyCssDefault.width,
+                height:     self.bodyCssDefault.height
+            });
             jQuery(document).off('touchmove.modal');
             jQuery(document).off('keyup.modal');
             Backbone.history.navigate(self.closeUrl);

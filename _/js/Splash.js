@@ -24,6 +24,7 @@ define( [
             } else {
                 this.$el.insertAfter('header');
             }
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
             this.verticalSlideShow.start();
         },
 

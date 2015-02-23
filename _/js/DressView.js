@@ -99,8 +99,8 @@ define( [
             // Position within the source image:
             // adding/removing a bit because of the *em offset caused
             // by the 'close' button :(
-            var x  = e.pageX - this.zoomable.offset.left - 30,
-                y  = e.pageY - this.zoomable.offset.top - 40;
+            var x  = e.pageX - this.zoomable.offset.left, // - 30,
+                y  = e.pageY - this.zoomable.offset.top, // - 40;
             // As a percentage:
             x = x / this.zoomable.pcWidth;
             y = y / this.zoomable.pcHeight;
