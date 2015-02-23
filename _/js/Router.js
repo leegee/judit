@@ -1,11 +1,11 @@
 define( [
     'Config',
     'Backbone', 'jQuery', 'Splash', 'GalleryView',
-    'MenuItemView', 'ContactView',
+    'MenuItemView', 'ContactView', 'BasketView',
     'SlickNav'
 ], function (
     Config, Backbone, jQuery, Splash, GalleryView,
-    MenuItemView, ContactView
+    MenuItemView, ContactView, BasketView
 ){
     'use strict';
 
@@ -17,6 +17,7 @@ define( [
 
     var splash = new Splash({ el: '#home' });
     var contactView = new ContactView();
+    var basketView  = new BasketView();
     var galleryView = {};
 
     var showing = null;
@@ -53,6 +54,7 @@ define( [
                 "contact":                  "contact",
                 "gallery/:gallery":         "gallery",
                 "gallery/:gallery/:dress":  "gallery",
+                "basket":                   "basket",
                 "search/:query":            "search",
                 "search/:query/:page":      "search",
                 "*stuff":                   "default"
@@ -86,6 +88,14 @@ define( [
 
             search: function (query, page) {
                 console.log('Search ', query, page)
+            },
+
+            basket: function () {
+                if (showing) {
+                    showing.remove();
+                }
+                showing = basketView;
+                showing.render();
             }
         });
     };
