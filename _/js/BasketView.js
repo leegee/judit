@@ -8,27 +8,49 @@ define( [
     // BasketView
     return Backbone.View.extend({
         el: '#basket',
+        events: {
+            'click .checkout': 'checkout',
+            'click .remove': 'removeItem'
+        },
 
         initialize: function (options) {
-            this.template   = _.template( jQuery('#basket-template').text() );
+            this.template = _.template( jQuery('#basket-template').text() );
             this.collection = new BasketCollection();
         },
 
         render: function () {
             var self = this;
+            console.log('Render');
             this.collection.fetch({
                 success: function (collection, response, options) {
-                    console.log( 'Fetched:', arguments );
+                    console.log("Basket collection length:", collection.length);
                     self.$el.html(
-                        self.template({ dresses: self.collection.toJSON() })
+                        self.template({ dresses: collection.toJSON() })
                     );
                     self.$el.show();
+                },
+                error: function () {
+                    console.error(arguments)
                 }
             });
         },
 
         remove: function () {
             this.$el.hide();
+        },
+
+        removeItem: function (e) {
+            this.collection.get(
+                e.currentTarget.dataset.dressid
+            ).destroy({
+                success: function () {
+                    Backbone.history.loadUrl();
+                }
+            });
+        },
+
+        checkout: function () {
+            alert(1)
         }
     });
 });

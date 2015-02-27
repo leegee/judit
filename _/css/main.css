@@ -220,12 +220,41 @@ section h1 {
     border-bottom: 1px solid gray;
 }
 .basket table {
-    width: 100%;
+    width: 66%;
+    float: left;
 }
 .basket td {
     vertical-align: middle;
 }
 
+td.name {
+    font-size: 120%;
+}
+td.thumb {
+    text-align: center;
+}
+.basket td .id {
+    margin-top: .5em;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-size: 80%;
+}
+
+.basket .help {
+    background: #ddd;
+    border: 1em solid #eee;
+    padding: 1em;
+    width: 33%;
+    float: left;
+}
+.basket .help h2 {
+    font-weight: bold;
+    font-size: 120%;
+}
+.basket .help h2,
+.basket .help p {
+    margin-bottom: 0.5em;
+}
 
 #modal-dress {
     z-index: 999;
@@ -299,7 +328,6 @@ section h1 {
 }
 
 .add2basket {
-    background: green;
     margin-right: 1em;
     color: white;
     line-height: 24pt;
@@ -452,3 +480,11 @@ footer h1, footer h2, footer h3, footer h4 {
     -webkit-transform: scale(1.0);
   }
 }
+
+.clearfix:after {
+   content: " ";
+   display: block;
+   height: 0;
+   clear: both;
+}
+

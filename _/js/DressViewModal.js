@@ -7,17 +7,21 @@ define( [
 
     var DressViewModal =  Backbone.View.extend({
         events: {
-            "click #add2basket": "basketToggle"
+            "click .basketToggle": "basketToggle"
         },
 
         initialize: function (options) {
             this.baseUrl = options.baseUrl;
             this.url = this.baseUrl +'/'+ this.model.id;
-            this.template = _.template( jQuery('#modal-dress-template').text() );
+            this.templates = {
+                page:               _.template( jQuery('#modal-dress-template').text() ),
+                addToBasket:        _.template( jQuery('#template-addToBasket').text() ),
+                removeFromBasket:   _.template( jQuery('#template-removeFromBasket').text() ),
+            };
             this.$el = jQuery('#modal-dress');
             this.model.on('change', this.updateBasket, this);
             this.MODAL = new Modal({
-                templateCompiled: _.template( jQuery('#modal-dress-template').text()),
+                templateCompiled: _.template( jQuery('#modal-dress-template').text() ),
                 $el: jQuery('#modal-dress')
             });
         },
@@ -29,20 +33,21 @@ define( [
                 if (baskted){
                     console.log('call remove from basket')
                     self.model.removeFromBasket();
-                    jQuery('#add2basket').html('Add2');
+                    jQuery('#add2basket').html( self.templates.removeFromBasket );
                 } else {
                     self.model.addToBasket();
-                    jQuery('#add2basket').html('Remove2');
+                    jQuery('#add2basket').html( self.templates.addToBasket );
                 }
             });
         },
 
         updateBasket: function () {
+            var self = this;
             var update = function (inBasket){
                 if (inBasket){
-                    jQuery('#add2basket').html('Remove');
+                    jQuery('#add2basket').html( self.templates.removeFromBasket );
                 } else {
-                    jQuery('#add2basket').html('Add');
+                    jQuery('#add2basket').html( self.templates.addToBasket );
                 }
             }
             if (typeof this.model.inBasket==='undefined'){
@@ -55,7 +60,7 @@ define( [
         render: function () {
             var self = this;
             this.$el.html(
-                this.template( this.model.toJSON() )
+                this.templates.page( this.model.toJSON() )
             );
 
             this.MODAL.show({

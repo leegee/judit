@@ -1,6 +1,8 @@
 [
     {
         "id": "SKU1",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 1",
         "hu_name": "Ruha 1",
         "en_size": 1,
@@ -18,6 +20,8 @@
 
     {
         "id": "SKU2",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 2",
         "hu_name": "Ruha 2",
         "en_size": 1,
@@ -35,6 +39,8 @@
 
     {
         "id": "SKU3",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -52,6 +58,8 @@
 
     {
         "id": "SKU4",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -69,6 +77,8 @@
 
     {
         "id": "SKU5",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -86,6 +96,8 @@
 
     {
         "id": "SKU6",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -103,6 +115,8 @@
 
     {
         "id": "SKU7",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -120,6 +134,8 @@
 
     {
         "id": "SKU8",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -137,6 +153,8 @@
 
     {
         "id": "SKU9",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -154,6 +172,8 @@
 
     {
         "id": "SKU10",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -171,6 +191,8 @@
 
     {
         "id": "SKU11",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -188,6 +210,8 @@
 
     {
         "id": "SKU12",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -205,6 +229,8 @@
 
     {
         "id": "SKU13",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -222,6 +248,8 @@
 
     {
         "id": "SKU14",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,
@@ -239,6 +267,8 @@
 
     {
         "id": "SKU5",
+        "price": 100,
+        "shipping": 10,
         "en_name": "Dress 3",
         "hu_name": "Ruha 3",
         "en_size": 2,

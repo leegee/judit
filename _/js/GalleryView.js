@@ -58,6 +58,7 @@ define( [
                             promiseToLoadAllImages.push( new Promise ( function (resolve, reject) {
                                 var dressView = new DressView({
                                     model: dress,
+                                    collection: self.collection,
                                     galleryId: self.id,
                                     thumbLoaded: function (){
                                         self.$dressContainer.append( dressView.el );

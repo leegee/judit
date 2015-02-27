@@ -23,29 +23,62 @@
                 <span lang='hu'>Semi in your Kosár</span>
             </p>
         <% } else { %>
-            <table>
-            <% _.each(dresses, function (dress) { %>
-                <tr class='dress'>
-                    <td>
-                        <h2>
-                            <span lang='en'><%= dress.en_name  %>
-                            <span lang='hu'><%= dress.hu_name  %>
-                        </h2>
-                    </td>
-                    <td><img src="<%= dress.thumb %>"></td>
-                    <td><p><%= dress.id %></p></td>
-                    <td>Remove</td>
-                </tr>
-            <% }) %>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <button>Checkout</button>
-                    </td>
-                </tr>
-            </table>
+
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="upload" value="1">
+            <input type="hidden" name="business"
+                   value="paypal-facilitator@leegoddard.net ">
+            <input type="hidden" name="currency_code" value="huf">
+
+            <div class='clearfix'>
+                <table>
+                <thead>
+                <% var i=0 %>
+                <% _.each(dresses, function (dress) { i++; %>
+                    <tr class='dress'>
+                        <td class='thumb'>
+                            <img src="<%= dress.thumb %>"
+                        ></td>
+                        <td class='name'>
+                            <p>
+                                <span lang='en'><%= dress.en_name  %>
+                                <span lang='hu'><%= dress.hu_name  %>
+                            </p>
+                            <p class='id'><%= dress.id %></p>
+                        </td>
+                        <td>
+                            <p>
+                                <%= dress.price || 100000 %> HUF
+                                + <%= dress.shipping || 10000 %> HUF
+                            </p>
+                            <p class='remove' data-dressid='<%= dress.id %>'>
+                                <span lang='en'>Remove</span>
+                                <span lang='hu'>Remove</span>
+                            </p>
+                            <input type="hidden" name="item_name_<%= i %>" value="Item Name 1">
+                            <input type="hidden" name="price_<%= i %>"
+                                   value="<%= dress.price || 100000 %>">
+                            <input type="hidden" name="shipping_<%= i %>"
+                                   value="<%= dress.shipping || 2000 %>">
+                        </td>
+                    </tr>
+                <% }) %>
+                </tbody>
+                <tfooter>
+                    <tr><td><button class='checkout'>Checkout</button></td></tr>
+                </tfooter>
+                </table>
+
+                <div class='help'>
+                    <h2>Instructions</h2>
+                    <p>
+                        <button class='checkout'>Checkout</button>
+                    </p>
+                    <p>Stuff here about ordering</p>
+                    <p>Stuff also about removing items from basket.</p>
+                    <p>Include a telephone number.</p>
+                </div>
+            </div>
         <% } %>
         </article>
     </script>
@@ -126,6 +159,14 @@
                 </div>
             </div>
         </article>
+    </script>
+
+    <script type='html/template' id='template-addToBasket'>
+        <button class='basketToggle'>Add to shopping basket</button>
+    </script>
+    <script type='html/template' id='template-removeFromBasket'>
+        <button class='basketToggle'>Remove from shopping basket.</button>
+        <a href='#/basket'>View basket</a>
     </script>
 
     <script type='html/template' id='menu-gallery-item-template'>

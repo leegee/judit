@@ -1,7 +1,7 @@
 define( [
-    'Backbone', 'Config', 'Collection', 'BackboneLocalForage'
+    'Backbone',  'BackboneLocalForage'
 ], function (
-    Backbone, Config, Collection
+    Backbone
 ){
     // DressModel
     return Backbone.Model.extend({
@@ -35,15 +35,19 @@ define( [
         },
         dataForStore: function () {
             return {
-                id:      this.get('id'),
-                en_name: this.get('en_name'),
-                hu_name: this.get('hu_name'),
-                thumb:   this.get('thumb')
+                id:       this.get('id'),
+                en_name:  this.get('en_name'),
+                hu_name:  this.get('hu_name'),
+                thumb:    this.get('thumb'),
+                price:    this.get('price'),
+                shipping: this.get('shipping')
             };
         },
         defaults: {
             inBasket: null,
             id: null,
+            price: 100000,
+            shipping: 10000,
             en_name: "Default Name",
             en_size: "Default Size",
             en_tagline: "Default Tag Line",

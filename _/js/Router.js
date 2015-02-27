@@ -10,7 +10,7 @@ define( [
     'use strict';
 
     Backbone.localforage.localforageInstance.config({
-        // driver: 'localStorageWrapper',
+        driver: 'localStorageWrapper',
         name: "SzaboJudit",
         storeName: "SzaboJudit"
     });
@@ -141,9 +141,6 @@ define( [
         basketView       = new BasketView(),
         galleryView      = {},
         showing          = null;
-
-    // Backbone.localforage.config({name:'foo'});
-
 
     return promiseToCreateRouter;
 });
