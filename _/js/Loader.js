@@ -19,7 +19,9 @@ define( ['jQuery','Underscore'], function (jQuery, _) {
     Loader.prototype.reset = function (total) {
         this.current = 0;
         this.$status.css( 'width', 0 );
-        if (total) this.total = total;
+        if (total) {
+            this.total = total;
+        }
     };
 
     Loader.prototype.show = function () {

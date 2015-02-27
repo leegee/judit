@@ -26,6 +26,14 @@
     "picturefill": "~2.2.0",
     "backbone-amd": "~1.1.0",
     "underscore-amd": "~1.5.2",
-    "reset-css": "~2.0.20110126"
+    "reset-css": "~2.0.20110126",
+    "localforage-backbone": "^0.5.0",
+    "mocha": "~2.1.0",
+    "chai": "~2.1.0",
+    "should": "~5.0.1"
+  },
+  "resolutions": {
+    "localforage": "~1.2.2",
+    "underscore": "~1.7.0"
   }
 }

@@ -1,7 +1,7 @@
 define( [
-    'Backbone', 'VerticalSlideShow'
+    'jQuery', 'Backbone', 'VerticalSlideShow'
 ], function (
-    Backbone, VerticalSlideShow
+    jQuery, Backbone, VerticalSlideShow
 ){
     'use strict';
 

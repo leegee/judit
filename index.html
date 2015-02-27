@@ -10,6 +10,46 @@
     <link rel="stylesheet" type="text/css" href="/_/css/main.css">
     <script src="/bower_components/requirejs/require.js" data-main="/_/js/main.js"></script>
 
+    <script type='html/template' id='basket-template'>
+        <article class='basket'>
+        <h1>
+            <span lang='en'>Basket</span>
+            <span lang='hu'>Kosár</span>
+        </h1>
+
+        <% if (dresses.length===0){ %>
+            <p>
+                <span lang='en'>Nothing in your basket</span>
+                <span lang='hu'>Semi in your Kosár</span>
+            </p>
+        <% } else { %>
+            <table>
+            <% _.each(dresses, function (dress) { %>
+                <tr class='dress'>
+                    <td>
+                        <h2>
+                            <span lang='en'><%= dress.en_name  %>
+                            <span lang='hu'><%= dress.hu_name  %>
+                        </h2>
+                    </td>
+                    <td><img src="<%= dress.thumb %>"></td>
+                    <td><p><%= dress.id %></p></td>
+                    <td>Remove</td>
+                </tr>
+            <% }) %>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button>Checkout</button>
+                    </td>
+                </tr>
+            </table>
+        <% } %>
+        </article>
+    </script>
+
     <script type='html/template' id='loader-template'>
         <div id='loader'>
             <div class="spinner">
@@ -74,6 +114,11 @@
                         <h2 class='tagline'>Tag <%= hu_tagline %></h2>
                         <h3 class='standfirst'>Tag <%= hu_standfirst %></h3>
                         <div class='blurb'><%= hu_blurb %></div>
+                    </div>
+                    <div class='bottom'>
+                        <span id='add2basket' class='add2basket'>
+                            Please wait....
+                        </span> <%= id %>
                     </div>
                 </div>
                 <div id='zoom-container'>
@@ -147,10 +192,6 @@
     </section>
 
     <section id="basket" style='display:none'>
-        <h1>
-            <span lang='en'>Basket</span>
-            <span lang='hu'>Kosár</span>
-        </h1>
     </section>
 
     <footer style='display:none'>

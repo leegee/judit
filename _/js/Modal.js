@@ -50,7 +50,7 @@ define( [
 
         jQuery(document).on('keyup.modal', function (e) {
             e = e || window.event;
-            if (e.keyCode == 27) {
+            if (e.keyCode === 27) {
                 self.close();
             }
         });
@@ -58,6 +58,7 @@ define( [
 
     Modal.prototype.close = function () {
         var self = this;
+        this.$close.off('click');
         this.$el.hide('slow', function () {
             self.open = false;
             self.$el.empty();

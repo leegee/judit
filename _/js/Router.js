@@ -2,31 +2,26 @@ define( [
     'Config',
     'Backbone', 'jQuery', 'Splash', 'GalleryView',
     'MenuItemView', 'ContactView', 'BasketView',
-    'SlickNav'
+    'BackboneLocalForage', 'SlickNav'
 ], function (
     Config, Backbone, jQuery, Splash, GalleryView,
     MenuItemView, ContactView, BasketView
 ){
     'use strict';
 
-    setLanguage();
-
-    jQuery('#loading').hide();
-    jQuery('header').show();
-    jQuery('footer').show();
-
-    var splash = new Splash({ el: '#home' });
-    var contactView = new ContactView();
-    var basketView  = new BasketView();
-    var galleryView = {};
-
-    var showing = null;
+    Backbone.localforage.localforageInstance.config({
+        // driver: 'localStorageWrapper',
+        name: "SzaboJudit",
+        storeName: "SzaboJudit"
+    });
 
     var promiseToCreateRouter = new Promise( function (resolve, reject) {
         jQuery.get(Config.collectionDir)
+
         .fail( function () {
             reject();
         })
+
         .done( function (responseText) {
             var links = responseText.match(/a href="([^"]+)\.json"/);
             for (var i=1; i<links.length; i++){
@@ -87,7 +82,7 @@ define( [
             },
 
             search: function (query, page) {
-                console.log('Search ', query, page)
+                console.log('Search ', query, page);
             },
 
             basket: function () {
@@ -98,11 +93,13 @@ define( [
                 showing.render();
             }
         });
-    };
+    }
 
     function setLanguage (lang) {
         var qs = document.location.search.match(/^\?(..)/);
-        if (qs != null && qs.length > 0) qs = qs[1];
+        if (qs != null && qs.length > 0) {
+            qs = qs[1];
+        }
         lang = lang || qs || navigator.language.match('^(..)')[1];
 
         if (!Config.langSupported[lang]){
@@ -111,7 +108,7 @@ define( [
 
         var styles = [];
         Object.keys(Config.langSupported).forEach( function (i,j){
-            if (i != lang){
+            if (i !== lang){
                 styles.push( "[lang='"+i+"']" );
             }
         });
@@ -132,6 +129,21 @@ define( [
             setLanguage( lang );
         });
     }
+
+    setLanguage();
+
+    jQuery('#loading').hide();
+    jQuery('header').show();
+    jQuery('footer').show();
+
+    var splash           = new Splash({ el: '#home' }),
+        contactView      = new ContactView(),
+        basketView       = new BasketView(),
+        galleryView      = {},
+        showing          = null;
+
+    // Backbone.localforage.config({name:'foo'});
+
 
     return promiseToCreateRouter;
 });

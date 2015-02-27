@@ -1,8 +1,12 @@
+/* global requirejs */
+
 requirejs.config({
     baseUrl: '_/js/',
     paths: {
-        Underscore: '../../bower_components/underscore-amd/underscore', // -min
-        Backbone: '../../bower_components/backbone-amd/backbone', // -min
+        Underscore: '../../bower_components/underscore-amd/underscore-min',
+        Backbone: '../../bower_components/backbone-amd/backbone',
+        localforage: '../../bower_components/localforage/dist/localforage',
+        BackboneLocalForage: '../../bower_components/localforage-backbone/dist/localforage.backbone',
         PictureFill: '../../bower_components/picturefill/dist/picturefill.min',
         SlickNav: '../../bower_components/slicknav/jquery.slicknav.min',
         VerticalSlideShow: "../../bower_components/js-vertical-slideshow/js/VerticalSlideShow",
@@ -20,6 +24,7 @@ requirejs.config({
     map: {
         '*': {
             jquery: 'jQuery',
+            backbone: 'Backbone',
             underscore: 'Underscore'
         }
     },
@@ -35,6 +40,12 @@ requirejs.config({
         },
         Underscore: {
             exports: '_'
+        },
+        localforage: {
+            deps: ['Backbone']
+        },
+        BackboneLocalForage: {
+            deps: ['Backbone', 'localforage']
         }
     }
 });
@@ -45,7 +56,6 @@ requirejs([
     jQuery, Backbone, promiseToCreateRouter
 ) {
     'use strict';
-
     jQuery(document).ready( function () {
         promiseToCreateRouter.then(
             function (Router) {

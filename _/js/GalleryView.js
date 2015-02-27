@@ -15,6 +15,7 @@ define( [
 
         initialize: function (options) {
             this.id = options.id;
+            this.rendered = false;
             this.collection = new Collection({ url: options.url });
             this.template = _.template( jQuery('#gallery-template').text() );
         },
@@ -47,7 +48,7 @@ define( [
                     console.error('Error loading or parsing collection ', self.collection.id, collection, response);
                 },
                 success: function (collection, response, options) {
-                    var dressVewiForModal;
+                    var showDressAsModal;
                     var promiseToLoadAllImages = [];
                     var loader = new Loader({ total: self.collection.length });
                     if (! self.loaded) {
@@ -55,21 +56,22 @@ define( [
                     }
                     self.collection.each( function (dress) {
                             promiseToLoadAllImages.push( new Promise ( function (resolve, reject) {
-                            var dressView = new DressView({
-                                model: dress,
-                                galleryId: self.id,
-                                thumbLoaded: function (){
-                                    self.$dressContainer.append( dressView.el );
-                                    loader.increment();
-                                    masonry.addItems( dressView.el );
-                                    masonry.layout();
-                                    resolve();
+                                var dressView = new DressView({
+                                    model: dress,
+                                    galleryId: self.id,
+                                    thumbLoaded: function (){
+                                        self.$dressContainer.append( dressView.el );
+                                        loader.increment();
+                                        masonry.addItems( dressView.el );
+                                        masonry.layout();
+                                        resolve();
+                                    }
+                                });
+                                if (dressIdToShow === dress.id){
+                                    showDressAsModal = dressView;
                                 }
-                            });
-                            if (dressIdToShow == dress.id){
-                                dressVewiForModal = dressView;
                             }
-                        }));
+                        ));
                     });
 
                     Promise.all( promiseToLoadAllImages )
@@ -78,14 +80,16 @@ define( [
                             self.$el.append( self.$dressContainer );
                             loader.hide();
                             self.loaded = true;
-                            dressVewiForModal.showModal();
+                            if (showDressAsModal) {
+                                showDressAsModal.showModal();
+                            }
                         },
                         function (reason) {
                             console.error(reason);
                             self.$el.append( self.$dressContainer );
                             loader.hide();
                             self.loaded = true;
-                            dressVewiForModal.showModal();
+                            showDressAsModal.showModal();
                         }
                     );
                 }

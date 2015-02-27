@@ -1,8 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes&subset=latin,latin-ext);
-@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700&subset=latin,latin-ext);
 
 html, body {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Georgia', sans-serif;
 }
 footer,
 .standfirst,
@@ -13,6 +12,7 @@ footer,
 h1  {
     font-family: 'Great Vibes', cursive;
     min-height: 100%;
+    font-weight: normal;
 }
 
 * {
@@ -20,7 +20,7 @@ h1  {
 }
 
 .slicknav_menu {
-    z-index: 100;
+    z-index: 999;
     display: none;
     margin: 0;
     position: fixed;
@@ -39,7 +39,7 @@ h1  {
 }
 */
 #menu {
-    z-index: 100;
+    z-index: 999;
     position: fixed;
     top: 0;
     left: 0;
@@ -144,20 +144,16 @@ section {
 section h1 {
     font-size: 32pt;
     margin-bottom: 8pt;
-    text-shadow: 2pt 0pt #333;
-    font-weight: bold;
+    text-shadow: 1pt 1pt 1pt #333;
 }
 
 #contact h1 {
     font-size: 48pt;
     margin-bottom: 8pt;
-    text-shadow: 2pt 0pt #333;
-    font-weight: bold;
     color: white;
 }
 
 .gallery .dress {
-    z-index: 255;
     background: #ddd;
     color: #333;
     display: inline-block;
@@ -206,6 +202,28 @@ section h1 {
 
 .gallery .dress .blurb {
     display:none;
+}
+
+.basket {
+    display: block;
+    max-width: 1024px;
+    margin: 0 auto;
+    background: white;
+    padding: 1em;
+    -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
+    box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
+}
+.basket h1 {
+    color: gray;
+    text-shadow: 1pt 1pt 1pt #ddd;
+    border-bottom: 1px solid gray;
+}
+.basket table {
+    width: 100%;
+}
+.basket td {
+    vertical-align: middle;
 }
 
 
@@ -278,6 +296,24 @@ section h1 {
     width: auto;
     height: auto;
     display: none;
+}
+
+.add2basket {
+    background: green;
+    margin-right: 1em;
+    color: white;
+    line-height: 24pt;
+    font-size: 12pt;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 24pt;
+    border-top: .5pt solid gray;
+    padding-top: .5em;
+    margin-top: .5em;
+    width: 100%;
+    z-index: 999;
 }
 
 .left, .right {
