@@ -1,0 +1,6 @@
+bower_components/
+.DS_Store
+.git
+*_400.png
+*_200.png
+*_4000.png
