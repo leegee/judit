@@ -59,18 +59,20 @@ define( [
     Modal.prototype.close = function () {
         var self = this;
         this.$close.off('click');
-        this.$el.hide('slow', function () {
-            self.open = false;
-            self.$el.empty();
-            self.$body.css({
-                overflow:   self.bodyCssDefault.overflow,
-                width:      self.bodyCssDefault.width,
-                height:     self.bodyCssDefault.height
-            });
-            jQuery(document).off('touchmove.modal');
-            jQuery(document).off('keyup.modal');
-            Backbone.history.navigate(self.closeUrl);
+        this.$el.hide('fast', this.afterClose(this) );
+    };
+
+    Modal.prototype.afterClose = function (self) {
+        self.open = false;
+        self.$el.empty();
+        self.$body.css({
+            overflow:   self.bodyCssDefault.overflow,
+            width:      self.bodyCssDefault.width,
+            height:     self.bodyCssDefault.height
         });
+        jQuery(document).off('touchmove.modal');
+        jQuery(document).off('keyup.modal');
+        Backbone.history.navigate(self.closeUrl);
     };
 
     return Modal;
