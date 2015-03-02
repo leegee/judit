@@ -37,14 +37,22 @@
                 <% _.each(dresses, function (dress) { i++; %>
                     <tr class='dress'>
                         <td class='thumb'>
-                            <img src="<%= dress.thumb %>"
+                            <a href='#/gallery/gallery/<%= dress.id %>'>
+                                <img src="<%= dress.thumb %>">
+                            </a>
                         ></td>
                         <td class='name'>
                             <p>
-                                <span lang='en'><%= dress.en_name  %>
-                                <span lang='hu'><%= dress.hu_name  %>
+                                <a href='#/gallery/gallery/<%= dress.id %>'>
+                                    <span lang='en'><%= dress.en_name  %>
+                                    <span lang='hu'><%= dress.hu_name  %>
+                                </a>
                             </p>
-                            <p class='id'><%= dress.id %></p>
+                            <p class='id'>
+                                <a href='#/gallery/gallery/<%= dress.id %>'
+                                    <%= dress.id %>
+                                </a>
+                            </p>
                         </td>
                         <td>
                             <p>
@@ -166,7 +174,7 @@
     </script>
     <script type='html/template' id='template-removeFromBasket'>
         <button class='basketToggle'>Remove from shopping basket.</button>
-        <a href='#/basket'>View basket</a>
+        <a class='viewBasket' href='#/basket'>View basket</a>
     </script>
 
     <script type='html/template' id='menu-gallery-item-template'>
