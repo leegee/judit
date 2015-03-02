@@ -1,11 +1,12 @@
 define( [
-    'Config',
-    'Backbone', 'jQuery', 'Splash', 'GalleryView',
-    'MenuItemView', 'ContactView', 'BasketView',
+    'Config', 'Backbone', 'jQuery',
+    'Collection', 'Splash', 'GalleryView',
+    'MenuItemView', 'ContactView', 'BasketView', 'DressPageView',
     'BackboneLocalForage', 'SlickNav'
 ], function (
-    Config, Backbone, jQuery, Splash, GalleryView,
-    MenuItemView, ContactView, BasketView
+    Config, Backbone, jQuery,
+    Collection, Splash, GalleryView,
+    MenuItemView, ContactView, BasketView, DressPageView
 ){
     'use strict';
 
@@ -15,23 +16,42 @@ define( [
         storeName: "SzaboJudit"
     });
 
+    jQuery('#loading').hide();
+    jQuery('header').show();
+    jQuery('footer').show();
+
+    var collection       = new Collection(),
+        splash           = new Splash({ el: '#home' }),
+        contactView      = new ContactView(),
+        basketView       = new BasketView({ collection: collection }),
+        dressPageView    = new DressPageView({ collection: collection }),
+        galleryView      = {},
+        showing          = null;
+
     var promiseToCreateRouter = new Promise( function (resolve, reject) {
-        jQuery.get(Config.collectionDir)
+        jQuery.get( Config.stockJson )
 
         .fail( function () {
             reject();
         })
 
         .done( function (responseText) {
-            var links = responseText.match(/a href="([^"]+)\.json"/);
-            for (var i=1; i<links.length; i++){
-                var url = Config.collectionDir + links[i] + '.json';
-                galleryView[ links[i] ] = new GalleryView({
-                    url: url,
-                    id: links[i]
-                });
-                new MenuItemView({id:links[i]}).render();
-            }
+            var galleryNames = {};
+            collection.reset( responseText );
+            collection.each( function (model) {
+                var galleryName = model.get('gallery');
+                if (typeof galleryName === 'undefined'){
+                    model.set('gallery', Config.defaultGalleryName);
+                    galleryName = Config.defaultGalleryName;
+                };
+                if (! galleryView[ galleryName ] ){
+                    galleryView[ galleryName ] = new GalleryView({
+                        id: galleryName,
+                        collection: collection
+                    });
+                    new MenuItemView({id:galleryName}).render();
+                }
+            });
 
             jQuery('#menu').slicknav({
                 prependTo: 'body',
@@ -49,6 +69,7 @@ define( [
                 "contact":                  "contact",
                 "gallery/:gallery":         "gallery",
                 "gallery/:gallery/:dress":  "gallery",
+                "dress/:dressId":           "dress",
                 "basket":                   "basket",
                 "search/:query":            "search",
                 "search/:query/:page":      "search",
@@ -72,6 +93,7 @@ define( [
             },
 
             gallery: function (galleryId, dressId) {
+                console.log(galleryId, galleryView);
                 if (galleryView.hasOwnProperty(galleryId)){
                     if (showing) {
                         showing.remove();
@@ -83,6 +105,14 @@ define( [
 
             search: function (query, page) {
                 console.log('Search ', query, page);
+            },
+
+            dress: function (dressId) {
+                if (showing) {
+                    showing.remove();
+                }
+                showing = dressPageView;
+                showing.render(dressId);
             },
 
             basket: function () {
@@ -131,16 +161,6 @@ define( [
     }
 
     setLanguage();
-
-    jQuery('#loading').hide();
-    jQuery('header').show();
-    jQuery('footer').show();
-
-    var splash           = new Splash({ el: '#home' }),
-        contactView      = new ContactView(),
-        basketView       = new BasketView(),
-        galleryView      = {},
-        showing          = null;
 
     return promiseToCreateRouter;
 });

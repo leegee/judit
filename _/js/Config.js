@@ -7,7 +7,9 @@ define( ['Backbone', 'BackboneLocalForage'], function (Backbone) {
     // });
 
     return {
+        stockJson: '/_/stock.json',
         defaultLang: 'en',
+        defaultGalleryName: 'Gallery',
         langSupported: {
             en: 'English',
             hu: 'Hungarian'

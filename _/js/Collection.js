@@ -10,8 +10,7 @@ define( [
         model: DressModel,
         basket: new BasketCollection(),
         initialize: function (options) {
-            // this.id = options.id;
-            this.url = options.url;
+          //  this.url = options.url;
         }
     });
 });

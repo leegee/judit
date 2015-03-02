@@ -5,7 +5,8 @@ define( [
 ){
     'use strict';
 
-    var DressViewModal =  Backbone.View.extend({
+    // DressViewModal
+    return Backbone.View.extend({
         events: {
             "click .basketToggle": "basketToggle"
         },
@@ -14,24 +15,22 @@ define( [
             this.baseUrl = options.baseUrl;
             this.url = this.baseUrl +'/'+ this.model.id;
             this.templates = {
-                page:               _.template( jQuery('#modal-dress-template').text() ),
-                addToBasket:        _.template( jQuery('#template-addToBasket').text() ),
-                removeFromBasket:   _.template( jQuery('#template-removeFromBasket').text() ),
+                page:             _.template( jQuery('#modal-dress-template').text() ),
+                addToBasket:      _.template( jQuery('#template-addToBasket').text() ),
+                removeFromBasket: _.template( jQuery('#template-removeFromBasket').text() ),
             };
             this.$el = jQuery('#modal-dress');
             this.model.on('change', this.updateBasket, this);
             this.MODAL = new Modal({
                 templateCompiled: _.template( jQuery('#modal-dress-template').text() ),
-                $el: jQuery('#modal-dress')
+                $el: this.$el
             });
         },
 
         basketToggle: function () {
-            console.log('basketToggle');
             var self = this;
             this.model.ifBasketed( function (baskted){
                 if (baskted){
-                    console.log('call remove from basket')
                     self.model.removeFromBasket();
                     jQuery('#add2basket').html( self.templates.removeFromBasket );
                 } else {
@@ -90,10 +89,12 @@ define( [
                     jQuery(promise.resolve);
                 })
             ).done(function() {
-                self.zoomable.$el.css(
-                    self.zoomable.$el.width() > self.zoomable.$el.height? 'width' : 'height',
-                    '100%'
-                );
+                if (self.zoomable.$el.css('width') > self.zoomable.$el.css('height')){
+                    self.zoomable.$el.addClass('lanscape');
+                } else {
+                    self.zoomable.$el.addClass('portrait');
+                }
+
                 self.zoomContainer.$el.show();
                 self.zoomed.$el.show();
                 self.zoomable.pcWidth  = self.zoomable.$el.width()  / 100;
@@ -136,6 +137,4 @@ define( [
             });
         }
     });
-
-    return DressViewModal;
 });

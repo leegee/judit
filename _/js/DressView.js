@@ -13,6 +13,7 @@ define( [
         galleryId: null,
         events: {
             click: "showModal"
+            // click: "showDressPage"
         },
 
         initialize: function (options) {
@@ -37,6 +38,10 @@ define( [
                     self.template( self.model.toJSON() )
                 );
             };
+        },
+
+        showDressPage: function () {
+            Backbone.history.navigate('#/dress/' + this.model.get('id'));
         },
 
         showModal: function () {

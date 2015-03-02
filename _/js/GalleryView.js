@@ -16,19 +16,14 @@ define( [
         initialize: function (options) {
             this.id = options.id;
             this.rendered = false;
-            this.collection = new Collection({ url: options.url });
+            this.collection = options.collection;
             this.template = _.template( jQuery('#gallery-template').text() );
         },
 
         render: function (dressIdToShow) {
             var self = this;
             this.$el.empty();
-
-            this.$el.html(
-                this.template(
-                    this.model? this.model.toJSON() : null
-                )
-            );
+            this.$el.html( this.template() );
 
             if (! jQuery.contains(document, self.$el[0])) {
                 self.$el.insertAfter('header');
@@ -42,59 +37,53 @@ define( [
                 itemSelector: '.dress'
             });
 
-            this.collection.fetch({
-                reset: true,
-                error: function (collection, response, options) {
-                    console.error('Error loading or parsing collection ', self.collection.id, collection, response);
-                },
-                success: function (collection, response, options) {
-                    var showDressAsModal;
-                    var promiseToLoadAllImages = [];
-                    var loader = new Loader({ total: self.collection.length });
-                    if (! self.loaded) {
-                        loader.show();
-                    }
-                    self.collection.each( function (dress) {
-                            promiseToLoadAllImages.push( new Promise ( function (resolve, reject) {
-                                var dressView = new DressView({
-                                    model: dress,
-                                    collection: self.collection,
-                                    galleryId: self.id,
-                                    thumbLoaded: function (){
-                                        self.$dressContainer.append( dressView.el );
-                                        loader.increment();
-                                        masonry.addItems( dressView.el );
-                                        masonry.layout();
-                                        resolve();
-                                    }
-                                });
-                                if (dressIdToShow === dress.id){
-                                    showDressAsModal = dressView;
-                                }
-                            }
-                        ));
-                    });
+            var loader = new Loader({ total: self.collection.length });
+            if (! self.loaded) {
+                loader.show();
+            }
 
-                    Promise.all( promiseToLoadAllImages )
-                    .then(
-                        function () {
-                            self.$el.append( self.$dressContainer );
-                            loader.hide();
-                            self.loaded = true;
-                            if (showDressAsModal) {
-                                showDressAsModal.showModal();
+            var showDressAsModal;
+            var promiseToLoadAllImages = [];
+            _.each( this.collection.where({ gallery : self.id }), function (dress) {
+                promiseToLoadAllImages.push(
+                    new Promise ( function (resolve, reject) {
+                        var dressView = new DressView({
+                            model: dress,
+                            collection: self.collection,
+                            galleryId: self.id,
+                            thumbLoaded: function (){
+                                self.$dressContainer.append( dressView.el );
+                                loader.increment();
+                                masonry.addItems( dressView.el );
+                                masonry.layout();
+                                resolve();
                             }
-                        },
-                        function (reason) {
-                            console.error(reason);
-                            self.$el.append( self.$dressContainer );
-                            loader.hide();
-                            self.loaded = true;
-                            showDressAsModal.showModal();
+                        });
+                        if (dressIdToShow === dress.id){
+                            showDressAsModal = dressView;
                         }
-                    );
-                }
+                    })
+                )
             });
+
+            Promise.all( promiseToLoadAllImages )
+            .then(
+                function () {
+                    self.$el.append( self.$dressContainer );
+                    loader.hide();
+                    self.loaded = true;
+                    if (showDressAsModal) {
+                        showDressAsModal.showModal();
+                    }
+                },
+                function (reason) {
+                    console.error(reason);
+                    self.$el.append( self.$dressContainer );
+                    loader.hide();
+                    self.loaded = true;
+                    showDressAsModal.showModal();
+                }
+            );
         }
     });
 });
