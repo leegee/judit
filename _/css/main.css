@@ -428,8 +428,13 @@ footer h1, footer h2, footer h3, footer h4 {
 }
 
 /* Thanks http://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ */
-.grow { transition: all 0.2s ease-in-out; }
-.grow:hover { transform: scale(1.2); }
+.grow {
+    transition: all 0.2s ease-in-out;
+}
+.grow:hover {
+    transform: scale(1.2);
+    z-index: 999;
+}
 
 #loader {
     z-index: 999;
