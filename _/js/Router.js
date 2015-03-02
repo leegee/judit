@@ -1,12 +1,12 @@
 define( [
     'Config', 'Backbone', 'jQuery',
     'Collection', 'Splash', 'GalleryView',
-    'MenuItemView', 'ContactView', 'BasketView', 'DressPageView',
+    'MenuItemView', 'ContactView', 'BasketView',
     'BackboneLocalForage', 'SlickNav'
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
-    MenuItemView, ContactView, BasketView, DressPageView
+    MenuItemView, ContactView, BasketView
 ){
     'use strict';
 
@@ -24,7 +24,7 @@ define( [
         splash           = new Splash({ el: '#home' }),
         contactView      = new ContactView(),
         basketView       = new BasketView({ collection: collection }),
-        dressPageView    = new DressPageView({ collection: collection }),
+        // dressPageView    = new DressPageView({ collection: collection }),
         galleryView      = {},
         showing          = null;
 
@@ -107,13 +107,13 @@ define( [
                 console.log('Search ', query, page);
             },
 
-            dress: function (dressId) {
-                if (showing) {
-                    showing.remove();
-                }
-                showing = dressPageView;
-                showing.render(dressId);
-            },
+            // dress: function (dressId) {
+            //     if (showing) {
+            //         showing.remove();
+            //     }
+            //     showing = dressPageView;
+            //     showing.render(dressId);
+            // },
 
             basket: function () {
                 if (showing) {
