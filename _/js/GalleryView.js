@@ -26,11 +26,12 @@ define( [
             this.$el.html( this.template() );
 
             if (! jQuery.contains(document, self.$el[0])) {
-                self.$el.insertAfter('header');
+                this.$el.insertAfter('header');
             }
 
             this.$dressContainer = jQuery('#dresses');
-            self.$el.show();
+            // this.$el.append( self.$dressContainer );
+            this.$el.show();
 
             var masonry = new FluidMasonry( self.$dressContainer.get(0), {
                 minColumnWidth: '200px',
@@ -38,9 +39,9 @@ define( [
             });
 
             var loader = new Loader({ total: self.collection.length });
-            if (! self.loaded) {
+            // if (! this.loaded) {
                 loader.show();
-            }
+            // }
 
             var showDressAsModal;
             var promiseToLoadAllImages = [];
@@ -66,22 +67,22 @@ define( [
                 )
             });
 
+            var done = function () {
+                loader.hide();
+                self.loaded = true;
+                if (showDressAsModal) {
+                    showDressAsModal.showModal();
+                }
+            };
+
             Promise.all( promiseToLoadAllImages )
             .then(
                 function () {
-                    self.$el.append( self.$dressContainer );
-                    loader.hide();
-                    self.loaded = true;
-                    if (showDressAsModal) {
-                        showDressAsModal.showModal();
-                    }
+                   done();
                 },
                 function (reason) {
                     console.error(reason);
-                    self.$el.append( self.$dressContainer );
-                    loader.hide();
-                    self.loaded = true;
-                    showDressAsModal.showModal();
+                    done();
                 }
             );
         }
