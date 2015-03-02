@@ -17,19 +17,22 @@ define( [
         if (this.open){
             return;
         }
+        var self = this;
         this.open = true;
 
-        var self = this;
+        console.log("Open");
+        console.trace();
+
         Backbone.history.navigate(options.showUrl);
         this.closeUrl = options.closeUrl;
 
-        self.$body = jQuery(document.body);
+        this.$body = jQuery(document.body);
         this.bodyCssDefault  = {
             overflow:   self.$body.css('overflow'),
             height:     self.$body.css('height'),
             width:      self.$body.css('width')
         };
-        self.$body.css({
+        this.$body.css({
             overflow: 'hidden',
             height: window.innerHeight,
             width: window.innerWidth
@@ -70,6 +73,9 @@ define( [
             width:      self.bodyCssDefault.width,
             height:     self.bodyCssDefault.height
         });
+        console.log("Close");
+        console.trace();
+
         jQuery(document).off('touchmove.modal');
         jQuery(document).off('keyup.modal');
         Backbone.history.navigate(self.closeUrl);
