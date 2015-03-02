@@ -37,7 +37,7 @@
                 <% _.each(dresses, function (dress) { i++; %>
                     <tr class='dress'>
                         <td class='thumb'>
-                            <a href='#/gallery/gallery/<%= dress.id %>'>
+                            <a href='#/gallery/<%= dress.gallery %>/<%= dress.id %>'>
                                 <img src="<%= dress.thumb %>">
                             </a>
                         ></td>

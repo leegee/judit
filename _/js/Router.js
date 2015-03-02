@@ -93,7 +93,7 @@ define( [
             },
 
             gallery: function (galleryId, dressId) {
-                console.log(galleryId, galleryView);
+                console.log("Router to galleryId: ", galleryId, galleryView);
                 if (galleryView.hasOwnProperty(galleryId)){
                     if (showing) {
                         showing.remove();

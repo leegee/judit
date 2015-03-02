@@ -60,6 +60,7 @@ define( [
                                 resolve();
                             }
                         });
+                        console.info('Dress gallery=',dress.get('gallery'));
                         if (dressIdToShow === dress.id){
                             showDressAsModal = dressView;
                         }
