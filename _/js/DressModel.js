@@ -1,7 +1,7 @@
 define( [
-    'Backbone',  'BackboneLocalForage'
+    'Backbone', 'Config', 'BackboneLocalForage'
 ], function (
-    Backbone
+    Backbone, Config
 ){
     // DressModel
     return Backbone.Model.extend({
@@ -36,6 +36,7 @@ define( [
         dataForStore: function () {
             return {
                 id:       this.get('id'),
+                gallery:  this.get('gallery'),
                 en_name:  this.get('en_name'),
                 hu_name:  this.get('hu_name'),
                 thumb:    this.get('thumb'),
@@ -46,6 +47,7 @@ define( [
         defaults: {
             inBasket: null,
             id: null,
+            gallery: Config.defaultGalleryName,
             price: 100000,
             shipping: 10000,
             en_name: "Default Name",
