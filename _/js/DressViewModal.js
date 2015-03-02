@@ -8,7 +8,8 @@ define( [
     // DressViewModal
     return Backbone.View.extend({
         events: {
-            "click .basketToggle": "basketToggle"
+            "click .basketToggle": "basketToggle",
+            "click .viewBasket": "close"
         },
 
         initialize: function (options) {
@@ -27,15 +28,21 @@ define( [
             });
         },
 
+        close: function () {
+            this.MODAL.close();
+        },
+
         basketToggle: function () {
             var self = this;
             this.model.ifBasketed( function (baskted){
                 if (baskted){
+                    console.log('in basket already');
                     self.model.removeFromBasket();
-                    jQuery('#add2basket').html( self.templates.removeFromBasket );
+                    console.log('change text');
+                    jQuery('#add2basket').html( self.templates.addToBasket );
                 } else {
                     self.model.addToBasket();
-                    jQuery('#add2basket').html( self.templates.addToBasket );
+                    jQuery('#add2basket').html( self.templates.removeFromBasket );
                 }
             });
         },
