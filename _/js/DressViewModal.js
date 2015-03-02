@@ -39,10 +39,10 @@ define( [
                     console.log('in basket already');
                     self.model.removeFromBasket();
                     console.log('change text');
-                    jQuery('#add2basket').html( self.templates.addToBasket );
+                    jQuery('#basketCtrls').html( self.templates.addToBasket );
                 } else {
                     self.model.addToBasket();
-                    jQuery('#add2basket').html( self.templates.removeFromBasket );
+                    jQuery('#basketCtrls').html( self.templates.removeFromBasket );
                 }
             });
         },
@@ -51,9 +51,9 @@ define( [
             var self = this;
             var update = function (inBasket){
                 if (inBasket){
-                    jQuery('#add2basket').html( self.templates.removeFromBasket );
+                    jQuery('#basketCtrls').html( self.templates.removeFromBasket );
                 } else {
-                    jQuery('#add2basket').html( self.templates.addToBasket );
+                    jQuery('#basketCtrls').html( self.templates.addToBasket );
                 }
             }
             if (typeof this.model.inBasket==='undefined'){
