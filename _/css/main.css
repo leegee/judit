@@ -33,7 +33,7 @@ h1  {
     font-size: 16pt;
 }
 */
-#menu {
+header {
     z-index: 999;
     position: fixed;
     top: 0;
@@ -47,6 +47,11 @@ h1  {
     -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
+}
+
+header nav {
+    max-width: 1024px;
+    margin: 0 auto;
 }
 
 #menu ul {
@@ -391,6 +396,11 @@ footer {
     padding: 3em;
     min-width: 100%;
     min-height: 50%;
+}
+
+footer .content {
+    max-width: 1024px;
+    margin: 0 auto;
     -moz-column-count: 3;
     -moz-column-gap: 1em;
     -webkit-column-count: 3;
@@ -407,7 +417,7 @@ footer h1, footer h2, footer h3, footer h4 {
 }
 
 @media screen and (max-width: 60em) {
-    footer {
+    footer .content {
         -moz-column-count: 2;
         -moz-column-gap: 1em;
         -webkit-column-count: 2;
@@ -417,7 +427,7 @@ footer h1, footer h2, footer h3, footer h4 {
     }
 }
 @media screen and (max-width: 40em) {
-    footer {
+    footer .content {
         -moz-column-count: 1;
         -moz-column-gap: 0;
         -webkit-column-count: 1;
