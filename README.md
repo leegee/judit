@@ -1,5 +1,4 @@
-i18n
-====
+# i18n
 
 To add a locale:
 
@@ -15,3 +14,9 @@ Optinally append ?en or ?hu to URIs:
     http://judit/?hu#/gallery/New
 
 To get or set a language, use the `Languages.js` JavaScript bean.
+
+# References
+
+https://www.paypal.com/cgi-bin/webscr?cmd=p/pdn/howto_checkout-outside
+
+https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/encryptedwebpayments/#id08A3I0P017Q

@@ -22,15 +22,15 @@
         <% if (dresses.length===0){ %>
             <p>
                 <span lang='en'>Nothing in your basket</span>
-                <span lang='hu'>Semi in your Kosár</span>
+                <span lang='hu'>Semi a Kosárban</span>
             </p>
+
         <% } else { %>
-            <!-- https://www.paypal.com/cgi-bin/webscr?cmd=p/pdn/howto_checkout-outside -->
+
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                <input type="hidden" name="cmd" value="_cart">
-                <input type="hidden" name="upload" value="1">
-                <input type="hidden" name="business"
-                       value="<%= config.paypalEmail %>">
+                <input type="hidden" name="cmd"           value="_cart">
+                <input type="hidden" name="upload"        value="1">
+                <input type="hidden" name="business"      value="<%= config.paypalEmail %>">
                 <input type="hidden" name="currency_code" value="HUF">
 
                 <div class='clearfix'>
@@ -80,7 +80,9 @@
                     <% }) %>
                     </tbody>
                     <tfoot>
-                        <tr><td><button class='checkout'>Checkout</button></td></tr>
+                        <tr><td>
+                            <button class='checkout'>Checkout</button>
+                        </td></tr>
                     </tfoot>
                     </table>
 
@@ -112,11 +114,13 @@
     </script>
 
     <script type='html/template' id='gallery-template'>
+        <article>
         <h1>
             <span lang='en'>Gallery</span>
             <span lang='hu'>Galéria</span>
         </h1>
         <div id='dresses'></div>
+        </article>
     </script>
 
     <script type='html/template' id='dress-template'>
@@ -244,10 +248,12 @@
     </section>
 
     <section id="contact" style='display:none'>
-        <h1>
-            <span lang='en'>Contact</span>
-            <span lang='hu'>Kapcsolat</span>
-        </h1>
+        <article>
+            <h1>
+                <span lang='en'>Contact</span>
+                <span lang='hu'>Kapcsolat</span>
+            </h1>
+        </article>
     </section>
 
     <section id="basket" style='display:none'>
