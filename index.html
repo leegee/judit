@@ -23,70 +23,76 @@
                 <span lang='hu'>Semi in your Kosár</span>
             </p>
         <% } else { %>
+            <!-- https://www.paypal.com/cgi-bin/webscr?cmd=p/pdn/howto_checkout-outside -->
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_cart">
+                <input type="hidden" name="upload" value="1">
+                <input type="hidden" name="business"
+                       value="paypal-facilitator@leegoddard.net">
+                <input type="hidden" name="currency_code" value="HUF">
 
-            <input type="hidden" name="cmd" value="_cart">
-            <input type="hidden" name="upload" value="1">
-            <input type="hidden" name="business"
-                   value="paypal-facilitator@leegoddard.net ">
-            <input type="hidden" name="currency_code" value="huf">
-
-            <div class='clearfix'>
-                <table>
-                <thead>
-                <% var i=0 %>
-                <% _.each(dresses, function (dress) { i++; %>
-                    <tr class='dress'>
-                        <td class='thumb'>
-                            <a href='#/gallery/<%= dress.gallery %>/<%= dress.id %>'>
-                                <img src="<%= dress.thumb %>">
-                            </a>
-                        ></td>
-                        <td class='name'>
-                            <p>
-                                <a href='#/gallery/gallery/<%= dress.id %>'>
-                                    <span lang='en'><%= dress.en_name  %>
-                                    <span lang='hu'><%= dress.hu_name  %>
+                <div class='clearfix'>
+                    <table>
+                    <thead>
+                    <% var i=0 %>
+                    <% _.each(dresses, function (dress) { i++; %>
+                        <tr class='dress'>
+                            <td class='thumb'>
+                                <a href='#/gallery/<%= dress.gallery %>/<%= dress.id %>'>
+                                    <img src="<%= dress.thumb %>">
                                 </a>
-                            </p>
-                            <p class='id'>
-                                <a href='#/gallery/gallery/<%= dress.id %>'
-                                    <%= dress.id %>
-                                </a>
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <%= dress.price || 100000 %> HUF
-                                + <%= dress.shipping || 10000 %> HUF
-                            </p>
-                            <p class='remove' data-dressid='<%= dress.id %>'>
-                                <span lang='en'>Remove</span>
-                                <span lang='hu'>Remove</span>
-                            </p>
-                            <input type="hidden" name="item_name_<%= i %>" value="Item Name 1">
-                            <input type="hidden" name="price_<%= i %>"
-                                   value="<%= dress.price || 100000 %>">
-                            <input type="hidden" name="shipping_<%= i %>"
-                                   value="<%= dress.shipping || 2000 %>">
-                        </td>
-                    </tr>
-                <% }) %>
-                </tbody>
-                <tfooter>
-                    <tr><td><button class='checkout'>Checkout</button></td></tr>
-                </tfooter>
-                </table>
+                            ></td>
+                            <td class='name'>
+                                <p>
+                                    <a href='#/gallery/gallery/<%= dress.id %>'>
+                                        <span lang='en'><%= dress.en_name  %>
+                                        <span lang='hu'><%= dress.hu_name  %>
+                                    </a>
+                                </p>
+                                <p class='id'>
+                                    <a href='#/gallery/<%= dress.gallery %>/<%= dress.id %>'>
+                                        <%= dress.id %>
+                                    </a>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <%= dress.price || 100000 %> HUF
+                                    + <%= dress.shipping || 10000 %> HUF
+                                </p>
+                                <p class='remove' data-dressid='<%= dress.id %>'>
+                                    <span lang='en'>Remove</span>
+                                    <span lang='hu'>Remove</span>
+                                </p>
+                                <input type="hidden" name="item_name_<%= i %>" value="Item Name 1">
+                                <input type="hidden" name="amount_<%= i %>"
+                                       value="<%= dress.price || 100000 %>">
+                                <input type="hidden" name="shipping_<%= i %>"
+                                       value="<%= dress.shipping || 2000 %>">
+                                <input type="hidden" name="shipping2_<%= i %>"
+                                       value="<%= dress.shipping || 2000 %>">
+                                <input type="hidden" name="handling_<%= i %>"
+                                       value="0">
+                            </td>
+                        </tr>
+                    <% }) %>
+                    </tbody>
+                    <tfooter>
+                        <tr><td><button class='checkout'>Checkout</button></td></tr>
+                    </tfooter>
+                    </table>
 
-                <div class='help'>
-                    <h2>Instructions</h2>
-                    <p>
-                        <button class='checkout'>Checkout</button>
-                    </p>
-                    <p>Stuff here about ordering</p>
-                    <p>Stuff also about removing items from basket.</p>
-                    <p>Include a telephone number.</p>
+                    <div class='help'>
+                        <h2>Instructions</h2>
+                        <p>
+                            <button class='checkout'>Checkout</button>
+                        </p>
+                        <p>Stuff here about ordering</p>
+                        <p>Stuff also about removing items from basket.</p>
+                        <p>Include a telephone number.</p>
+                    </div>
                 </div>
-            </div>
+            </form>
         <% } %>
         </article>
     </script>
@@ -185,6 +191,7 @@
 <body>
     <header style='display:none'>
         <nav id="menu">
+            <ul>
             <li><a href="#/home">
                 <span lang='en'>Home</span>
                 <span lang='hu'>Főoldal</span>
@@ -205,6 +212,7 @@
                     <li class='change-language' data-setlang='hu' id='language-magyar'><a><span class='flag flag-hu'></span>Magyar</a></li>
                 </ul>
             </li>
+        </ul>
         </nav>
     </header>
 
@@ -244,20 +252,22 @@
     </section>
 
     <footer style='display:none'>
-        <h2>Impressum</h2>
-        <p>
-            Impressum, etc.
-        </p>
+        <div class='content'>
+            <h2>Impressum</h2>
+            <p>
+                Impressum, etc.
+            </p>
 
-        <h2>Link</h2>
-        <p>
-            Link to Facebook, etc.
-        </p>
+            <h2>Link</h2>
+            <p>
+                Link to Facebook, etc.
+            </p>
 
-        <h2>Contact</h2>
-        <p>
-            Reiterate contact info.
-        </p>
+            <h2>Contact</h2>
+            <p>
+                Reiterate contact info.
+            </p>
+        </div>
     </footer>
 
     <aside id="modal-dress" class="modal" tabindex="-1">
