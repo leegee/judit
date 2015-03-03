@@ -2,13 +2,13 @@ define( [
     'Config', 'Backbone', 'jQuery',
     'Collection', 'Splash', 'GalleryView',
     'MenuItemView', 'ContactView', 'BasketView',
-    'Languages',
+    'Language',
     'BackboneLocalForage', 'SlickNav'
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
     MenuItemView, ContactView, BasketView,
-    Languages
+    Language
 ){
     'use strict';
 
@@ -127,8 +127,7 @@ define( [
         });
     }
 
-    console.log(Languages)
-    Languages.set();
+    Language.set();
 
     return promiseToCreateRouter;
 });
