@@ -27,7 +27,7 @@ define( [
         this.closeUrl = options.closeUrl;
 
         this.$body = jQuery(document.body);
-        this.bodyCssDefault  = {
+        this.bodyCssDefault  = this.bodyCssDefault || {
             overflow:   self.$body.css('overflow'),
             height:     self.$body.css('height'),
             width:      self.$body.css('width')

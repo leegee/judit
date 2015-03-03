@@ -1,4 +1,8 @@
-define(['jQuery', 'Backbone', 'Config'], function (jQuery, Backbone, Config) {
+define([
+    'jQuery', 'Backbone', 'Underscore', 'Config'
+], function (
+    jQuery, Backbone, _, Config
+) {
 
     var Language; // Private
 
@@ -41,8 +45,12 @@ define(['jQuery', 'Backbone', 'Config'], function (jQuery, Backbone, Config) {
 
             jQuery("[data-setlang]").show();
             jQuery("[data-setlang=" + Language + "]").hide();
+
+            Languages.trigger("change", Language);
         }
     };
+
+    _.extend(Languages, Backbone.Events);
 
     return Languages;
 });

@@ -16,17 +16,16 @@ define( [
         initialize: function (options) {
             this.template = _.template( jQuery('#basket-template').text() );
             this.collection = new BasketCollection();
+            this.listenTo( Language, 'change', this.render )
         },
 
         render: function () {
             var self = this;
-            console.log('Render');
             this.collection.fetch({
                 success: function (collection, response, options) {
 
                     // Set item_name_X by locale
                     var lang = Language.get();
-                    alert(lang)
                     var payPalItemNames = [];
                     collection.each( function (dress) {
                         payPalItemNames.push(
