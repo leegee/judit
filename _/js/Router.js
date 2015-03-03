@@ -10,11 +10,11 @@ define( [
 ){
     'use strict';
 
-    Backbone.localforage.localforageInstance.config({
-        driver: 'localStorageWrapper',
-        name: "SzaboJudit",
-        storeName: "SzaboJudit"
-    });
+    // Backbone.localforage.localforageInstance.config({
+    //     driver: 'localStorageWrapper',
+    //     name: "SzaboJudit",
+    //     storeName: "SzaboJudit"
+    // });
 
     jQuery('#loading').hide();
     jQuery('header').show();

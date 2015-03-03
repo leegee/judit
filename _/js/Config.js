@@ -1,10 +1,12 @@
 define( ['Backbone', 'BackboneLocalForage'], function (Backbone) {
-    // Backbone.localforage.configure({
-    //     name        : 'Judit',
-    //     version     : 1.0,
-    //     storeName   : 'SzaboJudit',
-    //     description : 'Clothes in your basket'
-    // });
+
+    Backbone.localforage.localforageInstance.config({
+        driver      : 'localStorageWrapper',
+        name        : "SzaboJudit",
+        storeName   : "SzaboJudit",
+        version     : 1.0,
+        description : 'Clothes in your basket'
+    });
 
     return {
         stockJson: '/_/stock.json',
@@ -14,6 +16,6 @@ define( ['Backbone', 'BackboneLocalForage'], function (Backbone) {
             en: 'English',
             hu: 'Hungarian'
         },
-        collectionDir: '/_/collection/'
+        paypalEmail: 'paypal-facilitator@leegoddard.net'
     };
 });

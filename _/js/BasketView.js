@@ -1,7 +1,7 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'BasketCollection'
+    'jQuery', 'Backbone', 'Underscore', 'Config', 'BasketCollection'
 ], function (
-    jQuery, Backbone, _, BasketCollection
+    jQuery, Backbone, _, Config, BasketCollection
 ){
     'use strict';
 
@@ -25,7 +25,10 @@ define( [
                 success: function (collection, response, options) {
                     console.log("Basket collection length:", collection.length);
                     self.$el.html(
-                        self.template({ dresses: collection.toJSON() })
+                        self.template({
+                            dresses: collection.toJSON(),
+                            config: Config
+                        })
                     );
                     self.$el.show();
                 },
