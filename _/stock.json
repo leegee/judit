@@ -1,6 +1,7 @@
 [
     {
         "id": "SKU1",
+        "gallery": "New!",
         "price": 100,
         "shipping": 10,
         "en_name": "Dress 1",
