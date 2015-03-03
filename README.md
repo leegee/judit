@@ -1,6 +1,8 @@
 i18n
 ====
-Adding a locale:
+
+To add a locale:
+
 * Set `lang='ISO'` on HTML elements
 * Add language `ISO` to `_/js/Config.js` `langSupported`
 * Add `ISO_*` fields to `stock.json`
