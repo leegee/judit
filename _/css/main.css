@@ -253,6 +253,44 @@ td.thumb {
     width: 33%;
     float: left;
 }
+.basket .remove {
+    margin-top: 1em;
+}
+
+.basket p {
+    margin-bottom: .6em;
+}
+
+@media screen and (max-width: 40em){
+    .basket img {
+        border-right: 5pt solid transparent;
+        border-bottom: 5pt solid transparent;
+    }
+}
+
+@media screen and (max-width: 80em) {
+    .basket table {
+        width: 100%;
+    }
+    .basket img {
+        width: 100%;
+        border-right: 1em solid transparent;
+        border-bottom: 1em solid transparent;
+    }
+    .basket .help {
+        background: white;
+        width: 100%;
+        border: none;
+        padding: 0;
+        margin-top: 1em;
+        clear: both;
+        float: auto;
+    }
+    .basket .help p {
+        margin-bottom: 1em;
+    }
+}
+
 .basket .help h2 {
     font-weight: bold;
     font-size: 120%;
@@ -261,6 +299,7 @@ td.thumb {
 .basket .help p {
     margin-bottom: 0.5em;
 }
+
 
 #modal-dress {
     z-index: 999;
@@ -412,6 +451,7 @@ footer .content {
 footer h1, footer h2, footer h3, footer h4 {
     font-weight: 900;
     text-shadow: 2pt 0pt #333;
+    margin-top: 2em;
     margin-bottom: 0.5em;
     opacity: 0.6;
 }
