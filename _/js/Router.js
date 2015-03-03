@@ -127,6 +127,7 @@ define( [
         });
     }
 
+    Language.init();
     Language.set();
 
     return promiseToCreateRouter;
