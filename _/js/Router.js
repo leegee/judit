@@ -127,42 +127,8 @@ define( [
         });
     }
 
-    function setLanguage (lang) {
-        var qs = document.location.search.match(/^\?(..)/);
-        if (qs != null && qs.length > 0) {
-            qs = qs[1];
-        }
-        lang = lang || qs || navigator.language.match('^(..)')[1];
-
-        if (!Config.langSupported[lang]){
-            lang = Config.defaultLang;
-        }
-
-        var styles = [];
-        Object.keys(Config.langSupported).forEach( function (i,j){
-            if (i !== lang){
-                styles.push( "[lang='"+i+"']" );
-            }
-        });
-        jQuery('#set-languages').remove();
-        var html = "<style id='set-languages'>" +
-            styles.join(",") +
-            " { display:none; background:yellow }</style>";
-        jQuery(html).appendTo("head");
-
-        jQuery("[data-setlang]").show();
-        jQuery("[data-setlang="+lang+"]").hide();
-
-        jQuery('.change-language').on('click', function (e) {
-            var lang = 'en';
-            if (this.dataset.setlang && Config.langSupported[ this.dataset.setlang ]){
-                lang = this.dataset.setlang;
-            }
-            setLanguage( lang );
-        });
-    }
-
-    setLanguage();
+    console.log(Languages)
+    Languages.set();
 
     return promiseToCreateRouter;
 });
