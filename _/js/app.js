@@ -10,7 +10,7 @@ requirejs.config({
         PictureFill: '../../bower_components/picturefill/dist/picturefill.min',
         SlickNav: '../../bower_components/slicknav/jquery.slicknav.min',
         VerticalSlideShow: "../../bower_components/js-vertical-slideshow/js/VerticalSlideShow",
-        jQuery: "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min",
+        jQuery: "../../bower_components/jquery/dist/jquery.min", // "//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min",
         Masonry: "../../bower_components/fluid-masonry/fluid-masonry",
         FluidMasonry: "../../bower_components/jquery-masonry/masonry",
         outlayer: '../../bower_components/outlayer/',
