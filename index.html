@@ -40,7 +40,7 @@
                             <td class='thumb'>
                                 <a href='#/gallery/<%= dress.gallery %>/<%= dress.id %>'>
                                     <img src="<%= dress.thumb %>">
-                                </a>
+                                </a>?
                             ></td>
                             <td class='name'>
                                 <p>
@@ -64,7 +64,7 @@
                                     <span lang='en'>Remove</span>
                                     <span lang='hu'>Remove</span>
                                 </p>
-                                <input type="hidden" name="item_name_<%= i %>" value="Item Name 1">
+                                <input type="hidden" name="item_name_<%= i %>" value="">
                                 <input type="hidden" name="amount_<%= i %>"
                                        value="<%= dress.price || 100000 %>">
                                 <input type="hidden" name="shipping_<%= i %>"

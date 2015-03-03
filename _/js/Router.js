@@ -2,11 +2,13 @@ define( [
     'Config', 'Backbone', 'jQuery',
     'Collection', 'Splash', 'GalleryView',
     'MenuItemView', 'ContactView', 'BasketView',
+    'Languages',
     'BackboneLocalForage', 'SlickNav'
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
-    MenuItemView, ContactView, BasketView
+    MenuItemView, ContactView, BasketView,
+    Languages
 ){
     'use strict';
 

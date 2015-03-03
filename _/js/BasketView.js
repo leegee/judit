@@ -24,6 +24,7 @@ define( [
             this.collection.fetch({
                 success: function (collection, response, options) {
                     console.log("Basket collection length:", collection.length);
+                    // Set item_name_X by locale
                     self.$el.html(
                         self.template({
                             dresses: collection.toJSON(),
@@ -53,7 +54,6 @@ define( [
         },
 
         checkout: function () {
-            alert(1)
         }
     });
 });
