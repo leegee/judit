@@ -21,7 +21,8 @@ define( [
                 removeFromBasket: _.template( jQuery('#template-removeFromBasket').text() ),
             };
             this.$el = jQuery('#modal-dress');
-            this.model.on('change', this.updateBasket, this);
+            // this.model.on('change', this.updateBasket, this);
+            this.model.listenTo(this.model, 'change', this.updateBasket);
             this.MODAL = new Modal({
                 templateCompiled: _.template( jQuery('#modal-dress-template').text() ),
                 $el: this.$el
