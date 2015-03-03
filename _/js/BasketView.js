@@ -21,6 +21,12 @@ define( [
 
         render: function () {
             var self = this;
+
+            // Global listen causes unhappy rendering
+            if (Backbone.history.fragment !== 'basket') {
+                return;
+            }
+
             this.collection.fetch({
                 success: function (collection, response, options) {
 
