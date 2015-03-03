@@ -451,10 +451,10 @@ footer .content {
 footer h1, footer h2, footer h3, footer h4 {
     font-weight: 900;
     text-shadow: 2pt 0pt #333;
-    margin-top: 2em;
     margin-bottom: 0.5em;
     opacity: 0.6;
 }
+
 
 @media screen and (max-width: 60em) {
     footer .content {
@@ -474,6 +474,9 @@ footer h1, footer h2, footer h3, footer h4 {
         -webkit-column-gap: 0;
         column-count: 1;
         column-gap: 0;
+    }
+    footer h1, footer h2, footer h3, footer h4 {
+        margin-top: 2em;
     }
 }
 
