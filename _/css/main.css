@@ -84,6 +84,9 @@ header {
     color: black;
 }
 
+nav#menu ul li#language > span {
+    display:none;
+}
 #menu li#language {
     float: right;
 }
