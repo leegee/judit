@@ -12,12 +12,6 @@ define( [
 ){
     'use strict';
 
-    // Backbone.localforage.localforageInstance.config({
-    //     driver: 'localStorageWrapper',
-    //     name: "SzaboJudit",
-    //     storeName: "SzaboJudit"
-    // });
-
     jQuery('#loading').hide();
     jQuery('header').show();
     jQuery('footer').show();
@@ -76,6 +70,15 @@ define( [
                 "search/:query":            "search",
                 "search/:query/:page":      "search",
                 "*stuff":                   "default"
+            },
+
+            // For every route change
+            execute: function (callback, args) {
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
+                if (callback) {
+                    callback.apply(this, args);
+                }
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
             },
 
             default: function () {

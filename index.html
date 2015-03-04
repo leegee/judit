@@ -227,12 +227,12 @@
     <section id='home' style="display:none; background:#FF0080">
         <article>
             <picture>
-                <img
-                    srcset="home/1-1100.png 1024w,
-                          home/1-640.png    640w,
-                          home/1-320.png    320w"
-                    sizes="100vw"
-                    src='home/1-1100.png'>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source srcset='home/1-1100.png' media="(min-width:1024px)" sizes="100vm">
+                <source srcset='home/1-640.png'  media="(min-width:640px)"  sizes="100vm">
+                <source srcset='home/1-320.png'  media="(min-width:320px)"  sizes="100vm">
+                <!--[if IE 9]></video><![endif]-->
+                <img src="home/1-320.png">
             </picture>
         </article>
 
@@ -246,11 +246,15 @@
             <picture>
                 <img src='bower_components/js-vertical-slideshow/eg/img/3.png'>
             </picture>
+        </article>
 
+        <article>
             <picture>
                 <img src='bower_components/js-vertical-slideshow/eg/img/4.png'>
             </picture>
+        </article>
 
+        <article>
             <picture>
                 <img src='bower_components/js-vertical-slideshow/eg/img/5.png'>
             </picture>
@@ -259,6 +263,7 @@
 
     <section id="contact" style='display:none'>
         <article>
+            <a name='contact'></a>
             <h1>
                 <span lang='en'>Contact</span>
                 <span lang='hu'>Kapcsolat</span>
@@ -273,17 +278,21 @@
         <div class='content'>
             <h2>Impressum</h2>
             <p>
-                Impressum, etc.
+                Copyright (C) 2015
             </p>
 
-            <h2>Link</h2>
-            <p>
-                Link to Facebook, etc.
-            </p>
+            <h2>Links</h2>
+            <ul>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Pinterest</li>
+                <li>Tumblr</li>
+                <li>Flickr</li>
+            </ul>
 
             <h2>Contact</h2>
             <p>
-                Reiterate contact info.
+                <a href='#/contact'>Contact</a>
             </p>
         </div>
     </footer>

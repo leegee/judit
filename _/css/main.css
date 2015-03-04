@@ -8,7 +8,7 @@ header nav,
 section article,
 footer .content {
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 0 auto 1em ;
 }
 
 h1  {
@@ -122,6 +122,13 @@ section {
     -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
+}
+
+@media screen and (max-width: 40em){
+    section {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 #home img {
@@ -266,6 +273,9 @@ td.thumb {
 }
 
 @media screen and (max-width: 80em) {
+    header {
+        font-size: 120%;
+    }
     .basket table {
         width: 100%;
     }
