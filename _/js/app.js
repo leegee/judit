@@ -4,7 +4,7 @@ requirejs.config({
     baseUrl: '_/js/',
     paths: {
         Underscore: '../../bower_components/underscore-amd/underscore-min',
-        Backbone: '../../bower_components/backbone-amd/backbone',
+        Backbone: '../../bower_components/backbone/backbone',
         localforage: '../../bower_components/localforage/dist/localforage',
         BackboneLocalForage: '../../bower_components/localforage-backbone/dist/localforage.backbone',
         PictureFill: '../../bower_components/picturefill/dist/picturefill.min',
