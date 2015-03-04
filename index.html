@@ -211,40 +211,50 @@
                 <span lang='hu'>Kosár</span>
             </a></li>
             <li id='language'>
-                </span><span lang='en'>Language</span>
-                </span><span lang='hu'>Nyelv</span>
+                <span lang='en'>Language</span>
+                <span lang='hu'>Nyelv</span>
+                <span lang='de'>Sprache</span>
                 <ul>
                     <li class='change-language' data-setlang='en' id='language-english'><a><span class='flag flag-en'></span>English</a></li>
                     <li class='change-language' data-setlang='hu' id='language-magyar'><a><span class='flag flag-hu'></span>Magyar</a></li>
+                    <!-- <li class='change-language' data-setlang='de' id='language-deutsche'><a><span class='flag flag-de'></span>Deutsche</a></li> -->
                 </ul>
             </li>
         </ul>
         </nav>
     </header>
 
-    <section id='home' style="display:none">
-        <picture>
-            <source media="(min-width: 64em)" srcset="bower_components/js-vertical-slideshow/eg/img/1.png">
-            <source media="(min-width: 37.5em)" srcset="bower_components/js-vertical-slideshow/eg/img/1.png">
-            <source srcset="bower_components/js-vertical-slideshow/eg/img/1.png">
-            <img src='bower_components/js-vertical-slideshow/eg/img/1.png'>
-        </picture>
+    <section id='home' style="display:none; background:#FF0080">
+        <article>
+            <picture>
+                <img
+                    srcset="home/1-1100.png 1024w,
+                          home/1-640.png    640w,
+                          home/1-320.png    320w"
+                    sizes="100vw"
+                    src='home/1-1100.png'>
+            </picture>
+        </article>
 
-        <picture>
-          <img src='bower_components/js-vertical-slideshow/eg/img/2.png'>
-        </picture>
+        <article>
+            <picture>
+              <img src='bower_components/js-vertical-slideshow/eg/img/2.png'>
+            </picture>
+        </article>
 
-        <picture>
-            <img src='bower_components/js-vertical-slideshow/eg/img/3.png'>
-        </picture>
+        <article>
+            <picture>
+                <img src='bower_components/js-vertical-slideshow/eg/img/3.png'>
+            </picture>
 
-        <picture>
-            <img src='bower_components/js-vertical-slideshow/eg/img/4.png'>
-        </picture>
+            <picture>
+                <img src='bower_components/js-vertical-slideshow/eg/img/4.png'>
+            </picture>
 
-        <picture>
-            <img src='bower_components/js-vertical-slideshow/eg/img/5.png'>
-        </picture>
+            <picture>
+                <img src='bower_components/js-vertical-slideshow/eg/img/5.png'>
+            </picture>
+        </article>
     </section>
 
     <section id="contact" style='display:none'>

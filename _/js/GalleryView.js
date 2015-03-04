@@ -34,7 +34,7 @@ define( [
             this.$el.show();
 
             var masonry = new FluidMasonry( self.$dressContainer.get(0), {
-                minColumnWidth: '200px',
+                minColumnWidth: '20%',
                 itemSelector: '.dress'
             });
 

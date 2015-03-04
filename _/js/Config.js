@@ -14,7 +14,8 @@ define( ['Backbone', 'BackboneLocalForage'], function (Backbone) {
         defaultGalleryName: 'Gallery',
         langSupported: {
             en: 'English',
-            hu: 'Hungarian'
+            hu: 'Magyar'
+            // de: 'Deutsche'
         },
         paypalEmail: 'paypal-facilitator@leegoddard.net'
     };

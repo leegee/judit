@@ -17,6 +17,12 @@ To get or set a language, use the `Languages.js` JavaScript bean.
 
 # References
 
+## PayPal
+
 https://www.paypal.com/cgi-bin/webscr?cmd=p/pdn/howto_checkout-outside
 
 https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/encryptedwebpayments/#id08A3I0P017Q
+
+## Responsive Images
+
+http://www.smashingmagazine.com/2014/05/14/responsive-images-done-right-guide-picture-srcset/

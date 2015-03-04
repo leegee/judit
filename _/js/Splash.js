@@ -14,7 +14,8 @@ define( [
 
             this.verticalSlideShow = new VerticalSlideShow({
                 // container: this.el,
-                selector: 'footer, picture'
+                selector: 'article, footer',
+                offset: 30
             });
         },
 
