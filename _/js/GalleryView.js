@@ -22,16 +22,16 @@ define( [
 
         render: function (dressIdToShow) {
             var self = this;
-            this.$el.empty();
-            this.$el.html( this.template() );
 
             if (! jQuery.contains(document, self.$el[0])) {
-                this.$el.insertAfter('header');
+                jQuery('#galleries').append( this.$el );
+                this.$el.empty();
+                this.$el.html( this.template() );
             }
 
             this.$dressContainer = jQuery('#dresses');
-            // this.$el.append( self.$dressContainer );
             this.$el.show();
+            jQuery('#galleries').show();
 
             var masonry = new FluidMasonry( self.$dressContainer.get(0), {
                 minColumnWidth: '20%',

@@ -8,7 +8,6 @@ define( [
     // MenuItemView
     return Backbone.View.extend({
         tagName: 'li',
-        className: 'scroll',
 
         initialize: function (options) {
             this.template = _.template( jQuery('#menu-gallery-item-template').text() );

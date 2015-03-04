@@ -21,7 +21,6 @@
   ],
   "devDependencies": {
     "js-vertical-slideshow": "*",
-    "slicknav": "~1.0.1",
     "requirejs": "~2.1.16",
     "picturefill": "~2.2.0",
     "underscore": "~1.5.2",

@@ -3,7 +3,7 @@ define( [
     'Collection', 'Splash', 'GalleryView',
     'MenuItemView', 'ContactView', 'BasketView',
     'Language',
-    'BackboneLocalForage', 'SlickNav'
+    'BackboneLocalForage'
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
@@ -11,10 +11,6 @@ define( [
     Language
 ){
     'use strict';
-
-    jQuery('#loading').hide();
-    jQuery('header').show();
-    jQuery('footer').show();
 
     var collection       = new Collection(),
         splash           = new Splash({ el: '#home' }),
@@ -49,15 +45,26 @@ define( [
                 }
             });
 
-            jQuery('#menu').slicknav({
-                prependTo: 'body',
-                label: '<span lang="en">MENU</span><span lang="hu">MENÜ</span>',
-                closeOnClick: true
+            jQuery('.nav-ctrl, header nav a').on('click', function () {
+                jQuery(document.body).toggleClass('nav-open');
             });
 
             resolve( createRouter() );
         });
     });
+
+    function setVariableHeader () {
+        var Scrolled = false;
+        jQuery(window).on("scroll touchmove", function () {
+            Scrolled = true;
+        });
+        setInterval( function () {
+            if (Scrolled){
+                jQuery('header').toggleClass('small', $(document).scrollTop() > 0);
+                Scrolled = false;
+            }
+        }, 333);
+    }
 
     function createRouter () {
         return Backbone.Router.extend({
@@ -79,6 +86,7 @@ define( [
                     callback.apply(this, args);
                 }
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
+                jQuery('#loader').hide();
             },
 
             default: function () {

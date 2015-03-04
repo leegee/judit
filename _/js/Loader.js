@@ -2,7 +2,7 @@ define( ['jQuery','Underscore'], function (jQuery, _) {
     var Rendered = false;
     var Loader = function (options) {
         if (! Rendered){
-            this.template = _.template( jQuery('#loader-template').text() );
+            this.template = _.template( jQuery('#loader').text() );
             this.$el = jQuery(this.template());
             this.$el.hide();
             jQuery(document.body).append( this.$el );

@@ -1,0 +1,106 @@
+#nav-show {
+    background: black;
+    position: fixed;
+    top: 0.5em;
+    left: 0;
+    padding: 0.5em 1em 0.5em 2em;
+    font-size: 18pt;
+    color: white;
+    z-index: 999;
+    -webkit-box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
+    -moz-box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
+    box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
+}
+
+body.nav-open header {
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+body.nav-open main {
+    position: fixed;
+    top: 0;
+    left: 20em;
+    opacity: 0.5;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header {
+    display: block;
+    background-color: rgba(103,181,210,0.5);
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    overflow: hidden;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header nav {
+    width: 20em;
+    background-color: rgba(103,181,210,1);
+    background-color: black;
+    height: 100%;
+    text-align: center;
+    padding: 1em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    overflow: auto;
+}
+
+header nav li {
+    border-bottom: 2pt groove rgba(255,255,255,0.5);
+    border-bottom: 2pt groove rgba(127,127,127,0.7);
+}
+
+header nav li:last-child {
+    border-bottom: none;
+}
+
+header nav a {
+    display: block;
+    font-size: 14pt;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s;
+    padding: 1em;
+}
+
+header nav a:hover {
+    background: navy;
+    transition: all 0.3s;
+}
+
+header nav ul li > span {
+    display: none;
+}
+
+main {
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
