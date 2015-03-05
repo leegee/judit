@@ -1,6 +1,6 @@
 define( [
     'jQuery', 'Backbone', 'Underscore', 'collection/Collection',
-    'view/DressView', 'view/Loader', "FluidMasonry"
+    'view/Dress', 'view/Loader', "FluidMasonry"
 ], function (
     jQuery, Backbone, _, Collection,
     DressView, Loader, FluidMasonry

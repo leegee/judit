@@ -7,7 +7,8 @@ define( [
 
     var THUMBS_MADE = 0;
 
-    var DressView =  Backbone.View.extend({
+    // view Dress
+    return Backbone.View.extend({
         thumbLoaded: function () { throw new Error("Override me"); },
         className: 'dress grow',
         galleryId: null,
@@ -51,6 +52,4 @@ define( [
             }).render();
         }
     });
-
-    return DressView;
 });

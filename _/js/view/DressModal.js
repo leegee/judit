@@ -5,7 +5,7 @@ define( [
 ){
     'use strict';
 
-    // DressViewModal
+    // view/DressModal
     return Backbone.View.extend({
         events: {
             "click .basketToggle": "basketToggle",
