@@ -45,7 +45,7 @@ define( [
                 }
             });
 
-            jQuery('.nav-ctrl, header nav a').on('click', function () {
+            jQuery('.nav-ctrl').on('click', function () {
                 jQuery(document.body).toggleClass('nav-open');
             });
 

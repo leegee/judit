@@ -44,7 +44,7 @@ h1  {
 section {
     margin: 0;
     padding: 1em;
-    background: gray;
+    background: black;
     min-width: 100%;
     min-height: 100%;
     -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
@@ -197,6 +197,10 @@ td.thumb {
     margin-bottom: .6em;
 }
 
+.basket img {
+    width: auto;
+}
+
 @media screen and (max-width: 40em){
     .basket img {
         border-right: 5pt solid transparent;
@@ -212,7 +216,7 @@ td.thumb {
         width: 100%;
     }
     .basket img {
-        width: 100%;
+        width: auto;
         border-right: 1em solid transparent;
         border-bottom: 1em solid transparent;
     }
@@ -351,7 +355,7 @@ td.thumb {
     z-index: 999;
 }
 
-.left, .right {
+.left, .right, .third {
     display: block;
     height: 100%;
     position: relative;
@@ -364,6 +368,10 @@ td.thumb {
 .right {
     float: right;
 }
+.third {
+    width: 33.3%;
+    float: left;
+}
 
 footer {
     font-weight: 300;
@@ -372,26 +380,26 @@ footer {
     color: white;
     padding: 3em;
     min-width: 100%;
-    min-height: 50%;
+    min-height: 100%;
+    overflow: auto;
+    height: 100%;
 }
 
 footer .content {
     margin: 0 auto;
-    -moz-column-count: 3;
-    -moz-column-gap: 1em;
-    -webkit-column-count: 3;
-    -webkit-column-gap: 1em;
-    column-count: 3;
-    column-gap: 1em;
 }
 
 footer h1, footer h2, footer h3, footer h4 {
     font-weight: 900;
     text-shadow: 2pt 0pt #333;
     margin-bottom: 0.5em;
-    opacity: 0.6;
+    opacity: 0.9;
 }
 
+footer p, footer ul li {
+    margin-bottom: 1em;
+    opacity: 0.8;
+}
 
 @media screen and (max-width: 60em) {
     footer .content {
