@@ -181,12 +181,16 @@ td.thumb {
     border: 1em solid #eee;
     padding: 1em;
     width: 33%;
-    float: left;
+    position: fixed;
+    right: 0;
 }
 .basket .remove {
     margin-top: 1em;
 }
 
+.basket h1 {
+    margin-bottom: 1em;
+}
 .basket p {
     margin-bottom: .6em;
 }
@@ -195,14 +199,24 @@ td.thumb {
     width: auto;
 }
 
-@media screen and (max-width: 40em){
-    .basket img {
-        border-right: 5pt solid transparent;
-        border-bottom: 5pt solid transparent;
-    }
+.basket table {
+    border-collapse: collapse;
 }
 
-@media screen and (max-width: 80em) {
+.basket tr {
+    border-bottom: 1px solid gray;
+}
+
+.basket td {
+    padding: 0.66em;
+}
+
+.basket td.thumb img {
+    max-width: 100px;
+    max-height: 75px;
+}
+
+@media screen and (max-width: 40em) {
     header {
         font-size: 120%;
     }
@@ -211,8 +225,8 @@ td.thumb {
     }
     .basket img {
         width: auto;
-        border-right: 1em solid transparent;
-        border-bottom: 1em solid transparent;
+        max-width: auto;
+        max-height: auto;
     }
     .basket .help {
         background: white;
@@ -423,6 +437,17 @@ footer p, footer ul li {
 .grow:hover {
     transform: scale(1.2);
     z-index: 999;
+}
+
+.basket .grow {
+    transition: all 0.2s ease-in-out;
+}
+.basket .grow:hover {
+    transform: scale(2);
+    z-index: 999;
+    -webkit-box-shadow: 0pt 0pt 2pt 8pt rgba(255,255,255,0.9);
+    -moz-box-shadow: 0pt 0pt 2pt 8pt rgba(255,255,255,0.9);
+    box-shadow: 0pt 0pt 2pt 8pt rgba(255,255,255,0.9);
 }
 
 #loader {
