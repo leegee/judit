@@ -1,5 +1,5 @@
 define( [
-    'Backbone', 'BasketModel', 'BackboneLocalForage'
+    'Backbone', 'model/BasketModel', 'BackboneLocalForage'
 ], function (Backbone, BasketModel) {
 
     // BasketCollection

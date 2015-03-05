@@ -1,5 +1,5 @@
 define( [
-    'Backbone', 'DressModel', 'BasketCollection'
+    'Backbone', 'Model/DressModel', 'collection/BasketCollection'
 ], function (
     Backbone, DressModel, BasketCollection
 ){

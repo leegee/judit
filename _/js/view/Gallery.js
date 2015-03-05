@@ -1,13 +1,13 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'Collection',
-    'DressView', 'Loader', "FluidMasonry"
+    'jQuery', 'Backbone', 'Underscore', 'collection/Collection',
+    'view/DressView', 'view/Loader', "FluidMasonry"
 ], function (
     jQuery, Backbone, _, Collection,
     DressView, Loader, FluidMasonry
 ){
     'use strict';
 
-    // GalleryView
+    // view/Gallery
     return Backbone.View.extend({
         tagName: "section",
         className: "gallery",

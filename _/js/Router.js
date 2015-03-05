@@ -1,7 +1,7 @@
 define( [
     'Config', 'Backbone', 'jQuery',
-    'Collection', 'Splash', 'GalleryView',
-    'MenuItemView', 'ContactView', 'BasketView',
+    'collection/Collection', 'view/Splash', 'view/Gallery',
+    'view/MenuItem', 'view/Contact', 'view/Basket',
     'Language',
     'BackboneLocalForage'
 ], function (

@@ -5,7 +5,7 @@ define( [
 ){
     'use strict';
 
-    // MenuItemView
+    // view/MenuItem
     return Backbone.View.extend({
         tagName: 'li',
 

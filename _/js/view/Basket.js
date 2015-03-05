@@ -1,11 +1,11 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'Language', 'Config', 'BasketCollection'
+    'jQuery', 'Backbone', 'Underscore', 'Language', 'Config', 'collection/BasketCollection'
 ], function (
     jQuery, Backbone, _, Language, Config, BasketCollection
 ){
     'use strict';
 
-    // BasketView
+    // basket/View
     return Backbone.View.extend({
         el: '#basket',
         events: {

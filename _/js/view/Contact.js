@@ -5,7 +5,7 @@ define( [
 ){
     'use strict';
 
-    // ContactView
+    // view/Contact
     return Backbone.View.extend({
         el: '#contact',
         render: function () {

@@ -1,5 +1,5 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'Modal'
+    'jQuery', 'Backbone', 'Underscore', 'view/Modal'
 ], function (
     jQuery, Backbone, _, Modal
 ){

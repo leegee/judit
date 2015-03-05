@@ -1,7 +1,7 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'Modal', 'DressViewModal'
+    'jQuery', 'Backbone', 'Underscore', 'view/Modal', 'view/DressModal'
 ], function (
-    jQuery, Backbone, _, Modal, DressViewModal
+    jQuery, Backbone, _, Modal, DressModal
 ){
     'use strict';
 
@@ -45,7 +45,7 @@ define( [
         },
 
         showModal: function () {
-            new DressViewModal({
+            new DressModal({
                 model:   this.model,
                 baseUrl: this.url
             }).render();
