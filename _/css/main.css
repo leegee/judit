@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Great+Vibes&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans&subset=latin,latin-ext);
 
 html, body {
     font-family: 'Georgia', sans-serif;
@@ -12,7 +12,8 @@ footer .content {
 }
 
 h1  {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Noto Sans', Helvetica;
+    font-size: 28pt;
     min-height: 100%;
     font-weight: normal;
 }
@@ -44,12 +45,21 @@ h1  {
 section {
     margin: 0;
     padding: 1em;
-    background: black;
+    background: white;
     min-width: 100%;
     min-height: 100%;
     -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
+}
+
+section h1 {
+    font-size: 28pt;
+    margin-bottom: 8pt;
+    text-transform: capitalize;
+    color: black;
+    margin-bottom: 8pt;
+    font-weight: normal;
 }
 
 @media screen and (max-width: 40em){
@@ -84,17 +94,6 @@ section {
     padding-bottom: 300px
 }
 
-section h1 {
-    font-size: 32pt;
-    margin-bottom: 8pt;
-    text-shadow: 1pt 1pt 1pt #333;
-}
-
-#contact h1 {
-    font-size: 48pt;
-    margin-bottom: 8pt;
-    color: white;
-}
 
 .gallery .dress {
     background: #ddd;
@@ -124,7 +123,6 @@ section h1 {
 }
 
 .gallery .dress h1 {
-    font-size: 18pt;
     font-weight: normal;
     text-shadow: none;
     margin-bottom: 0;
@@ -155,11 +153,6 @@ section h1 {
     -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
-}
-.basket h1 {
-    color: gray;
-    text-shadow: 1pt 1pt 1pt #ddd;
-    border-bottom: 1px solid gray;
 }
 .basket table {
     width: 66%;
@@ -285,9 +278,6 @@ td.thumb {
     text-align: center;
 }
 
-#modal-dress h1 {
-    font-size: 28pt;
-}
 #modal-dress h1,
 #modal-dress h2,
 #modal-dress h3,
