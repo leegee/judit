@@ -1,5 +1,5 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'Language', 'Config', 'collection/BasketCollection'
+    'jQuery', 'Backbone', 'Underscore', 'Language', 'Config', 'collection/Basket'
 ], function (
     jQuery, Backbone, _, Language, Config, BasketCollection
 ){

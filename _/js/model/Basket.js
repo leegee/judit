@@ -1,7 +1,7 @@
 define( [
     'Backbone', 'BackboneLocalForage'
 ], function (Backbone) {
-    // BasketModel
+    // model/Basket
     return Backbone.Model.extend({
         sync: Backbone.localforage.sync('JuditModel')
     });

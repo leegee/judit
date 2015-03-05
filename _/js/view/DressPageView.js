@@ -1,11 +1,11 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'view/DressModel'
+    'jQuery', 'Backbone', 'Underscore', 'view/Dress'
 ], function (
     jQuery, Backbone, _, DressModel
 ){
     'use strict';
 
-    // DressPageView
+    // view/DressPage
     return Backbone.View.extend({
         model: DressModel,
         events: {

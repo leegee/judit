@@ -1,8 +1,8 @@
 define( [
-    'Backbone', 'model/BasketModel', 'BackboneLocalForage'
+    'Backbone', 'model/Basket', 'BackboneLocalForage'
 ], function (Backbone, BasketModel) {
 
-    // BasketCollection
+    // collectin/Basket
     return Backbone.Collection.extend({
         sync: Backbone.localforage.sync('JuditCollection'),
         model: BasketModel
