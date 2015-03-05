@@ -2,13 +2,13 @@ define( [
     'Config', 'Backbone', 'jQuery',
     'collection/Collection', 'view/Splash', 'view/Gallery',
     'view/MenuItem', 'view/Contact', 'view/Basket',
-    'Language',
+    'Language', 'view/DressModal',
     'BackboneLocalForage'
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
     MenuItemView, ContactView, BasketView,
-    Language
+    Language, DressModal
 ){
     'use strict';
 
@@ -75,7 +75,6 @@ define( [
                 "dress/:dressId":           "dress",
                 "basket":                   "basket",
                 "search/:query":            "search",
-                "search/:query/:page":      "search",
                 "*stuff":                   "default"
             },
 
@@ -90,6 +89,7 @@ define( [
             },
 
             default: function () {
+                console.log("Default route");
                 if (showing) {
                     showing.remove();
                 }
@@ -116,17 +116,19 @@ define( [
                 }
             },
 
-            search: function (query, page) {
+            search: function (query) {
                 console.log('Search ', query, page);
             },
 
-            // dress: function (dressId) {
-            //     if (showing) {
-            //         showing.remove();
-            //     }
-            //     showing = dressPageView;
-            //     showing.render(dressId);
-            // },
+            dress: function (dressId) {
+                if (showing) {
+                    showing.remove();
+                }
+                showing = new DressModal ({
+                    model: collection.get(dressId)
+                });
+                showing.render();
+            },
 
             basket: function () {
                 if (showing) {

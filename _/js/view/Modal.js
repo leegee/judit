@@ -5,9 +5,7 @@ define( [
 ){
     'use strict';
 
-    var Modal = function (options) {
-        this.templateCompiled = options.templateCompiled;
-        this.$el              = options.$el;
+    var Modal = function () {
         this.$close           = null;
         this.bodyCss          = {};
         this.open             = false;
@@ -19,12 +17,11 @@ define( [
         }
         var self = this;
         this.open = true;
-
-        console.log("Open");
-        console.trace();
+        this.templateCompiled = options.templateCompiled;
+        this.$el              = options.$el;
+        this.closeUrl         = options.closeUrl;
 
         Backbone.history.navigate(options.showUrl);
-        this.closeUrl = options.closeUrl;
 
         this.$body = jQuery(document.body);
         this.bodyCssDefault  = this.bodyCssDefault || {
@@ -73,13 +70,15 @@ define( [
             width:      self.bodyCssDefault.width,
             height:     self.bodyCssDefault.height
         });
-        console.log("Close");
-        console.trace();
 
         jQuery(document).off('touchmove.modal');
         jQuery(document).off('keyup.modal');
-        Backbone.history.navigate(self.closeUrl);
+        if (self.closeUrl){
+            Backbone.history.navigate(self.closeUrl);
+        } else {
+            Backbone.history.history.back();
+        }
     };
 
-    return Modal;
+    return new Modal();
 });

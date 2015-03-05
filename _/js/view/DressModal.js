@@ -13,33 +13,27 @@ define( [
         },
 
         initialize: function (options) {
-            this.baseUrl = options.baseUrl;
-            this.url = this.baseUrl +'/'+ this.model.id;
             this.templates = {
                 page:             _.template( jQuery('#modal-dress-template').text() ),
                 addToBasket:      _.template( jQuery('#template-addToBasket').text() ),
                 removeFromBasket: _.template( jQuery('#template-removeFromBasket').text() ),
             };
             this.$el = jQuery('#modal-dress');
-            // this.model.listenTo(this.model, 'change', this.updateBasket);
-            this.MODAL = new Modal({
-                templateCompiled: _.template( jQuery('#modal-dress-template').text() ),
-                $el: this.$el
-            });
-            console.info(this.model);
+            this.MODAL = Modal;
         },
 
         close: function () {
             this.MODAL.close();
         },
 
+        // To allow calling directly from the router
+        remove: function () {},
+
         basketToggle: function () {
             var self = this;
             this.model.ifBasketed( function (baskted){
                 if (baskted){
-                    console.log('in basket already');
                     self.model.removeFromBasket();
-                    console.log('change text');
                     jQuery('#basketCtrls').html( self.templates.addToBasket );
                 } else {
                     self.model.addToBasket();
@@ -70,10 +64,21 @@ define( [
                 this.templates.page( this.model.toJSON() )
             );
 
+            // If linked to directly (/dress/:sku), make the
+            // closeUrl be the homepage; otherwise, create a showUrl
+            var closeUrl = Backbone.history.fragment;
+            var showUrl  = Backbone.history.fragment +'/'+ this.model.id;
+            if (Backbone.history.fragment.match( '/'+ this.model.id +'$') ){
+                closeUrl = null;
+                showUrl  = Backbone.history.fragment;
+            }
+
             this.MODAL.show({
+                templateCompiled: _.template( jQuery('#modal-dress-template').text() ),
+                $el: this.$el,
                 model: this.model.toJSON(),
-                showUrl: this.baseUrl+'/'+this.model.id,
-                closeUrl: this.baseUrl
+                showUrl: showUrl,
+                closeUrl: closeUrl
             });
 
             this.$dressInfo = jQuery('#dress-info');
@@ -129,10 +134,8 @@ define( [
 
         zoom: function (e) {
             // Position within the source image:
-            // adding/removing a bit because of the *em offset caused
-            // by the 'close' button :(
-            var x  = e.pageX - this.zoomable.offset.left, // - 30,
-                y  = e.pageY - this.zoomable.offset.top; // - 40;
+            var x  = e.pageX - this.zoomable.offset.left,
+                y  = e.pageY - this.zoomable.offset.top;
             // As a percentage:
             x = x / this.zoomable.pcWidth;
             y = y / this.zoomable.pcHeight;

@@ -40,19 +40,19 @@
                     <% _.each(dresses, function (dress) { i++; %>
                         <tr class='dress'>
                             <td class='thumb'>
-                                <a href='#/gallery/<%= dress.gallery %>/<%= dress.id %>'>
+                                <a href='#/dress/<%= dress.id %>'>
                                     <img class="grow" src="<%= dress.thumb %>">
                                 </a>
                             </td>
                             <td class='name'>
                                 <p>
-                                    <a href='#/gallery/gallery/<%= dress.id %>'>
+                                    <a href='#/dress/<%= dress.id %>'>
                                         <span lang='en'><%= dress.en_name  %></span>
                                         <span lang='hu'><%= dress.hu_name  %></span>
                                     </a>
                                 </p>
                                 <p class='id'>
-                                    <a href='#/gallery/<%= dress.gallery %>/<%= dress.id %>'>
+                                    <a href='#/dress/<%= dress.id %>'>
                                         <%= dress.id %>
                                     </a>
                                 </p>

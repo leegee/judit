@@ -10,6 +10,7 @@
     -webkit-box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
     -moz-box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
     box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
+    cursor: pointer;
 }
 
 body.nav-open header {

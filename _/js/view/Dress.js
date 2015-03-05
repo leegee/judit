@@ -47,8 +47,7 @@ define( [
 
         showModal: function () {
             new DressModal({
-                model:   this.model,
-                baseUrl: this.url
+                model: this.model
             }).render();
         }
     });
