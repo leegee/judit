@@ -179,6 +179,8 @@ header.menubar nav li.search {
     border: 1px solid black;
     margin: 0.75 4em auto 2em;
     margin-right: 1em;
+    font-variant: small-caps;
+    text-transform: lowercase;
 }
 
 header.menubar .nav-hide {
