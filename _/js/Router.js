@@ -145,16 +145,17 @@ define( [
             },
 
             search: function (query) {
-                console.log('Search ', query, page);
+                console.log('Search ', query);
                 if (showing) {
                     showing.remove();
                 }
-                var collection = new SearchCollection({
-                    q: query
+                var searchCollection = new SearchCollection({
+                    stock: collection
                 });
+                searchCollection.search({ q: query });
+                console.log("Got searchResults", searchCollection);
                 var showing = new GalleryView({
-                    id: galleryName,
-                    collection: collection
+                    collection: searchCollection
                 });
                 showing.render();
             },

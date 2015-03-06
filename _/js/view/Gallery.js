@@ -33,18 +33,16 @@ define( [
             jQuery('#galleries').show();
 
             var masonry = new FluidMasonry( self.$dressContainer.get(0), {
-                minColumnWidth: '20%',
-                itemSelector: '.dress'
-            });
+                    minColumnWidth: '20%',
+                    itemSelector: '.dress'
+                }),
+                showDressAsModal,
+                promiseToLoadAllImages = [],
 
-            var loader = new Loader({ total: self.collection.length });
-            // if (! this.loaded) {
-                loader.show();
-            // }
+                loader = new Loader({ total: self.collection.length }).show();
 
-            var showDressAsModal;
-            var promiseToLoadAllImages = [];
-            _.each( this.collection.where({ gallery : self.id }), function (dress) {
+            var perDress =function (dress) {
+                console.log(dress);
                 promiseToLoadAllImages.push(
                     new Promise ( function (resolve, reject) {
                         var dressView = new DressView({
@@ -64,7 +62,7 @@ define( [
                         }
                     })
                 )
-            });
+            };
 
             var done = function () {
                 loader.hide();
@@ -73,6 +71,17 @@ define( [
                     showDressAsModal.showModal();
                 }
             };
+
+            // Should be a sub-class :(
+            if (typeof self.id === 'undefined'){
+                console.log(this.collection);
+                // _.each( this.collection, perDress );
+                this.collection.each( perDress );
+            }
+
+            else {
+                _.each( this.collection.where({ gallery : self.id }), perDress );
+            }
 
             Promise.all( promiseToLoadAllImages )
             .then(
