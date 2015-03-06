@@ -176,11 +176,21 @@ header.menubar nav li.search {
 #q {
     display: inline-block;
     margin-top: 0.75em; /* TODO damned valign */
-    border: 1px solid black;
     margin: 0.75 4em auto 2em;
     margin-right: 1em;
     font-variant: small-caps;
     text-transform: lowercase;
+    background: rgba(255,255,255, 0.3);
+    border: 1px solid rgba(255,255,255, 0.1);
+    color: white;
+}
+#q:hover {
+    background: rgba(255,255,255,1);
+    color: black;
+}
+#q:focus {
+    background: rgba(255,255,255,1);
+    color: black;
 }
 
 header.menubar .nav-hide {
