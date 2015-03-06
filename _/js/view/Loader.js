@@ -22,19 +22,23 @@ define( ['jQuery','Underscore'], function (jQuery, _) {
         if (total) {
             this.total = total;
         }
+        return this;
     };
 
     Loader.prototype.show = function () {
         this.$el.show();
+        return this;
     };
 
     Loader.prototype.hide = function () {
         this.$el.hide();
+        return this;
     };
 
     Loader.prototype.increment = function () {
         this.current ++;
         this.$status.css( 'width', ((this.current / this.total) * 100) + '%');
+        return this;
     };
 
     return Loader;
