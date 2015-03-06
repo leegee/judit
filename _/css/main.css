@@ -4,7 +4,6 @@ html, body {
     font-family: 'Georgia', sans-serif;
 }
 
-/*header nav,*/
 section article,
 footer .content {
     max-width: 1100px;
@@ -33,14 +32,6 @@ h1  {
 .flag.flag-de {background-position: -16px 0}
 .flag.flag-en {background-position: 0 -11px}
 .flag.flag-hu {background-position: -16px -11px}
-
-@media screen and (max-width: 40em) {
-    header nav {
-        padding: 0;
-        width: 100%;
-    }
-}
-
 
 section {
     margin: 0;
@@ -216,10 +207,8 @@ td.thumb {
     max-height: 75px;
 }
 
+
 @media screen and (max-width: 40em) {
-    header {
-        font-size: 120%;
-    }
     .basket table {
         width: 100%;
     }
