@@ -2,13 +2,13 @@ define( [
     'Config', 'Backbone', 'jQuery',
     'collection/Collection', 'view/Splash', 'view/Gallery',
     'view/MenuItem', 'view/Contact', 'view/Basket',
-    'Language', 'view/DressModal',
+    'Language', 'view/DressModal', 'collection/Search',
     'BackboneLocalForage'
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
     MenuItemView, ContactView, BasketView,
-    Language, DressModal
+    Language, DressModal, SearchCollection
 ){
     'use strict';
 
@@ -82,16 +82,12 @@ define( [
     }
 
     function setNav () {
-        console.log("Set nav");
         if (! jQuery(document.body).hasClass('nav-open')){
-            console.log("Not av-open");
             if (jQuery(document).scrollTop() > MenuBarHeight ){
-                console.log("scrollTop > MenuBarHeight");
                 // MenuBar.hide();
                 NavCtrl.show();
                 NavShow.show();
             } else {
-                console.log("scrollTop < MenuBarHeight");
                 // MenuBar.show();
                 NavCtrl.hide();
                 NavShow.hide();
@@ -150,6 +146,17 @@ define( [
 
             search: function (query) {
                 console.log('Search ', query, page);
+                if (showing) {
+                    showing.remove();
+                }
+                var collection = new SearchCollection({
+                    q: query
+                });
+                var showing = new GalleryView({
+                    id: galleryName,
+                    collection: collection
+                });
+                showing.render();
             },
 
             dress: function (dressId) {
