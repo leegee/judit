@@ -18,7 +18,7 @@ define( [
             this.$el.html(
                 this.template( this.model )
             );
-            this.$el.insertBefore('#menu-contact');
+            this.$el.insertBefore('.menu-contact');
         }
     });
 });

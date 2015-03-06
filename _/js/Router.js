@@ -18,7 +18,12 @@ define( [
         basketView       = new BasketView({ collection: collection }),
         // dressPageView    = new DressPageView({ collection: collection }),
         galleryView      = {},
-        showing          = null;
+        showing          = null,
+        NavShow          = null,
+        NavCtrl          = null,
+        MenuBar          = null,
+        MenuBarHeight    = null;
+
 
     var promiseToCreateRouter = new Promise( function (resolve, reject) {
         jQuery.get( Config.stockJson )
@@ -54,16 +59,44 @@ define( [
     });
 
     function setVariableHeader () {
+        NavShow          = jQuery('#nav-show');
+        NavCtrl          = jQuery('header.nav-ctrl');
+        MenuBar          = NavCtrl.clone();
+        MenuBarHeight    = null;
+        MenuBar.removeClass('nav-ctrl');
+        MenuBar.addClass('menubar');
+        jQuery(document.body).prepend( MenuBar );
+        MenuBarHeight = MenuBar.height();
+
         var Scrolled = false;
         jQuery(window).on("scroll touchmove", function () {
             Scrolled = true;
         });
         setInterval( function () {
             if (Scrolled){
-                jQuery('header').toggleClass('small', $(document).scrollTop() > 0);
                 Scrolled = false;
+                // jQuery('header').toggleClass('small', jQuery(document).scrollTop() > 0);
+                setNav();
             }
         }, 333);
+    }
+
+    function setNav () {
+        console.log("Set nav");
+        if (! jQuery(document.body).hasClass('nav-open')){
+            console.log("Not av-open");
+            if (jQuery(document).scrollTop() > MenuBarHeight ){
+                console.log("scrollTop > MenuBarHeight");
+                // MenuBar.hide();
+                NavCtrl.show();
+                NavShow.show();
+            } else {
+                console.log("scrollTop < MenuBarHeight");
+                // MenuBar.show();
+                NavCtrl.hide();
+                NavShow.hide();
+            }
+        }
     }
 
     function createRouter () {
@@ -86,10 +119,10 @@ define( [
                 }
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
                 jQuery('#loader').hide();
+                setNav();
             },
 
             default: function () {
-                console.log("Default route");
                 if (showing) {
                     showing.remove();
                 }
@@ -106,7 +139,6 @@ define( [
             },
 
             gallery: function (galleryId, dressId) {
-                console.log("Router to galleryId: ", galleryId, galleryView);
                 if (galleryView.hasOwnProperty(galleryId)){
                     if (showing) {
                         showing.remove();
@@ -140,6 +172,7 @@ define( [
         });
     }
 
+    setVariableHeader();
     Language.init();
     Language.set();
 
