@@ -16,6 +16,7 @@ define( [
         initialize: function (options) {
             this.id = options.id;
             this.rendered = false;
+            console.log('Collection',this.collection);
             this.template = _.template( jQuery('#gallery-template').text() );
         },
 
@@ -42,9 +43,9 @@ define( [
                 loader = new Loader({ total: self.collection.length }).show();
 
             var perDress =function (dress) {
-                console.log(dress);
                 promiseToLoadAllImages.push(
                     new Promise ( function (resolve, reject) {
+                        console.log( 'DRESS', dress );
                         var dressView = new DressView({
                             model: dress,
                             collection: self.collection,
@@ -74,9 +75,10 @@ define( [
 
             // Should be a sub-class :(
             if (typeof self.id === 'undefined'){
-                console.log(this.collection);
+                console.log("No id, using collection ", this.collection);
                 // _.each( this.collection, perDress );
                 this.collection.each( perDress );
+                console.log("Done loop")
             }
 
             else {
@@ -86,7 +88,8 @@ define( [
             Promise.all( promiseToLoadAllImages )
             .then(
                 function () {
-                   done();
+                    console.log("OK");
+                    done();
                 },
                 function (reason) {
                     console.error(reason);

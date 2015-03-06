@@ -2,13 +2,12 @@ define( [
     'Config', 'Backbone', 'jQuery',
     'collection/Collection', 'view/Splash', 'view/Gallery',
     'view/MenuItem', 'view/Contact', 'view/Basket',
-    'Language', 'view/DressModal', 'collection/Search',
-    'BackboneLocalForage'
+    'view/DressModal', 'collection/Search'
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
     MenuItemView, ContactView, BasketView,
-    Language, DressModal, SearchCollection
+    DressModal, SearchCollection
 ){
     'use strict';
 
@@ -16,14 +15,8 @@ define( [
         splash           = new Splash({ el: '#home' }),
         contactView      = new ContactView(),
         basketView       = new BasketView({ collection: collection }),
-        // dressPageView    = new DressPageView({ collection: collection }),
         galleryView      = {},
-        showing          = null,
-        NavShow          = null,
-        NavCtrl          = null,
-        MenuBar          = null,
-        MenuBarHeight    = null;
-
+        showing          = null;
 
     var promiseToCreateRouter = new Promise( function (resolve, reject) {
         jQuery.get( Config.stockJson )
@@ -50,50 +43,9 @@ define( [
                 }
             });
 
-            jQuery('.nav-ctrl').on('click', function () {
-                jQuery(document.body).toggleClass('nav-open');
-            });
-
             resolve( createRouter() );
         });
     });
-
-    function setVariableHeader () {
-        NavShow          = jQuery('#nav-show');
-        NavCtrl          = jQuery('header.nav-ctrl');
-        MenuBar          = NavCtrl.clone();
-        MenuBarHeight    = null;
-        MenuBar.removeClass('nav-ctrl');
-        MenuBar.addClass('menubar');
-        jQuery(document.body).prepend( MenuBar );
-        MenuBarHeight = MenuBar.height();
-
-        var Scrolled = false;
-        jQuery(window).on("scroll touchmove", function () {
-            Scrolled = true;
-        });
-        setInterval( function () {
-            if (Scrolled){
-                Scrolled = false;
-                // jQuery('header').toggleClass('small', jQuery(document).scrollTop() > 0);
-                setNav();
-            }
-        }, 333);
-    }
-
-    function setNav () {
-        if (! jQuery(document.body).hasClass('nav-open')){
-            if (jQuery(document).scrollTop() > MenuBarHeight ){
-                // MenuBar.hide();
-                NavCtrl.show();
-                NavShow.show();
-            } else {
-                // MenuBar.show();
-                NavCtrl.hide();
-                NavShow.hide();
-            }
-        }
-    }
 
     function createRouter () {
         return Backbone.Router.extend({
@@ -115,7 +67,7 @@ define( [
                 }
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
                 jQuery('#loader').hide();
-                setNav();
+                // setNav();
             },
 
             default: function () {
@@ -145,7 +97,6 @@ define( [
             },
 
             search: function (query) {
-                console.log('Search ', query);
                 if (showing) {
                     showing.remove();
                 }
@@ -153,7 +104,6 @@ define( [
                     stock: collection
                 });
                 searchCollection.search({ q: query });
-                console.log("Got searchResults", searchCollection);
                 var showing = new GalleryView({
                     collection: searchCollection
                 });
@@ -179,10 +129,6 @@ define( [
             }
         });
     }
-
-    setVariableHeader();
-    Language.init();
-    Language.set();
 
     return promiseToCreateRouter;
 });

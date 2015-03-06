@@ -1,3 +1,9 @@
+# TODO
+
+Use one global basket collection
+
+Add search page for slide nav
+
 # i18n
 
 To add a locale:

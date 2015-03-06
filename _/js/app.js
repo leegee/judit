@@ -46,22 +46,10 @@ requirejs.config({
     }
 });
 
-requirejs([
-    'jQuery', 'Backbone', 'Router', 'PictureFill'
-], function (
-    jQuery, Backbone, promiseToCreateRouter
-) {
+requirejs(['view/Main'], function (ViewMain ) {
     'use strict';
     jQuery(document).ready( function () {
-        promiseToCreateRouter.then(
-            function (Router) {
-                new Router();
-                Backbone.history.start({pushState: false});
-            },
-            function (err) {
-                console.error('Error initing router', err);
-            }
-        );
+        new ViewMain();
     });
 });
 

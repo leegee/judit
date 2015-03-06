@@ -17,22 +17,23 @@ define( [
     // collection/Search - use the Collection interface
     return Backbone.Collection.extend({
         basket: new BasketCollection(),
+        model: DressModel,
 
         initialize: function (options) {
             this.stock = options.stock;
         },
 
-        search: function (options){
+        search: function (options) {
             options.q = options.q || '';
 
             var self = this,
                 numberSearch =  isaNumber( options.q ),
                 re = new RegExp( escapeRegExp( options.q ), 'ig' );
 
-            console.log( "Search: numberSearch? %s. Re: ", numberSearch, re);
+            this.reset();
 
-            // Backbone.Collection.where is vague:
-            this.stock.forEach( function (dress){
+            // Backbone.Collection.where has no regexp:
+            this.stock.forEach( function (dress) {
                 _.every(dress.attributes, function (value, attr) {
                     var found = false;
                     if (numberSearch){
@@ -56,6 +57,7 @@ define( [
                     }
                 });
             });
+
         }
     });
 });
