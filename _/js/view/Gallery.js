@@ -16,7 +16,6 @@ define( [
         initialize: function (options) {
             this.id = options.id;
             this.rendered = false;
-            this.collection = options.collection;
             this.template = _.template( jQuery('#gallery-template').text() );
         },
 
