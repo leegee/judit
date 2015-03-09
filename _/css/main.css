@@ -103,6 +103,7 @@ section h1 {
     box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.5);
 }
 
+
 .gallery .dress:hover {
     background: white;
     color: black;
@@ -131,6 +132,18 @@ section h1 {
     max-width: 100%;
     display: inline-block;
     margin: 8pt auto ;
+}
+
+.gallery .dress.in-basket img {
+    border: 1px dotted black;
+}
+.gallery .dress.in-basket img::after {
+    background: red; /* TODO img */
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    left: 1em;
+    top: 1em;
 }
 
 .gallery .dress .blurb {

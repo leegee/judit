@@ -4,7 +4,9 @@ Use one global basket collection
 
 * Add search page for slide nav
 * Singletons via .extend's second arg, `classProperties`
-* LocalForage rmove crap
+* Use the JSON on Google Drive for Judit's account
+* Generalise the Bubble view
+* "In basket" icon overlays
 
 # i18n
 

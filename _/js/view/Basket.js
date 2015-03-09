@@ -5,7 +5,7 @@ define( [
 ){
     'use strict';
 
-    // basket/View
+    // view/Basket
     return Backbone.View.extend({
         el: '#basket',
         events: {
@@ -19,7 +19,13 @@ define( [
             this.listenTo( this.collection, 'remove', this.removedItem);
         },
 
-        render: function () {
+        isEmpty: function () {
+            return this.collection.length === 0;
+        },
+
+        // callbacks.empty
+        // callbacks.notEmpty
+        render: function (callbacks) {
             var self = this;
             console.log("Basket.Render");
 
@@ -31,30 +37,45 @@ define( [
 
             this.collection.fetch({
                 success: function (collection, response, options) {
-
-                    // Set item_name_X by locale
-                    var lang = Language.get();
-                    var payPalItemNames = [];
-                    collection.each( function (dress) {
-                        console.log(dress);
-                        payPalItemNames.push(
-                            dress.get( lang + '_name')
-                        );
-                    });
-
-                    self.$el.html(
-                        self.template({
-                            dresses: collection.toJSON(),
-                            config: Config,
-                            item_names: payPalItemNames
-                        })
-                    );
-                    self.$el.show();
+                    if (collection.length > 0){
+                        self.renderPage();
+                        callbacks.notEmpty.apply(this);
+                    } else {
+                        if (Backbone.history.fragment === 'basket') {
+                            // Template handles 'empty' message
+                            self.renderPage();
+                        }
+                        else {
+                            alert("Your basket is empty, not in basket view");
+                        }
+                        // self.renderBubble();
+                    }
                 },
+
                 error: function () {
                     console.error(arguments)
                 }
             });
+        },
+
+        renderPage: function () {
+            // Set item_name_X by locale
+            var lang = Language.get();
+            var payPalItemNames = [];
+            this.collection.each( function (dress) {
+                payPalItemNames.push(
+                    dress.get( lang + '_name')
+                );
+            });
+
+            this.$el.html(
+                this.template({
+                    dresses: this.collection.toJSON(),
+                    config: Config,
+                    item_names: payPalItemNames
+                })
+            );
+            this.$el.show();
         },
 
         remove: function () {
@@ -62,7 +83,7 @@ define( [
         },
 
         removeItem: function (e) {
-            console.log(this);
+            console.log(arguments);
             this.collection.get( e.currentTarget.dataset.dressid ).destroy();
         },
 

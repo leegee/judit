@@ -32,6 +32,12 @@ define( [
             this.el.id = this.model.get('id');
             this.model.set('thumbId', this.thumbId);
 
+            this.model.ifBasketed( function (isBasketed) {
+                if (isBasketed){
+                    self.$el.addClass('in-basket');
+                }
+            });
+
             var img = new Image ();
             img.src = this.model.get('thumb');
             img.onload = function () {

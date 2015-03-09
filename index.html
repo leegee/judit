@@ -181,6 +181,12 @@
         <a href="#/gallery/<%= id %>"><%= id %></a>
     </script>
 
+    <script type='html/template' id='basket-empty-bubble-template'>
+        <div class='up-arrow'></div>
+        <div class='bubble'>
+            Your basket is empty
+        </bubble>
+    </script>
 </head>
 <body>
 
@@ -206,10 +212,12 @@
                 <span lang='en'>Contact</span>
                 <span lang='hu'>Kapcsolat</span>
             </a></li>
-            <li class='menu-basket'><a href="#/basket">
-                <span lang='en'>Basket</span>
-                <span lang='hu'>Kosár</span>
-            </a></li>
+            <li class='menu-basket'>
+                <a href="#/basket">
+                    <span lang='en'>Basket</span>
+                    <span lang='hu'>Kosár</span>
+                </a>
+            </li>
 
             <li class='language'>
                 <span lang='en'>Language</span>
@@ -323,7 +331,9 @@
         </footer>
     </main>
 
-    <aside id="modal-dress" class="modal" tabindex="-1">
-    </aside>
+    <aside id="modal-dress" class="modal" tabindex="-1"></aside>
+
+    <aside id="bubble-outter" tabindex="-1"></aside>
+
 </body>
 </html>

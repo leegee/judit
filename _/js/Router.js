@@ -2,21 +2,22 @@ define( [
     'Config', 'Backbone', 'jQuery',
     'collection/Collection', 'view/Splash', 'view/Gallery',
     'view/MenuItem', 'view/Contact', 'view/Basket',
-    'view/DressModal', 'collection/Search'
+    'view/DressModal', 'collection/Search', 'view/BasketEmptyBubble'
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
     MenuItemView, ContactView, BasketView,
-    DressModal, SearchCollection
+    DressModal, SearchCollection, BasketEmptyBubble
 ){
     'use strict';
 
-    var collection       = new Collection(),
-        splash           = new Splash({ el: '#home' }),
-        contactView      = new ContactView(),
-        basketView       = new BasketView({ collection: collection.basket }),
-        galleryView      = {},
-        showing          = null;
+    var collection        = new Collection(),
+        splash            = new Splash({ el: '#home' }),
+        contactView       = new ContactView(),
+        basketView        = new BasketView({ collection: collection.basket }),
+        basketEmptyBubble = new BasketEmptyBubble(),
+        galleryView       = {},
+        showing           = null;
 
     var promiseToCreateRouter = new Promise( function (resolve, reject) {
         jQuery.get( Config.stockJson )
@@ -121,11 +122,16 @@ define( [
             },
 
             basket: function () {
-                if (showing) {
-                    showing.remove();
+                if (basketView.isEmpty()){
+                    basketEmptyBubble.render();
+                    Backbone.history.history.back();
+                } else {
+                    if (showing) {
+                        showing.remove();
+                    }
+                    showing = basketView;
+                    showing.render();
                 }
-                showing = basketView;
-                showing.render();
             }
         });
     }

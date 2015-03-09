@@ -152,11 +152,43 @@ header.menubar nav {
     padding: 0;
     overflow: auto;
     text-align: left;
+    overflow: hidden;
 }
 
 header.menubar nav li {
     border-bottom: none;
     float: left;
+    overflow: auto;
+}
+
+
+/* https://css-tricks.com/snippets/css/css-triangle/ */
+/* #bubble-outter::before */
+.up-arrow {
+    display: block;
+    background: none;
+    width: 0;
+    height: 0;
+    border-left: 15pt solid transparent;
+    border-right: 15pt solid transparent;
+    border-bottom: 15pt solid #ddd;
+    margin-left: 40%;
+}
+#bubble-outter {
+    margin-top: -0.5em;
+    display: none;
+    background: none;
+    color: black;
+    position: absolute;
+    z-index: 999;
+    top: 1em;
+    text-align: center;
+}
+.bubble {
+    background: #ddd;
+    font-family: 'Noto Sans', Helvetica;
+    padding: 1em;
+    border-radius: 1em;
 }
 
 header.menubar nav li.language {

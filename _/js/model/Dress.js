@@ -13,7 +13,9 @@ define( [
                     var found = collection.where({ id: self.get('id') });
                     var rv = typeof found !== undefined && found.length >0;
                     self.set('inBasket', rv);
-                    next( rv );
+                    if (next) {
+                        next( rv );
+                    }
                 }
             });
         },
