@@ -56,10 +56,10 @@ define( [
                 function (AppRouter) {
                     var router = new AppRouter();
 
+                    setVariableHeader();
+
                     Language.init();
                     Language.set();
-
-                    setVariableHeader();
 
                     jQuery('.nav-ctrl').on('click', function () {
                         jQuery(document.body).toggleClass('nav-open');
