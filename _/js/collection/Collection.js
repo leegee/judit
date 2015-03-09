@@ -4,7 +4,6 @@ define( [
     Backbone, DressModel, BasketCollection
 ){
     'use strict';
-
     // Collection
     return Backbone.Collection.extend({
         model: DressModel,

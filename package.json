@@ -4,8 +4,7 @@
   "preferGlobal": false,
   "author": "Lee Goddard <ch@leegoddard.net>",
   "description": "",
-  "files": [
-  ],
+  "files": [],
   "dependencies": {},
   "devDependencies": {
     "contextify": "^0.1.8",
@@ -23,7 +22,7 @@
     "grunt-docco": "^0.3.3",
     "grunt-generate": "^0.3.1",
     "grunt-jsdoc": "^0.5.4",
-    "grunt-mocha": "^0.4.10",
+    "grunt-mocha": "^0.4.12",
     "grunt-mocha-phantomjs": "^0.5.0",
     "grunt-qunit-junit": "^0.1.0",
     "grunt-replace": "^0.7.7",
@@ -37,7 +36,7 @@
     "mocha": "^1.20.0",
     "mocha-jenkins-reporter": "^0.1.0",
     "mocha-phantomjs": "^3.5.0",
-    "phantomjs": "^1.9.7-12",
+    "phantomjs": ">=1.9.16",
     "request": "^2.36.0",
     "requirejs": "^2.1.13",
     "should": "^4.0.4",

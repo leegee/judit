@@ -6,7 +6,7 @@ requirejs.config({
         Underscore: '../../bower_components/underscore-amd/underscore-min',
         Backbone: '../../bower_components/backbone/backbone',
         localforage: '../../bower_components/localforage/dist/localforage',
-        BackboneLocalForage: '../../bower_components/localforage-backbone/dist/localforage.backbone',
+        BackboneLocalForage: '../../bower_components/localforage-backbone/src/localforage.backbone', // xxx
         PictureFill: '../../bower_components/picturefill/dist/picturefill.min',
         VerticalSlideShow: "../../bower_components/js-vertical-slideshow/js/VerticalSlideShow",
         jQuery: "../../bower_components/jquery/dist/jquery.min", // "//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min",
@@ -46,7 +46,7 @@ requirejs.config({
     }
 });
 
-requirejs(['view/Main'], function (ViewMain ) {
+requirejs(['jQuery', 'view/Main'], function (jQuery, ViewMain ) {
     'use strict';
     jQuery(document).ready( function () {
         new ViewMain();

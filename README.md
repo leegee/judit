@@ -2,7 +2,9 @@
 
 Use one global basket collection
 
-Add search page for slide nav
+* Add search page for slide nav
+* Singletons via .extend's second arg, `classProperties`
+* LocalForage rmove crap
 
 # i18n
 

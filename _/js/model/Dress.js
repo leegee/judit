@@ -1,7 +1,7 @@
 define( [
-    'Backbone', 'Config', 'BackboneLocalForage'
+    'Backbone', 'Config', 'model/Basket'
 ], function (
-    Backbone, Config
+    Backbone, Config, BasketModel
 ){
     // DressModel
     return Backbone.Model.extend({
@@ -27,6 +27,7 @@ define( [
         },
         removeFromBasket: function () {
             var self = this;
+            console.log("Modal, remove");
             this.collection.basket.remove( this.dataForStore(), {
                 success: function () {
                     self.set('inBasket', false);
@@ -34,7 +35,8 @@ define( [
             } );
         },
         dataForStore: function () {
-            return {
+            return new BasketModel({
+                collection: this.collection, // ?
                 id:       this.get('id'),
                 gallery:  this.get('gallery'),
                 en_name:  this.get('en_name'),
@@ -42,7 +44,7 @@ define( [
                 thumb:    this.get('thumb'),
                 price:    this.get('price'),
                 shipping: this.get('shipping')
-            };
+            });
         },
         defaults: {
             inBasket: null,

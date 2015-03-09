@@ -1,7 +1,7 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'Language', 'Config', 'collection/Basket'
+    'jQuery', 'Backbone', 'Underscore', 'Language', 'Config'
 ], function (
-    jQuery, Backbone, _, Language, Config, BasketCollection
+    jQuery, Backbone, _, Language, Config
 ){
     'use strict';
 
@@ -15,15 +15,17 @@ define( [
 
         initialize: function (options) {
             this.template = _.template( jQuery('#basket-template').text() );
-            this.collection = new BasketCollection();
-            this.listenTo( Language, 'change', this.render )
+            this.listenTo( Language, 'change', this.render );
+            this.listenTo( this.collection, 'remove', this.removedItem);
         },
 
         render: function () {
             var self = this;
+            console.log("Basket.Render");
 
             // Global listen causes unhappy rendering
             if (Backbone.history.fragment !== 'basket') {
+                console.log("Basket?!");
                 return;
             }
 
@@ -34,6 +36,7 @@ define( [
                     var lang = Language.get();
                     var payPalItemNames = [];
                     collection.each( function (dress) {
+                        console.log(dress);
                         payPalItemNames.push(
                             dress.get( lang + '_name')
                         );
@@ -59,11 +62,21 @@ define( [
         },
 
         removeItem: function (e) {
-            this.collection.get(
-                e.currentTarget.dataset.dressid
-            ).destroy({
+            console.log(this);
+            this.collection.get( e.currentTarget.dataset.dressid ).destroy();
+        },
+
+        // Called from view/Modal
+        removedItem: function (model) {
+            // localForage does not have collection.remove
+            var self = this;
+            model.destroy({
                 success: function () {
-                    Backbone.history.loadUrl();
+                    self.collection.sync('delete', model, {
+                        success: function () {
+                            self.render();
+                        }
+                    });
                 }
             });
         },

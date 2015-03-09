@@ -5,6 +5,7 @@ define( [
 ){
     'use strict';
 
+    // Use classProperties
     var THUMBS_MADE = 0;
 
     // view Dress

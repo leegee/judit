@@ -137,11 +137,14 @@ section h1 {
     display:none;
 }
 
+#basket {
+}
 .basket {
     display: block;
     margin: 0 auto;
     background: white;
     padding: 1em;
+    min-height: 100%;
     -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
     box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.2);
@@ -177,6 +180,7 @@ td.thumb {
 }
 .basket .remove {
     margin-top: 1em;
+    cursor: pointer;
 }
 
 .basket h1 {
@@ -450,6 +454,7 @@ footer p, footer ul li {
     overflow: hidden;
     background-color: black;
     opacity: 0.9;
+    cursor: wait;
 }
 #loader-status-outside {
     border: 2px solid gold;

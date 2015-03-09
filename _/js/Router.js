@@ -14,7 +14,7 @@ define( [
     var collection       = new Collection(),
         splash           = new Splash({ el: '#home' }),
         contactView      = new ContactView(),
-        basketView       = new BasketView({ collection: collection }),
+        basketView       = new BasketView({ collection: collection.basket }),
         galleryView      = {},
         showing          = null;
 
@@ -33,7 +33,7 @@ define( [
                 if (typeof galleryName === 'undefined'){
                     model.set('gallery', Config.defaultGalleryName);
                     galleryName = Config.defaultGalleryName;
-                };
+                }
                 if (! galleryView[ galleryName ] ){
                     galleryView[ galleryName ] = new GalleryView({
                         id: galleryName,
@@ -104,7 +104,7 @@ define( [
                     stock: collection
                 });
                 searchCollection.search({ q: query });
-                var showing = new GalleryView({
+                showing = new GalleryView({
                     collection: searchCollection
                 });
                 showing.render();

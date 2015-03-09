@@ -16,7 +16,6 @@ define( [
         initialize: function (options) {
             this.id = options.id;
             this.rendered = false;
-            console.log('Collection',this.collection);
             this.template = _.template( jQuery('#gallery-template').text() );
         },
 
@@ -45,7 +44,6 @@ define( [
             var perDress =function (dress) {
                 promiseToLoadAllImages.push(
                     new Promise ( function (resolve, reject) {
-                        console.log( 'DRESS', dress );
                         var dressView = new DressView({
                             model: dress,
                             collection: self.collection,

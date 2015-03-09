@@ -17,7 +17,9 @@ define([
             });
         },
 
-        get: function () { return Language },
+        get: function () {
+            return Language;
+        },
 
         set: function (lang) {
             var qs = document.location.search.match(/^\?(..)/);
