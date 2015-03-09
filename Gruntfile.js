@@ -174,9 +174,9 @@ module.exports = function(grunt) {
                     run         : false,
                     reporter    : 'Spec',
                     hostname    : '*',
-                    port        : parseInt( DEV_PORT ), /** Also in tests/runner.html */
+                    port        : parseInt( DEV_PORT ), /** Also in test.html */
                     ui          : 'bdd', /** Passed to mocha.setup() */
-                    urls        : [ 'http://127.0.0.1:' + DEV_PORT + '/tests/runner.html' ]
+                    urls        : [ 'http://127.0.0.1:' + DEV_PORT + '/test.html' ]
                 }
             }
         },
