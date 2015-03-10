@@ -1,23 +1,32 @@
-body.nav-open #nav-show,
 #nav-show {
-    display: none;
-}
-
-
-body.scrolled #nav-show {
-    display: block;
-    background: black;
+    z-index: 999;
     position: fixed;
     top: 0.5em;
     right: 0;
     padding: 0.5em 2em 0.5em 1em;
     font-size: 18pt;
     color: white;
-    z-index: 999;
+    background: black;
     -webkit-box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
     -moz-box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
     box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
     cursor: pointer;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+body.nav-open #nav-show,
+#nav-show {
+    opacity: 0;
+    filter:Alpha(opacity=0);
+}
+
+body.scrolled #nav-show {
+    opacity: 1;
+    filter:Alpha(opacity=100);
 }
 
 body.nav-open header {

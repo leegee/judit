@@ -108,7 +108,12 @@ section h1 {
     background: white;
     color: black;
     border: 1px solid white;
-    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, -webkit-box-shadow 0.5s ease, -moz-box-shadow 0.5s ease, box-shadow 0.5s ease;
+    /*transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, -webkit-box-shadow 0.5s ease, -moz-box-shadow 0.5s ease, box-shadow 0.5s ease;*/
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
     -webkit-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.5);
     box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.8);
@@ -442,6 +447,10 @@ footer p, footer ul li {
 
 /* Thanks http://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ */
 .grow {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
 .grow:hover {
@@ -450,6 +459,10 @@ footer p, footer ul li {
 }
 
 .basket .grow {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
 .basket .grow:hover {
