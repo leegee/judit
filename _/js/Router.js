@@ -19,6 +19,7 @@ define( [
         galleryView       = {},
         showing           = null;
 
+    // Galleries are created based on stock.json
     var promiseToCreateRouter = new Promise( function (resolve, reject) {
         jQuery.get( Config.stockJson )
 
