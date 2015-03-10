@@ -15,19 +15,24 @@ define( [
 
         initialize: function (options) {
             this.template = _.template( jQuery('#basket-template').text() );
-            this.listenTo( Language, 'change', this.render );
             this.listenTo( this.collection, 'remove', this.removedItem);
         },
 
-        isEmpty: function () {
-            return this.collection.length === 0;
+        isEmpty: function (then) {
+            this.collection.fetch({
+                success: function (collection) {
+                    then( collection.length === 0 );
+                }
+            });
         },
 
         // callbacks.empty
         // callbacks.notEmpty
         render: function (callbacks) {
             var self = this;
+            this.listenTo( Language, 'change', this.render );
             console.log("Basket.Render");
+            console.trace();
 
             // Global listen causes unhappy rendering
             if (Backbone.history.fragment !== 'basket') {
@@ -79,6 +84,7 @@ define( [
 
         remove: function () {
             this.$el.hide();
+            this.stopListening( Language );
         },
 
         removeItem: function (e) {

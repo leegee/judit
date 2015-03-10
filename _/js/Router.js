@@ -124,16 +124,19 @@ define( [
             },
 
             basket: function () {
-                if (basketView.isEmpty()){
-                    basketEmptyBubble.render();
-                    Backbone.history.history.back();
-                } else {
-                    if (showing) {
-                        showing.remove();
+                basketView.isEmpty( function (empty) {
+                    console.log("Router.basket empty?", empty);
+                    if (empty){
+                        basketEmptyBubble.render();
+                        Backbone.history.history.back();
+                    } else {
+                        if (showing) {
+                            showing.remove();
+                        }
+                        showing = basketView;
+                        showing.render();
                     }
-                    showing = basketView;
-                    showing.render();
-                }
+                });
             }
         });
     }
