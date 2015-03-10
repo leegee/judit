@@ -40,8 +40,8 @@
                     <% _.each(dresses, function (dress) { i++; %>
                         <tr class='dress'>
                             <td class='thumb'>
-                                <a href='#/dress/<%= dress.id %>'>
-                                    <img class="grow" src="<%= dress.thumb %>">
+                                <a href='#/dress/<%= dress.id %>' class="grow" >
+                                    <img src="<%= dress.thumb %>">
                                 </a>
                             </td>
                             <td class='name'>
@@ -115,6 +115,7 @@
         <div lang='en'>
             <h1 class='name'>Name <%= en_name %></h1>
             <img class='thumb' id='<% thumbId %>' src='<%= thumb %>'>
+            <div class='basket-icon'></div>
             <% if (typeof(en_tagline) !== "undefined") { %>
                 <h2 class='tagline'>Tag <%= en_tagline %></h2>
             <% } %>

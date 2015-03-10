@@ -131,19 +131,22 @@ section h1 {
 .gallery .dress img.thumb {
     max-width: 100%;
     display: inline-block;
-    margin: 8pt auto ;
+    margin: 0 auto ;
 }
 
-.gallery .dress.in-basket img {
-    border: 1px dotted black;
+.basket-icon {
+    display: none;
 }
-.gallery .dress.in-basket img::after {
-    background: red; /* TODO img */
-    width: 1em;
-    height: 1em;
-    position: absolute;
-    left: 1em;
-    top: 1em;
+
+.in-basket .basket-icon {
+    display: block;
+    position: relative;
+    top: -33px;
+    float: right;
+    width: 32px;
+    height: 31px;
+    background: white url('basket-32x31.png') no-repeat bottom right;
+    border: 1px solid #e67231;
 }
 
 .gallery .dress .blurb {
