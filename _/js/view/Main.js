@@ -6,46 +6,29 @@ define( [
 ){
     'use strict';
 
-    var NavShow          = null,
-        NavCtrl          = null,
-        MenuBar          = null,
-        MenuBarHeight    = null;
-
+    /* Create a copy of the menu for non-mobile */
     function setVariableHeader () {
-        NavShow          = jQuery('#nav-show');
-        NavCtrl          = jQuery('header.nav-ctrl');
-        MenuBar          = NavCtrl.clone();
-        MenuBarHeight    = null;
+        var MenuBar       = jQuery('header.nav-ctrl').clone(),
+            MenuBarHeight = null,
+            Scrolled      = false;
+
         MenuBar.removeClass('nav-ctrl');
         MenuBar.addClass('menubar');
         jQuery(document.body).prepend( MenuBar );
         MenuBarHeight = MenuBar.height();
 
-        var Scrolled = false;
         jQuery(window).on("scroll touchmove", function () {
             Scrolled = true;
         });
         setInterval( function () {
             if (Scrolled){
                 Scrolled = false;
-                // jQuery('header').toggleClass('small', jQuery(document).scrollTop() > 0);
-                setNav();
+                jQuery(document.body).toggleClass(
+                    'scrolled',
+                    jQuery(document).scrollTop() > MenuBarHeight
+                );
             }
         }, 333);
-    }
-
-    function setNav () {
-        if (! jQuery(document.body).hasClass('nav-open')){
-            if (jQuery(document).scrollTop() > MenuBarHeight ){
-                jQuery(document.body).addClass('scrolled');
-                NavCtrl.show();
-                NavShow.show();
-            } else {
-                jQuery(document.body).removeClass('scrolled');
-                NavCtrl.hide();
-                NavShow.hide();
-            }
-        }
     }
 
     // view/Main
@@ -64,8 +47,6 @@ define( [
                     jQuery('.nav-ctrl').on('click', function (e) {
                         jQuery(document.body).toggleClass('nav-open');
                         if (! jQuery(document.body).hasClass('nav-open')){
-                            setNav();
-                            NavShow.hide();
                         }
                     });
 

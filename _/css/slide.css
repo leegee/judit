@@ -1,8 +1,11 @@
+body.nav-open #nav-show,
 #nav-show {
     display: none;
 }
 
+
 body.scrolled #nav-show {
+    display: block;
     background: black;
     position: fixed;
     top: 0.5em;
@@ -144,6 +147,10 @@ header.menubar {
     z-index: 255;
     height: auto;
     min-height: 3em;
+}
+
+body.scrolled header.menubar {
+    display: none;
 }
 
 header.menubar nav {
