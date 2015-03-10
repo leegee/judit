@@ -21,6 +21,7 @@ define( [
 
         render: function (dressIdToShow) {
             var self = this;
+            console.info("Gallery render");
 
             if (! jQuery.contains(document, self.$el[0])) {
                 jQuery('#galleries').append( this.$el );

@@ -49,7 +49,10 @@ define( [
         },
 
         showDressPage: function () {
-            Backbone.history.navigate('#/dress/' + this.model.get('id'));
+            Backbone.history.navigate(
+                '#/dress/' + this.model.get('id'),
+                 { trigger : true }
+            );
         },
 
         showModal: function () {

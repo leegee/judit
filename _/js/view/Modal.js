@@ -74,7 +74,7 @@ define( [
         jQuery(document).off('touchmove.modal');
         jQuery(document).off('keyup.modal');
         if (self.closeUrl){
-            Backbone.history.navigate(self.closeUrl);
+            Backbone.history.navigate(self.closeUrl,  {trigger: true});
         } else {
             Backbone.history.history.back();
         }

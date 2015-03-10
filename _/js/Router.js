@@ -63,6 +63,7 @@ define( [
 
             // For every route change
             execute: function (callback, args) {
+                console.info("Route changed");
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
                 if (callback) {
                     callback.apply(this, args);
