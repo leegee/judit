@@ -1,4 +1,8 @@
 #nav-show {
+    display: none;
+}
+
+body.scrolled #nav-show {
     background: black;
     position: fixed;
     top: 0.5em;
@@ -11,7 +15,6 @@
     -moz-box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
     box-shadow: 2pt 2pt 2pt 2pt rgba(0,0,0,0.15);
     cursor: pointer;
-    display: none;
 }
 
 body.nav-open header {

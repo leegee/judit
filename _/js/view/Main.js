@@ -34,14 +34,19 @@ define( [
         }, 333);
     }
 
+    function resetNav () {
+        NavCtrl.hide();
+        NavShow.hide();
+    }
+
     function setNav () {
         if (! jQuery(document.body).hasClass('nav-open')){
             if (jQuery(document).scrollTop() > MenuBarHeight ){
-                // MenuBar.hide();
+                jQuery(document.body).addClass('scrolled');
                 NavCtrl.show();
                 NavShow.show();
             } else {
-                // MenuBar.show();
+                jQuery(document.body).removeClass('scrolled');
                 NavCtrl.hide();
                 NavShow.hide();
             }
@@ -54,19 +59,24 @@ define( [
         initialize: function (options) {
             promiseToCreateRouter.then(
                 function (AppRouter) {
-                    var router = new AppRouter();
+                    var router = new AppRouter({
+                        resetNav: resetNav
+                    });
 
                     setVariableHeader();
 
                     Language.init();
                     Language.set();
 
-                    jQuery('.nav-ctrl').on('click', function () {
+                    jQuery('.nav-ctrl').on('click', function (e) {
                         jQuery(document.body).toggleClass('nav-open');
+                        if (! jQuery(document.body).hasClass('nav-open')){
+                            setNav();
+                            NavShow.hide();
+                        }
                     });
 
-                    jQuery('#search').on('submit', function () {
-                        alert(1)
+                    jQuery('.search').on('submit', function () {
                         router.navigate( '#/search/' + jQuery('#q').val() );
                     });
 

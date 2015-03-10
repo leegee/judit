@@ -51,6 +51,7 @@ define( [
 
     function createRouter () {
         return Backbone.Router.extend({
+
             routes: {
                 "contact":                  "contact",
                 "gallery/:gallery":         "gallery",
@@ -70,7 +71,6 @@ define( [
                 }
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
                 jQuery('#loader').hide();
-                // setNav();
             },
 
             default: function () {
