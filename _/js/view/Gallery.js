@@ -74,10 +74,7 @@ define( [
             // Should be a Search sub-class :(
             // Is a search call or a gallery with an id?
             if (typeof self.id === 'undefined'){
-                console.log("No id, using collection ", this.collection);
-                // _.each( this.collection, perDress );
                 this.collection.each( perDress );
-                console.log("Done loop")
             }
 
             else {
@@ -87,7 +84,6 @@ define( [
             Promise.all( promiseToLoadAllImages )
             .then(
                 function () {
-                    console.log("OK");
                     done();
                 },
                 function (reason) {

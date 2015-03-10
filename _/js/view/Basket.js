@@ -39,16 +39,15 @@ define( [
                 success: function (collection, response, options) {
                     if (collection.length > 0){
                         self.renderPage();
-                        callbacks.notEmpty.apply(this);
+                        if (callbacks) {
+                            callbacks.notEmpty.apply(this);
+                        }
+                    } else if (Backbone.history.fragment === 'basket') {
+                        // Template handles 'empty' message
+                        self.renderPage();
                     } else {
-                        if (Backbone.history.fragment === 'basket') {
-                            // Template handles 'empty' message
-                            self.renderPage();
-                        }
-                        else {
-                            alert("Your basket is empty, not in basket view");
-                        }
-                        // self.renderBubble();
+                        console.error("Unexpecte");
+                        console.trace();
                     }
                 },
 

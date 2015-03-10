@@ -19,11 +19,11 @@ define( [
                 removeFromBasket: _.template( jQuery('#template-removeFromBasket').text() ),
             };
             this.$el = jQuery('#modal-dress');
-            this.MODAL = Modal;
+            this.modal = Modal;
         },
 
         close: function () {
-            this.MODAL.close();
+            this.modal.close();
         },
 
         // To allow calling directly from the router
@@ -73,7 +73,7 @@ define( [
                 showUrl  = Backbone.history.fragment;
             }
 
-            this.MODAL.show({
+            this.modal.show({
                 templateCompiled: _.template( jQuery('#modal-dress-template').text() ),
                 $el: this.$el,
                 model: this.model.toJSON(),
