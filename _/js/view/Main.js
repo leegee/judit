@@ -34,11 +34,6 @@ define( [
         }, 333);
     }
 
-    function resetNav () {
-        NavCtrl.hide();
-        NavShow.hide();
-    }
-
     function setNav () {
         if (! jQuery(document.body).hasClass('nav-open')){
             if (jQuery(document).scrollTop() > MenuBarHeight ){
@@ -59,9 +54,7 @@ define( [
         initialize: function (options) {
             promiseToCreateRouter.then(
                 function (AppRouter) {
-                    var router = new AppRouter({
-                        resetNav: resetNav
-                    });
+                    var router = new AppRouter();
 
                     setVariableHeader();
 
