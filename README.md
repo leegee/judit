@@ -6,7 +6,6 @@ Use one global basket collection
 * Singletons via .extend's second arg, `classProperties`
 * Use the JSON on Google Drive for Judit's account
 * Generalise the Bubble view
-* "In basket" icon overlays
 
 # i18n
 
