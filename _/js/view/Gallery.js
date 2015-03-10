@@ -32,14 +32,13 @@ define( [
             this.$el.show();
             jQuery('#galleries').show();
 
-            var masonry = new FluidMasonry( self.$dressContainer.get(0), {
+            var showDressAsModal,
+                promiseToLoadAllImages = [],
+                loader  = new Loader({ total: self.collection.length }).show(),
+                masonry = new FluidMasonry( self.$dressContainer.get(0), {
                     minColumnWidth: '20%',
                     itemSelector: '.dress'
-                }),
-                showDressAsModal,
-                promiseToLoadAllImages = [],
-
-                loader = new Loader({ total: self.collection.length }).show();
+                });
 
             var perDress =function (dress) {
                 promiseToLoadAllImages.push(
