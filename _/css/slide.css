@@ -214,7 +214,7 @@ header.menubar nav li.language {
     float: right;
 }
 
-header.menubar nav a, #q {
+header.menubar nav a, .q {
     display: inline-block;
     float: left;
     font-size: 1em;
@@ -224,7 +224,7 @@ header.menubar nav li.search {
     float: right;
 }
 
-#q {
+.q {
     display: inline-block;
     margin-top: 0.75em; /* TODO damned valign */
     margin: 0.75 4em auto 2em;
@@ -235,11 +235,11 @@ header.menubar nav li.search {
     border: 1px solid rgba(255,255,255, 0.1);
     color: white;
 }
-#q:hover {
+.q:hover {
     background: rgba(255,255,255,1);
     color: black;
 }
-#q:focus {
+.q:focus {
     background: rgba(255,255,255,1);
     color: black;
 }

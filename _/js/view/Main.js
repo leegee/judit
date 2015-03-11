@@ -45,13 +45,15 @@ define( [
                     Language.set();
 
                     jQuery('.nav-ctrl').on('click', function (e) {
-                        jQuery(document.body).toggleClass('nav-open');
+                        console.log(e);
                         if (! jQuery(document.body).hasClass('nav-open')){
+                            console.log("Not open");
                         }
+                        jQuery(document.body).toggleClass('nav-open');
                     });
 
                     jQuery('.search').on('submit', function () {
-                        router.navigate( '#/search/' + jQuery('#q').val() );
+                        router.navigate( '#/search/' + jQuery('.q').val() );
                     });
 
                     Backbone.history.start({pushState: false});
