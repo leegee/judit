@@ -3,7 +3,7 @@ define( [
     'collection/Collection', 'view/Splash', 'view/Gallery',
     'view/MenuItem', 'view/Contact', 'view/Basket',
     'view/DressModal', 'collection/Search', 'view/Bubble',
-    'sources/Google' //  'sources/Local' //
+    'service/Google' //  'service/Local' //
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
