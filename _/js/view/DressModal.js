@@ -19,7 +19,7 @@ define( [
                 removeFromBasket: _.template( jQuery('#template-removeFromBasket').text() ),
             };
             this.$el = jQuery('#modal-dress');
-            this.modal = Modal;
+            this.modal = new Modal();
         },
 
         close: function () {

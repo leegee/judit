@@ -80,5 +80,11 @@ define( [
         }
     };
 
-    return new Modal();
+    var Instance;
+    return function() {
+        if (! Instance) {
+            Instance = new Modal();
+        }
+        return Instance;
+    }
 });
