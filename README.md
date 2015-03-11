@@ -5,9 +5,11 @@ Use one global basket collection
 * Add search page for slide nav
 * Singletons via .extend's second arg, `classProperties`
 * Use the JSON on Google Drive for Judit's account
-* Generalise the Bubble view
 
 # i18n
+
+We have few locales, and little text, so we mainly rely upon
+inline `lang` attributes, which suits SEO.
 
 To add a locale:
 
@@ -17,12 +19,12 @@ To add a locale:
 * Make sure the CSS and related `flag.png` support the language — cf [Flag Sprites](http://www.flag-sprites.com/)
 * Update `jQuery('#menu').slicknav.label` in `Router.js`
 
-Optinally append ?en or ?hu to URIs:
+Optinally append `?en` or `?hu` to URIs:
 
     http://judit/?hu
     http://judit/?hu#/gallery/New
 
-To get or set a language, use the `Languages.js` JavaScript bean.
+To get or set a language, use the `Languages.js` JavaScript 'bean'.
 
 # References
 
