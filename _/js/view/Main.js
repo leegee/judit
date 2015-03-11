@@ -44,15 +44,18 @@ define( [
                     Language.init();
                     Language.set();
 
+                    // Close/open the mobile menu when clicked
                     jQuery('.nav-ctrl').on('click', function (e) {
-                        console.log(e);
-                        if (! jQuery(document.body).hasClass('nav-open')){
-                            console.log("Not open");
-                        }
                         jQuery(document.body).toggleClass('nav-open');
                     });
 
-                    jQuery('.search').on('submit', function () {
+                    // Don't close the mobile menu if clicking for search
+                    jQuery('.search .q').on('click', function (e) {
+                        e.stopPropagation();
+                    });
+
+                    jQuery('.search').on('submit', function (e) {
+                        jQuery(document.body).removeClass('nav-open');
                         router.navigate( '#/search/' + jQuery('.q').val() );
                     });
 
