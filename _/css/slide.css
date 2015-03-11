@@ -224,6 +224,13 @@ header.menubar nav li.search {
     float: right;
 }
 
+body.nav-open header.nav-ctrl li.search input.q {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+    width: 100%;
+    font-size: 150%;
+}
+
 .q {
     display: inline-block;
     margin-top: 0.75em; /* TODO damned valign */
