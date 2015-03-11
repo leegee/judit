@@ -14,8 +14,8 @@ define( [
         className: 'dress grow',
         galleryId: null,
         events: {
-            click: "showModal"
-            // click: "showDressPage"
+            "click .basket-icon": "openBasket",
+            "click": "showModal",
         },
 
         initialize: function (options) {
@@ -25,6 +25,11 @@ define( [
             this.template = _.template( jQuery('#dress-template').text() );
             this.thumbId = 'thumb' + (++THUMBS_MADE);
             this.render();
+        },
+
+        openBasket: function (e) {
+            e.stopPropagation();
+            Backbone.history.navigate('basket', { trigger: true });
         },
 
         render: function () {
