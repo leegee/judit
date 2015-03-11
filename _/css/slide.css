@@ -207,6 +207,7 @@ header.menubar nav li {
     background: #ddd;
     font-family: 'Noto Sans', Helvetica;
     padding: 1em;
+    padding-bottom: 1.2em;
     border-radius: 1em;
 }
 
