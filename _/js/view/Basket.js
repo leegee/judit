@@ -68,7 +68,7 @@ define( [
             var payPalItemNames = [];
             this.collection.each( function (dress) {
                 payPalItemNames.push(
-                    dress.get( lang + '_name')
+                    dress.get( lang + '-name')
                 );
             });
 
