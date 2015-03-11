@@ -2,12 +2,12 @@ define( [
     'Config', 'Backbone', 'jQuery',
     'collection/Collection', 'view/Splash', 'view/Gallery',
     'view/MenuItem', 'view/Contact', 'view/Basket',
-    'view/DressModal', 'collection/Search', 'view/BasketEmptyBubble'
+    'view/DressModal', 'collection/Search', 'view/Bubble'
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
     MenuItemView, ContactView, BasketView,
-    DressModal, SearchCollection, BasketEmptyBubble
+    DressModal, SearchCollection, Bubble
 ){
     'use strict';
 
@@ -15,7 +15,10 @@ define( [
         splash            = new Splash({ el: '#home' }),
         contactView       = new ContactView(),
         basketView        = new BasketView({ collection: collection.basket }),
-        basketEmptyBubble = new BasketEmptyBubble(),
+        Bubble            = new BasketEmptyBubble({
+            menuItemSelector: '.menubar .menu-basket',
+            templateSelector: '#basket-empty-bubble-template'
+        }),
         galleryView       = {},
         showing           = null;
 

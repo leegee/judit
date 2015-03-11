@@ -5,12 +5,19 @@ define( [
 ){
     'use strict';
 
-    // view/BasketEmptyBubble
+    // view/Bubble
     return Backbone.View.extend({
         el: '#bubble-outter',
 
+        /*  @param {Object} options
+            @param {string} options.menuItemSelector Selector for the menu item under which to display the bubble
+            @param {string} options.templateSelector Selector for the template for the bubble.
+        */
         initialize: function (options) {
-            this.template = _.template( jQuery('#basket-empty-bubble-template').text() );
+            this.menuItemSelector = options.menuItemSelector || '.menubar .menu-basket';
+            this.template = _.template( jQuery(
+                options.templateSelector || '#basket-empty-bubble-template'
+            ).text() );
             this.menuItem = null; // Lazy load
         },
 
@@ -18,7 +25,7 @@ define( [
             this.$el.html(
                 this.template()
             );
-            this.menuItem = this.menuItem || jQuery('.menubar .menu-basket');
+            this.menuItem = this.menuItem || jQuery( this.menuItemSelector );
             var offset = this.menuItem.offset();
             this.$el.css({
                 left: offset.left - (this.menuItem.width() / 2),
