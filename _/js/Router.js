@@ -15,7 +15,7 @@ define( [
         splash            = new Splash({ el: '#home' }),
         contactView       = new ContactView(),
         basketView        = new BasketView({ collection: collection.basket }),
-        Bubble            = new BasketEmptyBubble({
+        basketEmptyBubble = new Bubble({
             menuItemSelector: '.menubar .menu-basket',
             templateSelector: '#basket-empty-bubble-template'
         }),
