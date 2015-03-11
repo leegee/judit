@@ -47,8 +47,8 @@
                             <td class='name'>
                                 <p>
                                     <a href='#/dress/<%= dress.id %>'>
-                                        <span lang='en'><%= dress.en_name  %></span>
-                                        <span lang='hu'><%= dress.hu_name  %></span>
+                                        <span lang='en'><%= dress['en-name']  %></span>
+                                        <span lang='hu'><%= dress['hu-name']  %></span>
                                     </a>
                                 </p>
                                 <p class='id'>
@@ -113,24 +113,24 @@
 
     <script type='html/template' id='dress-template'>
         <div lang='en'>
-            <h1 class='name'>Name <%= en_name %></h1>
+            <h1 class='name'>Name <%= 'en-name' %></h1>
             <img class='thumb' id='<% thumbId %>' src='<%= thumb %>'>
             <div class='basket-icon'></div>
-            <% if (typeof(en_tagline) !== "undefined") { %>
-                <h2 class='tagline'>Tag <%= en_tagline %></h2>
+            <% if (typeof('en-tagline') !== "undefined") { %>
+                <h2 class='tagline'>Tag <%= 'en-tagline' %></h2>
             <% } %>
-            <% if (typeof(en_standfirst) !== "undefined") { %>
-                <h3 class='standfirst'>Tag <%= en_standfirst %></h3>
+            <% if (typeof('en-standfirst') !== "undefined") { %>
+                <h3 class='standfirst'>Tag <%= 'en-standfirst' %></h3>
             <% } %>
         </div>
         <div lang='hu'>
-            <h1 class='name'>Name <%= hu_name %></h1>
+            <h1 class='name'>Name <%= 'hu-name' %></h1>
             <img class='thumb' id='<% thumbId %>' src='<%= thumb %>'>
-            <% if (typeof(hu_tagline) !== "undefined") { %>
-                <h2 class='tagline'>Tag <%= hu_tagline %></h2>
+            <% if (typeof('hu-tagline') !== "undefined") { %>
+                <h2 class='tagline'>Tag <%= 'hu-tagline' %></h2>
             <% } %>
-            <% if (typeof(hu_standfirst) !== "undefined") { %>
-                <h3 class='standfirst'>Tag <%= hu_standfirst %></h3>
+            <% if (typeof('hu-standfirst') !== "undefined") { %>
+                <h3 class='standfirst'>Tag <%= 'hu-standfirst' %></h3>
             <% } %>
         </div>
     </script>
@@ -146,16 +146,16 @@
             <div class='right'>
                 <div id='dress-info'>
                     <div lang='en'>
-                        <h1 class='name'>Name <%= en_name %></h1>
-                        <h2 class='tagline'>Tag <%= en_tagline %></h2>
-                        <h3 class='standfirst'>Tag <%= en_standfirst %></h3>
-                        <div class='blurb'><%= en_blurb %></div>
+                        <h1 class='name'>Name <%= 'en-name' %></h1>
+                        <h2 class='tagline'>Tag <%= 'en-tagline' %></h2>
+                        <h3 class='standfirst'>Tag <%= 'en-standfirst' %></h3>
+                        <div class='blurb'><%= 'en-blurb' %></div>
                     </div>
                     <div lang='hu'>
-                        <h1 class='name'>Name <%= hu_name %></h1>
-                        <h2 class='tagline'>Tag <%= hu_tagline %></h2>
-                        <h3 class='standfirst'>Tag <%= hu_standfirst %></h3>
-                        <div class='blurb'><%= hu_blurb %></div>
+                        <h1 class='name'>Name <%= 'hu-name' %></h1>
+                        <h2 class='tagline'>Tag <%= 'hu-tagline' %></h2>
+                        <h3 class='standfirst'>Tag <%= 'hu-standfirst' %></h3>
+                        <div class='blurb'><%= 'hu-blurb' %></div>
                     </div>
                     <div class='bottom'>
                         <span id='basketCtrls' class='basketCtrls'>

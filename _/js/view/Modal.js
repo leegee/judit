@@ -80,6 +80,7 @@ define( [
         }
     };
 
+    // Singleton
     var Instance;
     return function() {
         if (! Instance) {

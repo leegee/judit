@@ -42,7 +42,7 @@ define([
             jQuery('#set-languages').remove();
             var html = "<style id='set-languages'>" +
                 styles.join(",") +
-                " { display:none; background:yellow }</style>";
+                " { display:none }</style>";
             jQuery(html).appendTo("head");
 
             jQuery("[data-setlang]").show();

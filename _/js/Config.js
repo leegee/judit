@@ -8,9 +8,19 @@ define( ['Backbone', 'BackboneLocalForage'], function (Backbone) {
         description : 'Clothes in your basket'
     });
 
-    return {
-        stockJson: '/_/stock.json',
-        defaultLang: 'en',
+    var Config = {
+        localStockJson: '/_/stock.json',
+        googleJson: {
+            uri:  null,
+            pre:  'https://spreadsheets.google.com/feeds/list/',
+            key:  '1S18SDKfweYtikvyiwUUuLeoDjVXT_k6q4b00f8LUsXs',
+            post: '/od6/public/values',
+            data:               {
+                alt: 'json-in-script',
+                callback: 'callback'
+            },
+        },
+        defaultLang:        'en',
         defaultGalleryName: 'Gallery',
         langSupported: {
             en: 'English',
@@ -19,4 +29,8 @@ define( ['Backbone', 'BackboneLocalForage'], function (Backbone) {
         },
         paypalEmail: 'paypal-facilitator@leegoddard.net'
     };
+
+    Config.googleJson.uri = Config.googleJson.pre + Config.googleJson.key + Config.googleJson.post;
+
+    return Config;
 });

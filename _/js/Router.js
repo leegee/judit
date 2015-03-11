@@ -2,12 +2,14 @@ define( [
     'Config', 'Backbone', 'jQuery',
     'collection/Collection', 'view/Splash', 'view/Gallery',
     'view/MenuItem', 'view/Contact', 'view/Basket',
-    'view/DressModal', 'collection/Search', 'view/Bubble'
+    'view/DressModal', 'collection/Search', 'view/Bubble',
+    'sources/Google' //  'sources/Local' //
 ], function (
     Config, Backbone, jQuery,
     Collection, Splash, GalleryView,
     MenuItemView, ContactView, BasketView,
-    DressModal, SearchCollection, Bubble
+    DressModal, SearchCollection, Bubble,
+    Source
 ){
     'use strict';
 
@@ -24,15 +26,26 @@ define( [
 
     // Galleries are created based on stock.json
     var promiseToCreateRouter = new Promise( function (resolve, reject) {
-        jQuery.get( Config.stockJson )
+        var source = new Source();
+
+        source.fetch()
 
         .fail( function () {
+            console.error("Failed to fetch collection source data");
+            console.error(arguments);
             reject();
         })
 
-        .done( function (responseText) {
+        .done( function (responseData) {
             var galleryNames = {};
-            collection.reset( responseText );
+
+            responseData = source.parse(responseData);
+            console.log("responseData", responseData);
+
+            collection.reset( responseData );
+
+            // This could be a method of collection, called with
+            // an 'injection' of the classe for Gallery and MenuItemView
             collection.each( function (model) {
                 var galleryName = model.get('gallery');
                 if (typeof galleryName === 'undefined'){

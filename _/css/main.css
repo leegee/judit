@@ -458,14 +458,15 @@ footer p, footer ul li {
     z-index: 999;
 }
 
-.basket .grow {
+.basket .grow img {
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     -ms-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
-.basket .grow:hover {
+
+.basket .grow:hover img {
     transform: scale(2);
     z-index: 999;
     -webkit-box-shadow: 0pt 0pt 2pt 8pt rgba(255,255,255,0.9);
