@@ -40,7 +40,6 @@ define( [
             var galleryNames = {};
 
             responseData = source.parse(responseData);
-            console.log("responseData", responseData);
 
             collection.reset( responseData );
 

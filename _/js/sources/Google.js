@@ -30,7 +30,7 @@ define( ['jQuery', 'Underscore', 'Config'], function (jQuery, _, Config){
             });
             rv.push(reformed);
         });
-        console.log(rv);
+
         return rv;
     };
 
