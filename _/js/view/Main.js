@@ -1,5 +1,5 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'Router', 'Language',
+    'jQuery', 'Backbone', 'Underscore', 'Router', 'service/Language',
     'PictureFill'
 ], function (
     jQuery, Backbone, _, promiseToCreateRouter, Language

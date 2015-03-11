@@ -1,5 +1,5 @@
 define( [
-    'jQuery', 'Backbone', 'Underscore', 'Language', 'Config'
+    'jQuery', 'Backbone', 'Underscore', 'service/Language', 'Config'
 ], function (
     jQuery, Backbone, _, Language, Config
 ){
