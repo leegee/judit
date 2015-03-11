@@ -20,11 +20,13 @@
 
 body.nav-open #nav-show,
 #nav-show {
+    right: 999em;
     opacity: 0;
     filter:Alpha(opacity=0);
 }
 
 body.scrolled #nav-show {
+    right: 0;
     opacity: 1;
     filter:Alpha(opacity=100);
 }
