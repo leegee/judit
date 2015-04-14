@@ -69,6 +69,7 @@ define( [
                 if (showDressAsModal) {
                     showDressAsModal.showModal();
                 }
+                window.scrollTo(0, 0);
             };
 
             // Should be a Search sub-class :(

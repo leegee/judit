@@ -42,6 +42,7 @@ define( [
             this.templateCompiled( options.model )
         );
         this.$el.show();
+        window.scrollTo(0, 0);
 
         this.$close = jQuery('#modal-close');
         this.$close.on('click', function () {

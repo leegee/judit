@@ -10,6 +10,7 @@ define( [
         el: '#contact',
         render: function () {
             this.$el.show();
+            window.scrollTo(0, 0);
         },
 
         remove: function () {

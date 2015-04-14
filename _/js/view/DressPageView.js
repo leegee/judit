@@ -59,6 +59,7 @@ define( [
             this.$el.html(
                 this.templates.page( this.model.toJSON() )
             );
+            window.scrollTo(0, 0);
 
             this.$dressInfo = jQuery('#dress-info');
 

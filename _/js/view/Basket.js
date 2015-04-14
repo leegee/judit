@@ -50,6 +50,7 @@ define( [
                     } else if (Backbone.history.fragment === 'basket') {
                         // Template handles 'empty' message
                         self.renderPage();
+                        window.scrollTo(0, 0);
                     } else {
                         console.error("Unexpecte");
                         console.trace();

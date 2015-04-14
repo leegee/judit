@@ -19,6 +19,7 @@ define( [
                 this.template( this.model )
             );
             this.$el.insertBefore('.menu-contact');
+            window.scrollTo(0, 0);
         }
     });
 });
