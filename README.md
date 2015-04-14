@@ -3,9 +3,8 @@
 https://unhosted.org/
 
 # TODO
-
-Use one global basket collection
-
+* Restore mobile menu pre-scroll
+* Use one global basket collection
 * Add search page for slide nav
 * Singletons via .extend's second arg, `classProperties`
 * Use the JSON on Google Drive for Judit's account
