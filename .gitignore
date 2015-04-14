@@ -2,6 +2,7 @@ bower_components/
 node_modules/
 .DS_Store
 .git
+httpd.conf
 *_400.png
 *_200.png
 *_4000.png
