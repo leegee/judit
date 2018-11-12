@@ -1,0 +1,53 @@
+import { jQuery } from 'jquery';
+import { _ } from 'underscore';
+import { Config } from '../Config';
+import { Backbone } from 'backbone';
+
+export const Language = {
+    init: function () {
+        jQuery('.change-language').on('click', function (e) {
+            var lang = 'en';
+            if (this.dataset.setlang && Config.langSupported[this.dataset.setlang]) {
+                lang = this.dataset.setlang;
+            }
+            return Language.set(lang);
+        });
+    },
+
+    get: function () {
+        return Language;
+    },
+
+    set: function (lang) {
+        var qs = document.location.search.match(/^\?(..)/);
+        if (qs != null && qs.length > 0) {
+            qs = qs[1];
+        }
+        Language = lang || qs || navigator.language.match('^(..)')[1];
+
+        if (!Config.langSupported[Language]) {
+            Language = Config.defaultLang;
+        }
+
+        var styles = [];
+        Object.keys(Config.langSupported).forEach(function (i, j) {
+            if (i !== Language) {
+                styles.push("[lang='" + i + "']");
+            }
+        });
+
+        jQuery('#set-languages').remove();
+        var html = "<style id='set-languages'>" +
+            styles.join(",") +
+            " { display:none }</style>";
+        jQuery(html).appendTo("head");
+
+        jQuery("[data-setlang]").show();
+        jQuery("[data-setlang=" + Language + "]").hide();
+
+        Language.trigger("change", Language);
+    }
+};
+
+_.extend(Language, Backbone.Events);
+
