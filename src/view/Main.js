@@ -1,22 +1,21 @@
-import { Backbone } from 'backbone';
-import { jQuery } from 'jquery';
+import jQuery from 'jquery';
+import Backbone from 'backbone';
 import { promiseToCreateRouter } from '../Router';
-import { Language } from '../service/Language';
+import { Languages } from '../service/Language';
 
 function setVariableHeader() {
-    var MenuBar = jQuery('header.nav-ctrl').clone(),
-        MenuBarHeight = null,
-        Scrolled = false;
+    const MenuBar = jQuery('header.nav-ctrl').clone();
+    let Scrolled = false;
 
     MenuBar.removeClass('nav-ctrl');
     MenuBar.addClass('menubar');
     jQuery(document.body).prepend(MenuBar);
-    MenuBarHeight = MenuBar.height();
+    const MenuBarHeight = MenuBar.height();
 
-    jQuery(window).on("scroll touchmove", function () {
+    jQuery(window).on("scroll touchmove", () => {
         Scrolled = true;
     });
-    setInterval(function () {
+    setInterval(() => {
         if (Scrolled) {
             Scrolled = false;
             jQuery(document.body).toggleClass(
@@ -28,27 +27,27 @@ function setVariableHeader() {
 }
 
 export const ViewMain = Backbone.View.extend({
-    initialize: function (options) {
+    initialize: function () {
         promiseToCreateRouter.then(
-            function (AppRouter) {
-                var router = new AppRouter();
+            (AppRouter) => {
+                const router = new AppRouter();
 
                 setVariableHeader();
 
-                Language.init();
-                Language.set();
+                Languages.init();
+                Languages.set();
 
                 // Close/open the mobile menu when clicked
-                jQuery('.nav-ctrl').on('click', function (e) {
+                jQuery('.nav-ctrl').on('click', () => {
                     jQuery(document.body).toggleClass('nav-open');
                 });
 
                 // Don't close the mobile menu if clicking for search
-                jQuery('.search .q').on('click', function (e) {
+                jQuery('.search .q').on('click', (e) => {
                     e.stopPropagation();
                 });
 
-                jQuery('.search').on('submit', function (e) {
+                jQuery('.search').on('submit', () => {
                     jQuery(document.body).removeClass('nav-open');
                     router.navigate('#/search/' + jQuery('.q').val());
                 });
@@ -56,12 +55,13 @@ export const ViewMain = Backbone.View.extend({
                 Backbone.history.start({ pushState: false });
             },
 
-            function (err) {
+            (err) => {
                 console.error('Error initing router', err);
             }
         );
     },
 
     render: function (dressIdToShow) {
+        console.warn('called render', dressIdToShow);
     }
 });

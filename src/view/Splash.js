@@ -1,5 +1,5 @@
-import { jQuery } from 'jquery';
-import { Backbone } from 'backbone';
+import jQuery from 'jquery';
+import * as Backbone from 'backbone';
 import { VerticalSlideShow } from '../VerticalSlideshow';
 
 export const Splash = Backbone.View.extend({

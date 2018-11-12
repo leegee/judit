@@ -1,7 +1,7 @@
-import { jQuery } from 'jquery';
-import { _ } from 'underscore';
+import jQuery from 'jquery';
+import _ from 'underscore';
 import { DressModel } from '../model/Dress';
-import { Backbone } from 'backbone';
+import * as Backbone from 'backbone';
 
 export const DressPage = Backbone.View.extend({
     model: DressModel,
@@ -20,25 +20,23 @@ export const DressPage = Backbone.View.extend({
     },
 
     basketToggle: function () {
-        var self = this;
-        this.model.ifBasketed(function (baskted) {
+        this.model.ifBasketed((baskted) => {
             if (baskted) {
-                self.model.removeFromBasket();
-                jQuery('#basketCtrls').html(self.templates.removeFromBasket);
+                this.model.removeFromBasket();
+                jQuery('#basketCtrls').html(this.templates.removeFromBasket);
             } else {
-                self.model.addToBasket();
-                jQuery('#basketCtrls').html(self.templates.addToBasket);
+                this.model.addToBasket();
+                jQuery('#basketCtrls').html(this.templates.addToBasket);
             }
         });
     },
 
     updateBasket: function () {
-        var self = this;
-        var update = function (inBasket) {
+        const update = (inBasket) => {
             if (inBasket) {
-                jQuery('#basketCtrls').html(self.templates.removeFromBasket);
+                jQuery('#basketCtrls').html(this.templates.removeFromBasket);
             } else {
-                jQuery('#basketCtrls').html(self.templates.addToBasket);
+                jQuery('#basketCtrls').html(this.templates.addToBasket);
             }
         }
         if (typeof this.model.inBasket === 'undefined') {
@@ -49,9 +47,7 @@ export const DressPage = Backbone.View.extend({
     },
 
     render: function (dressId) {
-        var self = this;
-
-        this.model.get(id, dressId);
+        this.model.get('id', dressId); // TODO CHECK What is 'id' ?
 
         this.$el.html(
             this.templates.page(this.model.toJSON())
@@ -75,34 +71,34 @@ export const DressPage = Backbone.View.extend({
         jQuery.when(
             this.zoomable.$el.load(),
             this.zoomed.$el.load(),
-            jQuery.Deferred(function (promise) {
+            jQuery.Deferred((promise) => {
                 jQuery(promise.resolve);
             })
-        ).done(function () {
-            self.zoomable.$el.css(
-                self.zoomable.$el.width() > self.zoomable.$el.height ? 'width' : 'height',
+        ).done(() => {
+            this.zoomable.$el.css(
+                this.zoomable.$el.width() > this.zoomable.$el.height ? 'width' : 'height',
                 '100%'
             );
-            self.zoomContainer.$el.show();
-            self.zoomed.$el.show();
-            self.zoomable.pcWidth = self.zoomable.$el.width() / 100;
-            self.zoomable.pcHeight = self.zoomable.$el.height() / 100;
-            self.zoomed.pcWidth = self.zoomed.$el.width() / 100;
-            self.zoomed.pcHeight = self.zoomed.$el.height() / 100;
-            self.zoomContainer.$el.hide();
-            self.zoomed.$el.hide();
-            self.zoomable.$el.on('mouseenter.zoom', function (e) {
-                self.$dressInfo.hide();
-                self.zoomContainer.$el.show();
-                self.zoomed.$el.show();
-                self.zoomable.$el.on('mousemove.zoom', function (e) {
-                    self.zoom(e);
+            this.zoomContainer.$el.show();
+            this.zoomed.$el.show();
+            this.zoomable.pcWidth = this.zoomable.$el.width() / 100;
+            this.zoomable.pcHeight = this.zoomable.$el.height() / 100;
+            this.zoomed.pcWidth = this.zoomed.$el.width() / 100;
+            this.zoomed.pcHeight = this.zoomed.$el.height() / 100;
+            this.zoomContainer.$el.hide();
+            this.zoomed.$el.hide();
+            this.zoomable.$el.on('mouseenter.zoom', () => {
+                this.$dressInfo.hide();
+                this.zoomContainer.$el.show();
+                this.zoomed.$el.show();
+                this.zoomable.$el.on('mousemove.zoom', (e) => {
+                    this.zoom(e);
                 });
             });
-            self.zoomable.$el.on('mouseleave.zoom', function (e) {
-                self.zoomable.$el.off('mousemove.zoom');
-                self.zoomContainer.$el.hide();
-                self.$dressInfo.show();
+            this.zoomable.$el.on('mouseleave.zoom', () => {
+                this.zoomable.$el.off('mousemove.zoom');
+                this.zoomContainer.$el.hide();
+                this.$dressInfo.show();
             });
         });
     },
@@ -111,7 +107,7 @@ export const DressPage = Backbone.View.extend({
         // Position within the source image:
         // adding/removing a bit because of the *em offset caused
         // by the 'close' button :(
-        var x = e.pageX - this.zoomable.offset.left, // - 30,
+        const x = e.pageX - this.zoomable.offset.left, // - 30,
             y = e.pageY - this.zoomable.offset.top; // - 40;
         // As a percentage:
         x = x / this.zoomable.pcWidth;

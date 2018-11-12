@@ -1,16 +1,15 @@
-import { Backbone } from 'backbone';
+import * as Backbone from 'backbone';
 import { Config } from '../Config';
 import { BasketModel } from '../model/Basket';
 
 export const DressModel = Backbone.Model.extend({
     // collection: Collection,
     ifBasketed: function (next) {
-        var self = this;
         this.collection.basket.fetch({
-            success: function (collection) {
-                var found = collection.where({ id: self.get('id') });
-                var rv = typeof found !== undefined && found.length > 0;
-                self.set('inBasket', rv);
+            success: (collection) => {
+                const found = collection.where({ id: this.get('id') });
+                const rv = typeof found !== undefined && found.length > 0;
+                this.set('inBasket', rv);
                 if (next) {
                     next(rv);
                 }
@@ -18,19 +17,17 @@ export const DressModel = Backbone.Model.extend({
         });
     },
     addToBasket: function () {
-        var self = this;
         this.collection.basket.create(this.dataForStore(), {
-            success: function () {
-                self.set('inBasket', true);
+            success: () => {
+                this.set('inBasket', true);
             }
         });
     },
     removeFromBasket: function () {
-        var self = this;
         console.log("Modal, remove");
         this.collection.basket.remove(this.dataForStore(), {
-            success: function () {
-                self.set('inBasket', false);
+            success: () => {
+                this.set('inBasket', false);
             }
         });
     },

@@ -1,10 +1,10 @@
-import { jQuery } from 'jquery';
-import { _ } from 'underscore';
-import { Backbone } from 'backbone';
+import jQuery from 'jquery';
+import _ from 'underscore';
+import Backbone from 'backbone';
 import { DressView } from './Dress';
 import { Loader } from './Loader';
 
-import { FluidMasonry } from 'masonry-layout';
+import Masonry from 'masonry-layout';
 
 export const GalleryView = Backbone.View.extend({
     tagName: "section",
@@ -18,10 +18,9 @@ export const GalleryView = Backbone.View.extend({
     },
 
     render: function (dressIdToShow) {
-        var self = this;
-        console.info("Gallery render");
+        console.info("Gallery render", dressIdToShow);
 
-        if (!jQuery.contains(document, self.$el[0])) {
+        if (!jQuery.contains(document, this.$el[0])) {
             jQuery('#galleries').append(this.$el);
             this.$el.empty();
             this.$el.html(this.template());
@@ -31,23 +30,23 @@ export const GalleryView = Backbone.View.extend({
         this.$el.show();
         jQuery('#galleries').show();
 
-        var showDressAsModal,
-            promiseToLoadAllImages = [],
-            loader = new Loader({ total: self.collection.length }).show(),
-            masonry = new FluidMasonry(self.$dressContainer.get(0), {
+        let showDressAsModal;
+        const promiseToLoadAllImages = [],
+            loader = new Loader({ total: this.collection.length }).show(),
+            masonry = new Masonry(this.$dressContainer.get(0), {
                 minColumnWidth: '20%',
                 itemSelector: '.dress'
             });
 
-        var perDress = function (dress) {
+        const perDress = (dress) => {
             promiseToLoadAllImages.push(
-                new Promise(function (resolve, reject) {
-                    var dressView = new DressView({
+                new Promise( (resolve) => {
+                    const dressView = new DressView({
                         model: dress,
-                        collection: self.collection,
-                        galleryId: self.id,
-                        thumbLoaded: function () {
-                            self.$dressContainer.append(dressView.el);
+                        collection: this.collection,
+                        galleryId: this.id,
+                        thumbLoaded: () => {
+                            this.$dressContainer.append(dressView.el);
                             loader.increment();
                             masonry.addItems(dressView.el);
                             masonry.layout();
@@ -61,9 +60,9 @@ export const GalleryView = Backbone.View.extend({
             )
         };
 
-        var done = function () {
+        const next = () => {
             loader.hide();
-            self.loaded = true;
+            this.loaded = true;
             if (showDressAsModal) {
                 showDressAsModal.showModal();
             }
@@ -72,22 +71,23 @@ export const GalleryView = Backbone.View.extend({
 
         // Should be a Search sub-class :(
         // Is a search call or a gallery with an id?
-        if (typeof self.id === 'undefined') {
+        if (typeof this.id === 'undefined') {
             this.collection.each(perDress);
         }
 
         else {
-            _.each(this.collection.where({ gallery: self.id }), perDress);
+            _.each(this.collection.where({ gallery: this.id }), perDress);
         }
 
         Promise.all(promiseToLoadAllImages)
             .then(
-                function () {
-                    done();
+                () => {
+                    console.log('ok');
+                    next();
                 },
-                function (reason) {
+                (reason) => {
                     console.error(reason);
-                    done();
+                    next();
                 }
             );
     }

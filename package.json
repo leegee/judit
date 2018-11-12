@@ -7,8 +7,10 @@
   "files": [],
   "scripts": {
     "build": "webpack --mode=production",
+    "build:test": "webpack --mode=development",
+    "clean": "rm -rf build/",
     "xstart": "webpack-dev-server --mode=development",
-    "start": "nodemon --watch webpack.config.js --watch src --exec \"webpack-dev-server --mode development\""
+    "start": "nodemon --watch webpack.config.js --watch src/ --exec \"webpack-dev-server --mode development\""
   },
   "dependencies": {
     "EventEmitter": "*",
@@ -25,7 +27,8 @@
     "outlayer": "^2.1.1",
     "picturefill": "~2.2.1",
     "reset-css": "~2.0.20110126",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "velocity-animate": "^2.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
@@ -40,5 +43,23 @@
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {}
+    },
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "rules": {
+      "no-var": "error",
+      "no-unused-vars": "error",
+      "no-unused-expressions": "error",
+      "no-undef": "error",
+      "prefer-arrow-callback": "error"
+    }
   }
 }

@@ -1,5 +1,4 @@
-import { _ } from 'underscore';
-import { Backbone } from 'backbone';
+import Backbone from 'backbone';
 
 export const ContactView = Backbone.View.extend({
     el: '#contact',

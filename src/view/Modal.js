@@ -1,5 +1,5 @@
-import { Backbone } from 'backbone';
-import { jQuery } from 'jquery';
+import jQuery from 'jquery';
+import Backbone from 'backbone';
 
 export class Modal {
     constructor() {
@@ -11,7 +11,6 @@ export class Modal {
         if (this.open) {
             return;
         }
-        var self = this;
         this.open = true;
         this.templateCompiled = options.templateCompiled;
         this.$el = options.$el;
@@ -19,49 +18,48 @@ export class Modal {
         Backbone.history.navigate(options.showUrl);
         this.$body = jQuery(document.body);
         this.bodyCssDefault = this.bodyCssDefault || {
-            overflow: self.$body.css('overflow'),
-            height: self.$body.css('height'),
-            width: self.$body.css('width')
+            overflow: this.$body.css('overflow'),
+            height: this.$body.css('height'),
+            width: this.$body.css('width')
         };
         this.$body.css({
             overflow: 'hidden',
             height: window.innerHeight,
             width: window.innerWidth
         });
-        jQuery(document).on('touchmove.modal', function (e) {
+        jQuery(document).on('touchmove.modal', (e) => {
             e.preventDefault();
         });
         this.$el.html(this.templateCompiled(options.model));
         this.$el.show();
         window.scrollTo(0, 0);
         this.$close = jQuery('#modal-close');
-        this.$close.on('click', function () {
-            self.close();
+        this.$close.on('click', () => {
+            this.close();
         });
-        jQuery(document).on('keyup.modal', function (e) {
+        jQuery(document).on('keyup.modal', (e) => {
             e = e || window.event;
             if (e.keyCode === 27) {
-                self.close();
+                this.close();
             }
         });
     }
     close() {
-        var self = this;
         this.$close.off('click');
-        this.$el.hide('fast', this.afterClose(this));
+        this.$el.hide('fast', this.afterClose());
     }
-    afterClose(self) {
-        self.open = false;
-        self.$el.empty();
-        self.$body.css({
-            overflow: self.bodyCssDefault.overflow,
-            width: self.bodyCssDefault.width,
-            height: self.bodyCssDefault.height
+    afterClose() {
+        this.open = false;
+        this.$el.empty();
+        this.$body.css({
+            overflow: this.bodyCssDefault.overflow,
+            width: this.bodyCssDefault.width,
+            height: this.bodyCssDefault.height
         });
         jQuery(document).off('touchmove.modal');
         jQuery(document).off('keyup.modal');
-        if (self.closeUrl) {
-            Backbone.history.navigate(self.closeUrl, { trigger: true });
+        if (this.closeUrl) {
+            Backbone.history.navigate(this.closeUrl, { trigger: true });
         }
         else {
             Backbone.history.history.back();

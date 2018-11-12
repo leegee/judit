@@ -1,6 +1,6 @@
-import { jQuery } from 'jquery';
-import { Config } from '../Config';
+import jQuery from 'jquery';
 
+import { Config } from '../Config';
 
 // source/Local
 const Source = function () { };

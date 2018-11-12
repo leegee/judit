@@ -1,4 +1,4 @@
-import { Backbone } from 'backbone';
+import * as Backbone from 'backbone';
 import { BasketModel } from '../model/Basket';
 
 export const BasketCollection = Backbone.Collection.extend({

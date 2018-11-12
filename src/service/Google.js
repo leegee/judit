@@ -1,5 +1,5 @@
-import { jQuery } from 'jquery';
-import { _ } from 'underscore';
+import jQuery from 'jquery';
+import _ from 'underscore';
 import { Config } from '../Config';
 
 export class Source {

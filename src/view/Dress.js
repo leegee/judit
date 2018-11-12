@@ -1,6 +1,7 @@
 import { _ } from 'underscore';
 import { DressModal } from './DressModal';
-import { Backbone } from 'backbone';
+import * as Backbone from 'backbone';
+import * as jQuery from 'jquery';
 
 var THUMBS_MADE = 0;
 
@@ -14,7 +15,7 @@ export const DressView = Backbone.View.extend({
         "click": "showModal",
     },
 
-    initialize: function (options) {
+    initialize: function (options)  {
         this.galleryId = options.galleryId;
         this.thumbLoaded = options.thumbLoaded;
         this.url = '#/gallery/' + options.galleryId;
@@ -23,28 +24,27 @@ export const DressView = Backbone.View.extend({
         this.render();
     },
 
-    openBasket: function (e) {
+    openBasket: function (e)  {
         e.stopPropagation();
         Backbone.history.navigate('basket', { trigger: true });
     },
 
-    render: function () {
-        var self = this;
+    render: function ()  {
         this.el.id = this.model.get('id');
         this.model.set('thumbId', this.thumbId);
 
-        this.model.ifBasketed(function (isBasketed) {
+        this.model.ifBasketed((isBasketed) => {
             if (isBasketed) {
-                self.$el.addClass('in-basket');
+                this.$el.addClass('in-basket');
             }
         });
 
-        var img = new Image();
+        const img = new Image();
         img.src = this.model.get('thumb');
-        img.onload = function () {
-            self.thumbLoaded();
-            self.$el.html(
-                self.template(self.model.toJSON())
+        img.onload = () => {
+            this.thumbLoaded();
+            this.$el.html(
+                this.template(this.model.toJSON())
             );
         };
     },
@@ -56,7 +56,7 @@ export const DressView = Backbone.View.extend({
         );
     },
 
-    showModal: function () {
+    showModal:  function ()  {
         new DressModal({
             model: this.model
         }).render();

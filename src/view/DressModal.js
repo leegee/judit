@@ -1,6 +1,6 @@
-import { jQuery } from 'jquery';
-import { _ } from 'underscore';
-import { Backbone } from 'backbone';
+import jQuery from 'jquery';
+import _ from 'underscore';
+import * as Backbone from 'backbone';
 import { Modal } from './Modal';
 
 export const DressModal = Backbone.View.extend({
@@ -9,7 +9,7 @@ export const DressModal = Backbone.View.extend({
         "click .viewBasket": "close"
     },
 
-    initialize: function (options) {
+    initialize: function () {
         this.templates = {
             page: _.template(jQuery('#modal-dress-template').text()),
             addToBasket: _.template(jQuery('#template-addToBasket').text()),
@@ -24,28 +24,28 @@ export const DressModal = Backbone.View.extend({
     },
 
     // To allow calling directly from the router
-    remove: function () { },
+    remove: function () {
+        console.warn('called remove');
+    },
 
     basketToggle: function () {
-        var self = this;
-        this.model.ifBasketed(function (baskted) {
+        this.model.ifBasketed((baskted) => {
             if (baskted) {
-                self.model.removeFromBasket();
-                jQuery('#basketCtrls').html(self.templates.addToBasket);
+                this.model.removeFromBasket();
+                jQuery('#basketCtrls').html(this.templates.addToBasket);
             } else {
-                self.model.addToBasket();
-                jQuery('#basketCtrls').html(self.templates.removeFromBasket);
+                this.model.addToBasket();
+                jQuery('#basketCtrls').html(this.templates.removeFromBasket);
             }
         });
     },
 
     updateBasket: function () {
-        var self = this;
-        var update = function (inBasket) {
+        const update = (inBasket) => {
             if (inBasket) {
-                jQuery('#basketCtrls').html(self.templates.removeFromBasket);
+                jQuery('#basketCtrls').html(this.templates.removeFromBasket);
             } else {
-                jQuery('#basketCtrls').html(self.templates.addToBasket);
+                jQuery('#basketCtrls').html(this.templates.addToBasket);
             }
         }
         if (typeof this.model.inBasket === 'undefined') {
@@ -56,15 +56,14 @@ export const DressModal = Backbone.View.extend({
     },
 
     render: function () {
-        var self = this;
         this.$el.html(
             this.templates.page(this.model.toJSON())
         );
 
         // If linked to directly (/dress/:sku), make the
         // closeUrl be the homepage; otherwise, create a showUrl
-        var closeUrl = Backbone.history.fragment;
-        var showUrl = Backbone.history.fragment + '/' + this.model.id;
+        const closeUrl = Backbone.history.fragment;
+        const showUrl = Backbone.history.fragment + '/' + this.model.id;
         if (Backbone.history.fragment.match('/' + this.model.id + '$')) {
             closeUrl = null;
             showUrl = Backbone.history.fragment;
@@ -95,43 +94,43 @@ export const DressModal = Backbone.View.extend({
         jQuery.when(
             this.zoomable.$el.load(),
             this.zoomed.$el.load(),
-            jQuery.Deferred(function (promise) {
+            jQuery.Deferred((promise) => {
                 jQuery(promise.resolve);
             })
-        ).done(function () {
-            if (self.zoomable.$el.css('width') > self.zoomable.$el.css('height')) {
-                self.zoomable.$el.addClass('lanscape');
+        ).done(() => {
+            if (this.zoomable.$el.css('width') > this.zoomable.$el.css('height')) {
+                this.zoomable.$el.addClass('lanscape');
             } else {
-                self.zoomable.$el.addClass('portrait');
+                this.zoomable.$el.addClass('portrait');
             }
 
-            self.zoomContainer.$el.show();
-            self.zoomed.$el.show();
-            self.zoomable.pcWidth = self.zoomable.$el.width() / 100;
-            self.zoomable.pcHeight = self.zoomable.$el.height() / 100;
-            self.zoomed.pcWidth = self.zoomed.$el.width() / 100;
-            self.zoomed.pcHeight = self.zoomed.$el.height() / 100;
-            self.zoomContainer.$el.hide();
-            self.zoomed.$el.hide();
-            self.zoomable.$el.on('mouseenter.zoom', function (e) {
-                self.$dressInfo.hide();
-                self.zoomContainer.$el.show();
-                self.zoomed.$el.show();
-                self.zoomable.$el.on('mousemove.zoom', function (e) {
-                    self.zoom(e);
+            this.zoomContainer.$el.show();
+            this.zoomed.$el.show();
+            this.zoomable.pcWidth = this.zoomable.$el.width() / 100;
+            this.zoomable.pcHeight = this.zoomable.$el.height() / 100;
+            this.zoomed.pcWidth = this.zoomed.$el.width() / 100;
+            this.zoomed.pcHeight = this.zoomed.$el.height() / 100;
+            this.zoomContainer.$el.hide();
+            this.zoomed.$el.hide();
+            this.zoomable.$el.on('mouseenter.zoom', () => {
+                this.$dressInfo.hide();
+                this.zoomContainer.$el.show();
+                this.zoomed.$el.show();
+                this.zoomable.$el.on('mousemove.zoom', (e) => {
+                    this.zoom(e);
                 });
             });
-            self.zoomable.$el.on('mouseleave.zoom', function (e) {
-                self.zoomable.$el.off('mousemove.zoom');
-                self.zoomContainer.$el.hide();
-                self.$dressInfo.show();
+            this.zoomable.$el.on('mouseleave.zoom', () => {
+                this.zoomable.$el.off('mousemove.zoom');
+                this.zoomContainer.$el.hide();
+                this.$dressInfo.show();
             });
         });
     },
 
     zoom: function (e) {
         // Position within the source image:
-        var x = e.pageX - this.zoomable.offset.left,
+        let x = e.pageX - this.zoomable.offset.left,
             y = e.pageY - this.zoomable.offset.top;
         // As a percentage:
         x = x / this.zoomable.pcWidth;

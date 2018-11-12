@@ -1,4 +1,5 @@
-import { Backbone } from 'backbone';
+import Backbone from 'backbone';
+import * as _ from 'underscore';
 import { DressModel } from '../model/Dress';
 import { BasketCollection } from './Basket';
 
@@ -23,16 +24,15 @@ export const SearchCollection = Backbone.Collection.extend({
     search: function (options) {
         options.q = options.q || '';
 
-        var self = this,
-            numberSearch = isaNumber(options.q),
+        const numberSearch = isaNumber(options.q),
             re = new RegExp(escapeRegExp(options.q), 'ig');
 
         this.reset();
 
         // Backbone.Collection.where has no regexp:
-        this.stock.forEach(function (dress) {
-            _.every(dress.attributes, function (value, attr) {
-                var found = false;
+        this.stock.forEach((dress) => {
+            _.every(dress.attributes, (value) => {
+                let found = false;
                 if (numberSearch) {
                     if (isaNumber(value) && value == options.q) {
                         console.info("Number match: ", options.q);
@@ -40,14 +40,14 @@ export const SearchCollection = Backbone.Collection.extend({
                     }
                 }
                 else {
-                    var v = new String(value).toString();
+                    const v = new String(value).toString();
                     if (re.test(v)) {
                         console.info("Str match: ", value);
                         found = true;
                     }
                 }
                 if (found) {
-                    self.add(dress);
+                    this.add(dress);
                     return false;
                 } else {
                     return true;

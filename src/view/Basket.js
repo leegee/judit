@@ -1,19 +1,21 @@
-import { jQuery } from 'jquery';
-import { _ } from 'underscore';
+import * as jQuery from 'jquery';
+import _ from 'underscore';
 import { Config } from '../Config';
-import { Backbone } from 'backbone';
-import { Language } from '../service/Language';
+import Backbone from 'backbone';
+import { Languages } from '../service/Language';
 
 
-export const ViewBasket = Backbone.View.extend({
+export const BasketView = Backbone.View.extend({
     el: '#basket',
     events: {
         'click .checkout': 'checkout',
         'click .remove': 'removeItem'
     },
 
-    initialize: function (options) {
-        this.template = _.template(jQuery('#basket-template').text());
+    initialize: function() {
+        this.template = _.template(
+            jQuery('#basket-template').text()
+        );
         this.listenTo(this.collection, 'remove', this.removedItem);
     },
 
@@ -28,8 +30,7 @@ export const ViewBasket = Backbone.View.extend({
     // callbacks.empty
     // callbacks.notEmpty
     render: function (callbacks) {
-        var self = this;
-        this.listenTo(Language, 'change', this.render);
+        this.listenTo(Languages, 'change', this.render);
         console.log("Basket.Render");
         console.trace();
 
@@ -40,15 +41,15 @@ export const ViewBasket = Backbone.View.extend({
         }
 
         this.collection.fetch({
-            success: function (collection, response, options) {
+            success: (collection) => {
                 if (collection.length > 0) {
-                    self.renderPage();
+                    this.renderPage();
                     if (callbacks) {
                         callbacks.notEmpty.apply(this);
                     }
                 } else if (Backbone.history.fragment === 'basket') {
                     // Template handles 'empty' message
-                    self.renderPage();
+                    this.renderPage();
                     window.scrollTo(0, 0);
                 } else {
                     console.error("Unexpecte");
@@ -64,9 +65,9 @@ export const ViewBasket = Backbone.View.extend({
 
     renderPage: function () {
         // Set item_name_X by locale
-        var lang = Language.get();
-        var payPalItemNames = [];
-        this.collection.each(function (dress) {
+        const lang = Languages.get();
+        const payPalItemNames = [];
+        this.collection.each((dress) => {
             payPalItemNames.push(
                 dress.get(lang + '-name')
             );
@@ -84,23 +85,22 @@ export const ViewBasket = Backbone.View.extend({
 
     remove: function () {
         this.$el.hide();
-        this.stopListening(Language);
+        this.stopListening(Languages);
     },
 
-    removeItem: function (e) {
-        console.log(arguments);
-        this.collection.get(e.currentTarget.dataset.dressid).destroy();
+    removeItem: function (arg) {
+        console.log(arg);
+        this.collection.get(arg.currentTarget.dataset.dressid).destroy();
     },
 
     // Called from view/Modal
     removedItem: function (model) {
         // localForage does not have collection.remove
-        var self = this;
         model.destroy({
-            success: function () {
-                self.collection.sync('delete', model, {
-                    success: function () {
-                        self.render();
+            success: () => {
+                this.collection.sync('delete', model, {
+                    success: () => {
+                        this.render();
                     }
                 });
             }
@@ -108,5 +108,6 @@ export const ViewBasket = Backbone.View.extend({
     },
 
     checkout: function () {
+        console.warn('CALLED CHECKOUT');
     }
 });

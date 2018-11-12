@@ -1,16 +1,18 @@
-import { jQuery } from 'jquery';
-import { _ } from 'underscore';
+import jQuery from 'jquery';
+import _ from 'underscore';
 import { Config } from '../Config';
-import { Backbone } from 'backbone';
+import Backbone from 'backbone';
 
-export const Language = {
+let Language;
+
+const _Languages = {
     init: function () {
-        jQuery('.change-language').on('click', function (e) {
-            var lang = 'en';
+        jQuery('.change-language').on('click', function () {
+            let lang = 'en';
             if (this.dataset.setlang && Config.langSupported[this.dataset.setlang]) {
                 lang = this.dataset.setlang;
             }
-            return Language.set(lang);
+            return _Languages.set(lang);
         });
     },
 
@@ -19,7 +21,7 @@ export const Language = {
     },
 
     set: function (lang) {
-        var qs = document.location.search.match(/^\?(..)/);
+        const qs = document.location.search.match(/^\?(..)/);
         if (qs != null && qs.length > 0) {
             qs = qs[1];
         }
@@ -29,15 +31,15 @@ export const Language = {
             Language = Config.defaultLang;
         }
 
-        var styles = [];
-        Object.keys(Config.langSupported).forEach(function (i, j) {
+        const styles = [];
+    Object.keys(Config.langSupported).forEach((i) => {
             if (i !== Language) {
                 styles.push("[lang='" + i + "']");
             }
         });
 
-        jQuery('#set-languages').remove();
-        var html = "<style id='set-languages'>" +
+        jQuery('#set-_Languages').remove();
+        const html = "<style id='set-_Languages'>" +
             styles.join(",") +
             " { display:none }</style>";
         jQuery(html).appendTo("head");
@@ -45,9 +47,10 @@ export const Language = {
         jQuery("[data-setlang]").show();
         jQuery("[data-setlang=" + Language + "]").hide();
 
-        Language.trigger("change", Language);
+        _Languages.trigger("change", Language);
     }
 };
 
-_.extend(Language, Backbone.Events);
+_.extend(_Languages, Backbone.Events);
 
+export const Languages = _Languages;

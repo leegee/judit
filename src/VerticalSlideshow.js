@@ -10,87 +10,81 @@
 * ```
 **/
 
-import { jQuery } from 'jquery';
+import 'velocity-animate';
 
-export const VerticalSlideShow = function (args) {
-    if (typeof args.container === 'undefined') {
-        this.isWindow = true;
-        args.container = 'html'
-        this.container = jQuery('html');
-    } else {
-        this.container = jQuery(args.container);
-    }
-    this.container.css({
-        overflow: 'auto',
-        position: 'relative'
-    });
+export class VerticalSlideShow {
+    constructor(args) {
+        if (typeof args.container === 'undefined') {
+            this.isWindow = true;
+            args.container = 'html';
+        }
+        this.container = document.querySelector(args.container);
+        this.container.style.overflow = 'auto';
+        this.container.style.position = 'relative';
 
-    this.selector = args.selector || 'img';
-    this.offset = args.offset || 0;
+        this.selector = args.selector || 'img';
+        this.offset = args.offset || 0;
 
-    this.els = jQuery(args.container + ' ' + this.selector);
-    for (var i = 0; i < this.els.length; i++) {
-        this.els[i] = jQuery(this.els[i]);
-    }
-
-    this.direction = 0;
-    this.scrollDuration = 300;
-    this.delayAfter = 500;
-    this.currentIndex = 0;
-    this.lastViewTop = -1;
-    this.ready = true;
-};
-
-VerticalSlideShow.prototype.start = function () {
-    var self = this;
-    var o = this.isWindow ? jQuery(window) : this.container;
-    o.on('scroll.VerticalSlideShow touchmove.VerticalSlideShow', function (e) {
-        self.scrollContainer();
-    });
-};
-
-VerticalSlideShow.prototype.stop = function () {
-    var o = this.isWindow ? jQuery(window) : this.container;
-    o.off('scroll.VerticalSlideShow touchmove.VerticalSlideShow');
-};
-
-VerticalSlideShow.prototype.scrollContainer = function () {
-    if (this.ready == false) {
-        return;
-    }
-
-    this.ready = false;
-    this.viewTop = this.container.scrollTop();
-    this.viewBottom = this.viewTop + jQuery(window).height();
-    this.direction = this.viewTop >= this.lastViewTop ? 1 : -1;
-    this.currentIndex += this.direction;
-
-    if (this.currentIndex >= 0 && this.currentIndex < this.els.length - 1) {
-        var self = this;
-        self.container.animate(
-            {
-                scrollTop: self.els[self.currentIndex].offset().top
-                    + (self.isWindow ?
-                        0 : self.container.scrollTop()
-                        + self.offset
-                    )
-                // - self.container.offset().top
-            },
-            self.scrollDuration,
-            function () {
-                self.lastViewTop = self.container.scrollTop();
-                setTimeout(function () {
-                    self.ready = true
-                }, self.delayAfter);
-            }
-        );
-    }
-
-    else {
-        this.currentIndex -= this.direction;
+        const selector = args.container + ' ' + this.selector;
+        this.els = document.querySelectorAll(selector);
+        this.direction = 0;
+        this.scrollDuration = 300;
+        this.delayAfter = 500;
+        this.currentIndex = 0;
+        this.lastViewTop = -1;
         this.ready = true;
+        this.o = this.isWindow ? window : this.container;
     }
-};
+
+    start() {
+
+        // this.o.on('scroll.VerticalSlideShow touchmove.VerticalSlideShow', (e) => {
+        //     this.scrollContainer();
+        // });
+        this.o.onscroll = this.o.touchmove = () => {
+            this.scrollContainer();
+        };
+    }
+
+    stop() {
+        // this.o.off('scroll.VerticalSlideShow touchmove.VerticalSlideShow');
+    }
+
+    scrollContainer() {
+        if (!this.ready) {
+            return;
+        }
+
+        this.ready = false;
+        this.viewTop = this.container.scrollTop();
+        this.viewBottom = this.viewTop + Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+        this.direction = this.viewTop >= this.lastViewTop ? 1 : -1;
+        this.currentIndex += this.direction;
+
+        if (this.currentIndex >= 0 && this.currentIndex < this.els.length - 1) {
+            this.container.velocity({
+                scrollTop: this.els[this.currentIndex].offset().top
+                    + (this.isWindow ?
+                        0 : this.container.scrollTop()
+                        + this.offset)
+                // - this.container.offset().top
+            }, this.scrollDuration, () => {
+                this.lastViewTop = this.container.scrollTop();
+                setTimeout(() => {
+                    this.ready = true;
+                }, this.delayAfter);
+            });
+        }
+        else {
+            this.currentIndex -= this.direction;
+            this.ready = true;
+        }
+    }
+}
+
+
+
 
 
 

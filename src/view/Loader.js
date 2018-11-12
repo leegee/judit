@@ -1,7 +1,7 @@
-import { jQuery } from 'jquery';
-import { _ } from 'underscore';
+import jQuery from 'jquery';
+import _ from 'underscore';
 
-var Rendered = false;
+const Rendered = false;
 export const Loader = function (options) {
     if (!Rendered) {
         this.template = _.template(jQuery('#loader').text());

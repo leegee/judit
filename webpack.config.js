@@ -1,19 +1,20 @@
-const path = require('path');
-const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+/* eslint-env node */
 
-const assets = [];
+const path = require('path');
 
 module.exports = {
     entry: './src/index.js',
     devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        publicPath: 'build',
     },
-    // resolve: {
-    //     modules: ['lib', 'node_modules'],
-    // },
+    devtool: 'cheap-source-map',
+    devServer: {
+        inline: true,
+        port: 8080
+    },
     module: {
         rules: [
             // { test: /masonry-layout/, loader: 'imports-loader?define=>false&this=>window' },

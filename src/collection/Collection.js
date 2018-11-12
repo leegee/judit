@@ -1,4 +1,4 @@
-import { Backbone } from 'backbone';
+import * as Backbone from 'backbone';
 import { DressModel } from '../model/Dress';
 import { BasketCollection } from './Basket';
 

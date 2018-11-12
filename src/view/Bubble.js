@@ -1,6 +1,6 @@
-import { jQuery } from 'jquery';
-import { _ } from 'underscore';
-import { Backbone } from 'backbone';
+import jQuery from 'jquery';
+import _ from 'underscore';
+import Backbone from 'backbone';
 
 export const Bubble = Backbone.View.extend({
     el: '#bubble-outter',
@@ -17,12 +17,12 @@ export const Bubble = Backbone.View.extend({
         this.menuItem = null; // Lazy load
     },
 
-    render: function (callbacks) {
+    render: function () {
         this.$el.html(
             this.template()
         );
         this.menuItem = this.menuItem || jQuery(this.menuItemSelector);
-        var offset = this.menuItem.offset();
+        const offset = this.menuItem.offset();
         this.$el.css({
             left: offset.left - (this.menuItem.width() / 2),
             top: offset.top + this.menuItem.height()

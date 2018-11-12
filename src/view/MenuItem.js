@@ -1,8 +1,8 @@
-import { jQuery } from 'jquery';
-import { _ } from 'underscore';
-import { Backbone } from 'backbone';
+import jQuery from 'jquery';
+import _ from 'underscore';
+import Backbone from 'backbone';
 
-export const MenuItem = Backbone.View.extend({
+export const MenuItemView = Backbone.View.extend({
     tagName: 'li',
 
     initialize: function (options) {
