@@ -3,14 +3,10 @@ import * as Backbone from 'backbone';
 import { VerticalSlideShow } from '../VerticalSlideshow';
 
 export const Splash = Backbone.View.extend({
-    el: "#home",
-
     initialize: function (options) {
-        this.el = options.el;
-
+        this.selector = this.el = options.el;
         this.verticalSlideShow = new VerticalSlideShow({
-            // container: this.el,
-            selector: '#home article',
+            selector: this.selector + ' article', // TODO
             offset: 30
         });
     },
@@ -21,12 +17,14 @@ export const Splash = Backbone.View.extend({
         } else {
             this.$el.insertAfter('header');
         }
+        document.querySelector(this.selector).style.display = 'block';
         window.scrollTo(0, 0);
         this.verticalSlideShow.start();
     },
 
     remove: function () {
         this.$el.hide();
+        document.querySelector(this.selector).style.display = 'none';
         this.verticalSlideShow.stop();
     }
 });

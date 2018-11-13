@@ -70,6 +70,10 @@ section h1 {
     text-align: center;
 }
 
+.gallery h1 {
+    color: white;
+}
+
 .gallery, #dresses {
     background-color: brown;
     color: white;
@@ -103,6 +107,9 @@ section h1 {
     box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.5);
 }
 
+.gallery .dress h1 {
+    color: black;
+}
 
 .gallery .dress:hover {
     background: white;
@@ -396,16 +403,18 @@ td.thumb {
 footer {
     font-weight: 300;
     opacity: 0.8;
-    background-color: purple;
+    background-color: black;
     color: white;
     padding: 3em;
     min-width: 100%;
     min-height: 100%;
-    overflow: auto;
     height: 100%;
+    overflow: auto;
+    display: relative;
 }
 
 footer .content {
+    height: 100%;
     margin: 0 auto;
 }
 

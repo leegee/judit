@@ -1,7 +1,7 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Judit Beta</title>
+    <title>Judit Beta 2</title>
 
     <meta charset="UTF-8">
 
@@ -103,11 +103,11 @@
 
     <script type='html/template' id='gallery-template'>
         <article>
-        <h1>
-            <span lang='en'>Gallery</span>
-            <span lang='hu'>Galéria</span>
-        </h1>
-        <div id='dresses'></div>
+            <h1>
+                <span lang='en'><%= title || 'Gallery' %></span>
+                <span lang='hu'><%= title || 'Galéria' %></span>
+            </h1>
+            <div id='dresses'></div>
         </article>
     </script>
 
@@ -179,22 +179,24 @@
     </script>
 
     <script type='html/template' id='menu-gallery-item-template'>
-        <a href="#/gallery/<%= id %>"><%= id %></a>
+        <a href="#/gallery/<%= id %>"><%= title %></a>
     </script>
 
     <script type='html/template' id='basket-empty-bubble-template'>
         <div class='up-arrow'></div>
         <div class='bubble'>
-            Your basket is empty
+            <span lang='en'>Your basket is empty.</span>
+            <span lang='hu'>Your Hungarian to be added basketot is empty.</span>
         </bubble>
     </script>
 </head>
+
 <body>
 
     <div id='loader'>
         <div class="spinner">
-          <div class="dot1"></div>
-          <div class="dot2"></div>
+            <div class="dot1"></div>
+            <div class="dot2"></div>
         </div>
         <div id='loader-status-outside'>
             <div id='loader-status-inside'></div>
@@ -204,40 +206,40 @@
     <header class='nav-ctrl'>
         <nav>
             <ul>
-            <li><a class='nav-hide'>Close Menu →</a></li>
-            <li><a href="#/home">
-                <span lang='en'>Home</span>
-                <span lang='hu'>Főoldal</span>
-            </a></li>
-            <li class='menu-contact'><a href="#/contact">
-                <span lang='en'>Contact</span>
-                <span lang='hu'>Kapcsolat</span>
-            </a></li>
-            <li class='menu-basket'>
-                <a href="#/basket">
-                    <span lang='en'>Basket</span>
-                    <span lang='hu'>Kosár</span>
-                </a>
-            </li>
+                <li><a class='nav-hide'>Close Menu →</a></li>
+                <li><a href="#/home">
+                        <span lang='en'>Home</span>
+                        <span lang='hu'>Főoldal</span>
+                    </a></li>
+                <li class='menu-contact'><a href="#/contact">
+                        <span lang='en'>Contact</span>
+                        <span lang='hu'>Kapcsolat</span>
+                    </a></li>
+                <li class='menu-basket'>
+                    <a href="#/basket">
+                        <span lang='en'>Basket</span>
+                        <span lang='hu'>Kosár</span>
+                    </a>
+                </li>
 
-            <li class='language'>
-                <span lang='en'>Language</span>
-                <span lang='hu'>Nyelv</span>
-                <!-- span lang='de'>Sprache</span -->
-                <ul>
-                    <li class='change-language' data-setlang='en' id='language-english'><a><span class='flag flag-en'></span>English</a></li>
-                    <li class='change-language' data-setlang='hu' id='language-magyar'><a><span class='flag flag-hu'></span>Magyar</a></li>
-                    <!-- <li class='change-language' data-setlang='de' id='language-deutsche'><a><span class='flag flag-de'></span>Deutsche</a></li> -->
-                </ul>
-            </li>
+                <li class='language'>
+                    <span lang='en'>Language</span>
+                    <span lang='hu'>Nyelv</span>
+                    <!-- span lang='de'>Sprache</span -->
+                    <ul>
+                        <li class='change-language' data-setlang='en' id='language-english'><a><span class='flag flag-en'></span>English</a></li>
+                        <li class='change-language' data-setlang='hu' id='language-magyar'><a><span class='flag flag-hu'></span>Magyar</a></li>
+                        <!-- <li class='change-language' data-setlang='de' id='language-deutsche'><a><span class='flag flag-de'></span>Deutsche</a></li> -->
+                    </ul>
+                </li>
 
-            <li class='search'>
-                <form class='search'>
-                    <input type='text' class='q' placeholder=' Search... '>
-                </form>
-            </li>
+                <li class='search'>
+                    <form class='search'>
+                        <input type='text' class='q' placeholder=' Search... '>
+                    </form>
+                </li>
 
-        </ul>
+            </ul>
         </nav>
     </header>
 
@@ -254,8 +256,8 @@
                     <!--[if IE 9]><video style="display: none;"><![endif]-->
                     <source srcset='/home/1-1280.png' media="(min-width:1280px)" sizes="100vm">
                     <source srcset='/home/1-1100.png' media="(min-width:1024px)" sizes="100vm">
-                    <source srcset='/home/1-640.png'  media="(min-width:640px)"  sizes="100vm">
-                    <source srcset='/home/1-320.png'  media="(min-width:320px)"  sizes="100vm">
+                    <source srcset='/home/1-640.png' media="(min-width:640px)" sizes="100vm">
+                    <source srcset='/home/1-320.png' media="(min-width:320px)" sizes="100vm">
                     <!--[if IE 9]></video><![endif]-->
                     <img src="/home/1-320.png">
                 </picture>
@@ -263,7 +265,7 @@
 
             <article>
                 <picture>
-                  <img src='/_/img/hide-and-see.jpg'>
+                    <img src='/_/img/hide-and-see.jpg'>
                 </picture>
             </article>
 
@@ -297,6 +299,8 @@
         </section>
 
         <section id="basket" style='display:none'>
+            <h1 lang='en'>Your Basket</h1>
+            <h1 lang='hu'>Your Basketot...</h1>
         </section>
 
         <section id="galleries" style='display:none'>
@@ -337,4 +341,5 @@
     <aside id="bubble-outter" tabindex="-1"></aside>
 
 </body>
+
 </html>

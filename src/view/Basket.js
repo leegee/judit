@@ -7,6 +7,7 @@ import { Languages } from '../service/Language';
 
 export const BasketView = Backbone.View.extend({
     el: '#basket',
+    selector: '#basket',
     events: {
         'click .checkout': 'checkout',
         'click .remove': 'removeItem'
@@ -32,7 +33,6 @@ export const BasketView = Backbone.View.extend({
     render: function (callbacks) {
         this.listenTo(Languages, 'change', this.render);
         console.log("Basket.Render");
-        console.trace();
 
         // Global listen causes unhappy rendering
         if (Backbone.history.fragment !== 'basket') {
@@ -81,15 +81,17 @@ export const BasketView = Backbone.View.extend({
             })
         );
         this.$el.show();
+        document.querySelector(this.selector).style.display = 'block';
     },
 
     remove: function () {
         this.$el.hide();
+        document.querySelector(this.selector).style.display = 'none';
         this.stopListening(Languages);
     },
 
     removeItem: function (arg) {
-        console.log(arg);
+        console.log('remove', arg);
         this.collection.get(arg.currentTarget.dataset.dressid).destroy();
     },
 

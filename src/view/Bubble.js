@@ -4,6 +4,7 @@ import Backbone from 'backbone';
 
 export const Bubble = Backbone.View.extend({
     el: '#bubble-outter',
+    selector: '#bubble-outter',
 
     /*  @param {Object} options
         @param {string} options.menuItemSelector Selector for the menu item under which to display the bubble
@@ -28,6 +29,7 @@ export const Bubble = Backbone.View.extend({
             top: offset.top + this.menuItem.height()
         });
         this.$el.show();
+        document.querySelector(this.selector).style.display = 'block';
         this.$el.delay(3000).fadeOut();
     }
 });

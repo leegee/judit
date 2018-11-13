@@ -3,7 +3,7 @@ import { DressModal } from './DressModal';
 import * as Backbone from 'backbone';
 import * as jQuery from 'jquery';
 
-var THUMBS_MADE = 0;
+let THUMBS_MADE = 0;
 
 // view Dress
 export const DressView = Backbone.View.extend({

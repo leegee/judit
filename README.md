@@ -7,6 +7,7 @@ https://unhosted.org/
 * Fix initial view of http://localhost:8080/?#search/spring/SKU2
 * Fix click-zoom port
 * Replace Fluid-Masonry
+* BasketBubble
 * Restore mobile menu pre-scroll
 * Use one global basket collection
 * Add search page for slide nav

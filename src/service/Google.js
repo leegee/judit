@@ -17,16 +17,18 @@ export class Source {
         });
     }
     parse(gsx) {
-        var self = this, rv = [];
-        _.each(gsx.feed.entry, function (entry) {
-            var reformed = {}, m;
-            _.each(entry, function (val, key) {
-                if (m = key.match(self.matchKeys)) {
+        const rv = [];
+        _.each(gsx.feed.entry, (entry) => {
+            const reformed = {};
+            _.each(entry, (val, key) => {
+                let m;
+                if (m = key.match(this.matchKeys)) {
                     reformed[m[1]] = val['$t'];
                 }
             });
             rv.push(reformed);
         });
+        console.log('parsed', rv);
         return rv;
     }
 }

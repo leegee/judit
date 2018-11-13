@@ -1,4 +1,4 @@
-import * as Backbone from 'backbone';
+import Backbone from 'backbone';
 import 'localforage-backbone';
 
 Backbone.localforage.localforageInstance.config({
